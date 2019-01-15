@@ -10,7 +10,7 @@ const Image = ({ className }) => (
     query={graphql`
       fragment imageShit on File {
         childImageSharp {
-          fixed(height: 150) {
+          fixed(width: 141, height: 139, cropFocus: CENTER) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -38,12 +38,10 @@ const Image = ({ className }) => (
     `}
     render={data => {
       const images = Object.values(data).map(image => (
-        <Img
-          critical={true}
-          fadeIn={false}
-          className={className}
-          fixed={image.childImageSharp.fixed}
-        />
+        <>
+          <LogoPath />
+          <Img className={className} fixed={image.childImageSharp.fixed} />
+        </>
       ))
 
       return images[Math.floor(Math.random() * 6)]
@@ -65,7 +63,6 @@ const StyledHeader = styled.header`
 
 const Header = ({ data }) => (
   <StyledHeader>
-    <LogoPath />
     <Logo />
   </StyledHeader>
 )
