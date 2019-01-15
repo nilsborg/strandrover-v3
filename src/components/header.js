@@ -40,6 +40,7 @@ const Image = ({ className }) => (
       const images = Object.values(data).map(image => (
         <Img
           critical={true}
+          fadeIn={false}
           className={className}
           fixed={image.childImageSharp.fixed}
         />
