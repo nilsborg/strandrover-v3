@@ -38,7 +38,11 @@ const Image = ({ className }) => (
     `}
     render={data => {
       const images = Object.values(data).map(image => (
-        <Img className={className} fixed={image.childImageSharp.fixed} />
+        <Img
+          critical={true}
+          className={className}
+          fixed={image.childImageSharp.fixed}
+        />
       ))
 
       return images[Math.floor(Math.random() * 6)]
