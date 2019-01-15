@@ -24,12 +24,15 @@ const Image = ({ className }) => (
         image5: file(relativePath: { eq: "wallpapers/IMG_5941.jpg" }) { ...imageShit }
       }
     `}
-    render={data => (
-      <Img
-        className={className}
-        fixed={data[`image${Math.ceil(Math.random() * 3)}`].childImageSharp.fixed}
-      />
-    )}
+    render={data => {
+      const image = data[`image${Math.floor(Math.random() * 6)}`]
+      return (
+        <Img
+          className={className}
+          fixed={image.childImageSharp.fixed}
+        />
+      )
+    }}
   />
 )
 
