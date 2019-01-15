@@ -13,6 +13,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-source-cockpit-generic',
+      options: {
+        host: `${process.env.COCKPIT_HOST}`,
+        accessToken: `${process.env.COCKPIT_ACCESS_TOKEN}`,
+        uploadPath: '/storage/uploads',
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -34,7 +42,7 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-styled-components`
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
