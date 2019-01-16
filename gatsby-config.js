@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `strandrover`,
+    title: `strandrover – concept, branding, design, code. Berlin and Frankfurt.`,
     description: `passionate design/code bureau. design, concept, branding seamlessly integrated with edge web technology implementation.`,
     author: `@nilsborgboehmer`,
   },

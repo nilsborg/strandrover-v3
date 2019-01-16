@@ -40,7 +40,11 @@ const Image = ({ className }) => (
       const images = Object.values(data).map(image => (
         <>
           <LogoPath />
-          <Img className={className} fixed={image.childImageSharp.fixed} />
+          <Img
+            className={className}
+            alt="strandrover logo"
+            fixed={image.childImageSharp.fixed}
+          />
         </>
       ))
 
@@ -69,7 +73,7 @@ const StyledHeader = styled.header`
   }
 `
 
-const Header = ({ data }) => (
+const Header = () => (
   <StyledHeader>
     <Logo />
   </StyledHeader>

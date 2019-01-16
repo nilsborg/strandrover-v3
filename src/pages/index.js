@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+
 import Video from '../components/video'
 
 const ProjectList = styled.ul`
@@ -24,8 +24,6 @@ const Tag = styled.span`
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-
     <ProjectList>
       {data.projects.edges.map(
         ({ node: { id, title, tags, link, video, poster } }) => (
