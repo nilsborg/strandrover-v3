@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   background-color: coral;
   position: relative;
   padding-bottom: 60.5%;
-  border-radius: 1vw;
+  border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 3vh 3vh rgba(0, 0, 0, 0.2);
 

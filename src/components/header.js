@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import styled from 'styled-components'
-import LogoPath from '../images/logo.svg'
+import LogoPath from '../assets/images/logo.svg'
 
 const Image = ({ className }) => (
   <StaticQuery
@@ -60,16 +60,16 @@ const Logo = styled(Image)`
 `
 
 const StyledHeader = styled.header`
-  @media (max-width: 799px) {
+  @media (max-width: 1099px) {
     display: flex;
     justify-content: center;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1100px) {
     position: fixed;
     z-index: 10;
-    top: 10vh;
-    left: 10vw;
+    top: 7vh;
+    left: 7vw;
   }
 `
 
