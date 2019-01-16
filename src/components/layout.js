@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import Header from './header'
 
 const GlobalStyle = createGlobalStyle`
@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: cursive;
   }
+`
+
+const Main = styled.main`
+  padding: 5vw;
 `
 
 const Layout = ({ children }) => (
@@ -25,12 +29,12 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <main>
+        <Main>
           <GlobalStyle />
           <Header data={data} />
           {children}
           <footer>© strandrover {new Date().getFullYear()}</footer>
-        </main>
+        </Main>
       </>
     )}
   />

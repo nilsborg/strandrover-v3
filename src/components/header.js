@@ -56,10 +56,17 @@ const Logo = styled(Image)`
 `
 
 const StyledHeader = styled.header`
-  position: fixed;
-  z-index: 10;
-  top: 10vh;
-  left: 10vw;
+  @media (max-width: 799px) {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 800px) {
+    position: fixed;
+    z-index: 10;
+    top: 10vh;
+    left: 10vw;
+  }
 `
 
 const Header = ({ data }) => (
