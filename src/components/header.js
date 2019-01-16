@@ -57,6 +57,7 @@ const Logo = styled(Image)`
 
 const StyledHeader = styled.header`
   position: fixed;
+  z-index: 10;
   top: 10vh;
   left: 10vw;
 `
