@@ -1,0 +1,29 @@
+stages:
+  - build
+  - deploy
+
+build_staging:
+  stage: build
+  environment:
+    name: prod
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
+deploy_prod:
+  stage: deploy
+  environment:
+    name: prod
+    url: https://staging.jpschneider.strandrover.com
+  script:
+    - ~/.yarn/bin/netlify deploy --prod --dir public
+  only:
+    - master
