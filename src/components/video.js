@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 
 class Video extends Component {
   handleVideoPlay = event => {
-    console.log('playing: ', event.currentTarget)
+    console.log(event.type, event.currentTarget)
     event.currentTarget.dataset.canPlay = true
   }
 
@@ -58,7 +58,11 @@ class Video extends Component {
           loop
           playsInline
           src={url}
+          onLoadStart={console.log('load start')}
+          onLoadedMetadata={console.log('loadedmetadata')}
+          onLoadedData={console.log('loadeddata')}
           onCanPlay={this.handleVideoPlay}
+          onCanPlayThrough={this.handleVideoPlay}
         />
         <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
       </Wrapper>
