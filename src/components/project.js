@@ -78,9 +78,8 @@ const Tag = styled.span`
   margin-right: 0.5vw;
 `
 
-const Project = ({ node: { id, title, tags, link, video, poster } }) => (
+const Project = ({ node: { title, tags, link, video, poster } }) => (
   <StyledProject
-    key={id}
     style={{
       '--space-bottom': `${random(20, 40)}vh`,
       '--space-left': `${random(0, 30)}vw`,

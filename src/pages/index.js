@@ -14,8 +14,8 @@ const ProjectList = styled.ul`
 const IndexPage = ({ data }) => (
   <Layout>
     <ProjectList>
-      {data.projects.edges.map(({ node }) => (
-        <Project node={node} />
+      {data.projects.edges.map(({ node }, index) => (
+        <Project node={node} key={index} />
       ))}
     </ProjectList>
   </Layout>
