@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   box-shadow: 0 3vh 3vh rgba(0, 0, 0, 0.2);
 
   @media (min-width: 850px) {
-    width: 750px;
-    padding-bottom: 454px;
+    width: 720px;
+    padding-bottom: 450px;
   }
 
   video {

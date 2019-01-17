@@ -2,10 +2,8 @@ stages:
   - build
   - deploy
 
-build_staging:
+build:
   stage: build
-  environment:
-    name: prod
   cache:
     paths:
       - node_modules/
@@ -18,11 +16,8 @@ build_staging:
   only:
     - master
 
-deploy_prod:
+deploy:
   stage: deploy
-  environment:
-    name: prod
-    url: https://staging.jpschneider.strandrover.com
   script:
     - ~/.yarn/bin/netlify deploy --prod --dir public
   only:
