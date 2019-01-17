@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
+    color: var(--color-secondary);
   }
 
   a {
