@@ -43,8 +43,7 @@ const Wrapper = styled.div`
 class Video extends Component {
   handleVideoPlay = event => {
     console.log(event.type, event.currentTarget)
-    // event.currentTarget.dataset.canPlay = true
-    // event.currentTarget.play()
+    event.currentTarget.dataset.canPlay = true
   }
 
   render() {
@@ -52,21 +51,17 @@ class Video extends Component {
     const poster = this.props.poster
 
     return (
-      <div>
+      <Wrapper>
         <video
+          autoPlay
           muted
           loop
-          controls
           playsInline
           src={url}
-          onLoadStart={console.log('load start')}
-          onLoadedMetadata={console.log('loadedmetadata')}
-          onLoadedData={console.log('loadeddata')}
-          onCanPlay={this.handleVideoPlay}
-          onCanPlayThrough={this.handleVideoPlay}
+          onPlaying={this.handleVideoPlay}
         />
         <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
-      </div>
+      </Wrapper>
     )
   }
 }
