@@ -16,39 +16,22 @@ const Image = ({ className }) => (
         }
       }
       query {
-        image0: file(relativePath: { eq: "wallpapers/DSC07590.jpg" }) {
-          ...imageShit
-        }
-        image1: file(relativePath: { eq: "wallpapers/DSC08409.jpg" }) {
-          ...imageShit
-        }
-        image2: file(relativePath: { eq: "wallpapers/IMG_4067.jpg" }) {
-          ...imageShit
-        }
-        image3: file(relativePath: { eq: "wallpapers/IMG_4602.jpg" }) {
-          ...imageShit
-        }
-        image4: file(relativePath: { eq: "wallpapers/IMG_4637.jpg" }) {
-          ...imageShit
-        }
-        image5: file(relativePath: { eq: "wallpapers/IMG_5941.jpg" }) {
+        image: file(relativePath: { eq: "wallpapers/DSC08409.jpg" }) {
           ...imageShit
         }
       }
     `}
     render={data => {
-      const images = Object.values(data).map(image => (
+      return (
         <>
           <LogoPath />
           <Img
             className={className}
             alt="strandrover logo"
-            fixed={image.childImageSharp.fixed}
+            fixed={data.image.childImageSharp.fixed}
           />
         </>
-      ))
-
-      return images[Math.floor(Math.random() * 6)]
+      )
     }}
   />
 )

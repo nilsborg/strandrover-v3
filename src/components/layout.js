@@ -9,6 +9,7 @@ import Header from './header'
 
 const Main = styled.main`
   padding: 5vw;
+  overflow: hidden;
 
   @media (min-width: 1110px) {
     padding-left: calc(7vw + 200px);

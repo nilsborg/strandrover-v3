@@ -40,6 +40,9 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --radius: 5px;
+    --color-primary: #347f7a;
+    --color-secondary: #162b3c;
+    --color-offwhite: #e7ecef;
   }
 
   html, body {
@@ -49,6 +52,15 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
+  }
+
+  a {
+    color: var(--color-primary);
+    transition: color 200ms ease;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
   }
 `
 
