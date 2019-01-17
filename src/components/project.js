@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { random } from 'lodash'
+import random from 'lodash/random'
 
 import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
