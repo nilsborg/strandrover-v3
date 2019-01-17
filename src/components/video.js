@@ -41,6 +41,16 @@ const Wrapper = styled.div`
 `
 
 class Video extends Component {
+  constructor(props) {
+    super(props)
+    this.videoRef = React.createRef()
+  }
+
+  componentDidMount() {
+    const video = this.videoRef.current
+    video.play()
+  }
+
   handlePlay = event => {
     console.log(event.type, event.currentTarget, event)
     event.currentTarget.play()
@@ -54,6 +64,7 @@ class Video extends Component {
     return (
       <Wrapper>
         <video
+          ref={this.videoRef}
           muted
           loop
           playsInline
@@ -61,7 +72,6 @@ class Video extends Component {
           onLoadedData={this.handlePlay}
           onCanPlay={this.handlePlay}
           onCanPlayThrough={this.handlePlay}
-          onPlay={this.handlePlay}
         />
         <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
       </Wrapper>
