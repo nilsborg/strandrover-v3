@@ -32,7 +32,7 @@ const Wrapper = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    /* opacity: 0; */
+    opacity: 0;
   }
 
   video[data-can-play='true'] {
@@ -41,30 +41,11 @@ const Wrapper = styled.div`
 `
 
 class Video extends Component {
-  constructor(props) {
-    super(props)
-    this.myRef = React.createRef()
-    this.state = { playing: false }
-  }
-
-  componentDidMount() {
-    const video = this.myRef.current
-    console.log('video ref', this.myRef)
-    console.log('video ref', video)
-    console.log('video ref', video.readyState)
-    if (!this.state.playing && video.readyState > 3) video.play()
-  }
-
-  handleCanPlay = event => {
-    console.log('canPlay', event)
-    event.currentTarget.play()
-  }
   handlePlay = event => {
-    console.log('play', event)
-    this.setState({ playing: true })
+    console.log(event.type, event.currentTarget, event)
+    event.currentTarget.play()
+    event.currentTarget.dataset.canPlay = true
   }
-
-  handleLoadingEvent = event => console.log('loadingEvent', event.type, event)
 
   render() {
     const url = this.props.url
@@ -73,16 +54,13 @@ class Video extends Component {
     return (
       <Wrapper>
         <video
-          ref={this.myRef}
           muted
           loop
           playsInline
           src={url}
-          onLoadStart={this.handleLoadingEvent}
-          onLoadedMetadata={this.handleLoadingEvent}
-          onLoadedData={this.handleLoadingEvent}
-          onCanPlayThrough={this.handleLoadingEvent}
-          onCanPlay={this.handleCanPlay}
+          onLoadedData={this.handlePlay}
+          onCanPlay={this.handlePlay}
+          onCanPlayThrough={this.handlePlay}
           onPlay={this.handlePlay}
         />
         <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
