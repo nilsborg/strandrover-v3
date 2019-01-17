@@ -41,9 +41,25 @@ const Wrapper = styled.div`
 `
 
 class Video extends Component {
+  constructor(props) {
+    super(props)
+    this.myRef = React.createRef()
+    this.state = { playing: false }
+  }
+
+  componentDidMount() {
+    const video = this.myRef.current
+    if (!this.state.playing && video.readyState > 3) {
+      video.play()
+      this.setState({ playing: true })
+    }
+  }
+
   handleVideoPlay = event => {
-    console.log(event.type, event.currentTarget)
+    event.currentTarget.play()
     event.currentTarget.dataset.canPlay = true
+
+    this.setState({ playing: true })
   }
 
   render() {
@@ -53,12 +69,12 @@ class Video extends Component {
     return (
       <Wrapper>
         <video
-          autoPlay
           muted
           loop
           playsInline
           src={url}
-          onPlaying={this.handleVideoPlay}
+          ref={this.myRef}
+          onCanPlay={this.handleVideoPlay}
         />
         <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
       </Wrapper>
