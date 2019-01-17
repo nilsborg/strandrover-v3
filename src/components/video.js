@@ -43,7 +43,8 @@ const Wrapper = styled.div`
 class Video extends Component {
   handleVideoPlay = event => {
     console.log(event.type, event.currentTarget)
-    event.currentTarget.dataset.canPlay = true
+    // event.currentTarget.dataset.canPlay = true
+    event.currentTarget.play()
   }
 
   render() {
@@ -51,9 +52,8 @@ class Video extends Component {
     const poster = this.props.poster
 
     return (
-      <Wrapper>
+      <div>
         <video
-          autoPlay
           muted
           loop
           playsInline
@@ -65,7 +65,7 @@ class Video extends Component {
           onCanPlayThrough={this.handleVideoPlay}
         />
         <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
-      </Wrapper>
+      </div>
     )
   }
 }
