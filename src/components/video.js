@@ -49,6 +49,7 @@ class Video extends Component {
   componentDidMount() {
     const video = this.videoRef.current
     video.play()
+    video.dataset.canPlay = true
   }
 
   handlePlay = event => {
