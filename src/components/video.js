@@ -44,7 +44,7 @@ class Video extends Component {
   handleVideoPlay = event => {
     console.log(event.type, event.currentTarget)
     // event.currentTarget.dataset.canPlay = true
-    event.currentTarget.play()
+    // event.currentTarget.play()
   }
 
   render() {
@@ -56,6 +56,7 @@ class Video extends Component {
         <video
           muted
           loop
+          controls
           playsInline
           src={url}
           onLoadStart={console.log('load start')}
