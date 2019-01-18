@@ -80,6 +80,12 @@ const Tag = styled.span`
 `
 
 class Project extends Component {
+  projectRef = React.createRef()
+
+  componentDidMount() {
+    this.props.addProject(this.projectRef)
+  }
+
   render() {
     const { title, tags, link, video, poster } = this.props.node
 
@@ -89,6 +95,7 @@ class Project extends Component {
           '--space-bottom': `${random(10, 25)}vh`,
           '--space-left': `${random(0, 30)}vw`,
         }}
+        ref={this.projectRef}
       >
         <header>
           <h2>{title}</h2>
@@ -105,11 +112,7 @@ class Project extends Component {
           </a>
         </header>
 
-        <Video
-          url={video.publicURL}
-          poster={poster}
-          addVideo={this.props.addVideo}
-        />
+        <Video url={video.publicURL} poster={poster} />
       </StyledProject>
     )
   }

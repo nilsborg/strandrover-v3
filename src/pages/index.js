@@ -21,7 +21,7 @@ const ProjectList = styled.ul`
 class IndexPage extends Component {
   boxRef = React.createRef()
   state = {
-    videos: [],
+    projects: [],
   }
 
   cursor = {
@@ -29,10 +29,11 @@ class IndexPage extends Component {
     y: 0,
   }
 
-  addVideo = video => {
+  addProject = project => {
     this.setState(state => ({
-      videos: [...state.videos, video],
+      projects: [...state.projects, project],
     }))
+    console.log(project.current)
   }
 
   handleMouseMove = event => {
@@ -47,25 +48,25 @@ class IndexPage extends Component {
   }
 
   updateShadow = () => {
-    this.state.videos.map((video, i) => {
-      const videoRect = video.current.getBoundingClientRect()
+    this.state.projects.map((projectRef, i) => {
+      const project = projectRef.current
+      const video = project.lastElementChild
+      const videoBoundingBox = video.getBoundingClientRect()
+      const shadow = video.lastElementChild
 
-      if (this.isInViewport(videoRect)) {
+      if (this.isInViewport(videoBoundingBox)) {
         const center = {
-          x: videoRect.x + videoRect.width / 2,
-          y: videoRect.y + videoRect.height / 2,
+          x: videoBoundingBox.x + videoBoundingBox.width / 2,
+          y: videoBoundingBox.y + videoBoundingBox.height / 2,
         }
-
-        const videoWrapper = video.current.parentElement
-        const project = video.current.parentElement.parentElement
 
         const x = (center.x - this.cursor.x) / 12
         const y = (center.y - this.cursor.y) / 12
 
-        console.log(i, video.current, x, y)
-
         // prettier-ignore
-        videoWrapper.style.boxShadow = `${Math.ceil(x)}px ${Math.ceil(y)}px ${Math.abs(x * y) / 40}px rgba(0,0,0,0.1)`
+        // videoWrapper.style.boxShadow = `${Math.ceil(x)}px ${Math.ceil(y)}px ${Math.abs(x * y) / 40}px rgba(0,0,0,0.1)`
+        shadow.style.transform = `translate3d(${x}px, ${y}px, 0px)`
+
         // prettier-ignore
         project.style.transform = `translate3d(${x * -0.5}px, ${y * -0.5}px, 0px)`
       }
@@ -94,7 +95,7 @@ class IndexPage extends Component {
       <Layout>
         <ProjectList>
           {data.projects.edges.map(({ node }, index) => (
-            <Project node={node} key={index} addVideo={this.addVideo} />
+            <Project node={node} key={index} addProject={this.addProject} />
           ))}
         </ProjectList>
       </Layout>
