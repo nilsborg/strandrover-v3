@@ -21,8 +21,8 @@ const StyledProject = styled.li`
 
     @media (min-width: 1200px) {
       position: absolute;
-      left: -5vw;
-      bottom: 3vh;
+      left: -10vw;
+      bottom: -3vh;
       z-index: 3;
       padding: 1vw;
       padding-right: 3vw;
