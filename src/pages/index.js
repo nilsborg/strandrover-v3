@@ -59,7 +59,7 @@ class IndexPage extends Component {
       video.current.parentElement.style.boxShadow = `${Math.ceil(
         shadowX
       )}px ${Math.ceil(shadowY)}px ${Math.abs(shadowX * shadowY) /
-        40}px rgba(0,0,0,0.2)`
+        40}px rgba(0,0,0,0.1)`
 
       video.current.parentElement.parentElement.style.transform = `translate(${shadowX *
         -1}px, ${shadowY * -1}px)`
