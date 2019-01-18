@@ -46,6 +46,8 @@ const StyledHeader = styled.header`
   @media (max-width: 1099px) {
     display: flex;
     justify-content: center;
+    padding: 5vw;
+    padding-bottom: 0;
   }
 
   @media (min-width: 1100px) {

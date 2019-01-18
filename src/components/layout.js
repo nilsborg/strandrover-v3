@@ -2,28 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SEO from '../components/seo'
 
-import styled from 'styled-components'
 import GlobalStyle from './globalStyle'
 
 import Header from './header'
 
-const Main = styled.main`
-  padding: 5vw;
-  overflow: hidden;
-
-  @media (min-width: 1110px) {
-    padding-left: calc(7vw + 200px);
-  }
-`
-
 const Layout = ({ children }) => (
-  <Main>
+  <main>
     <SEO />
     <GlobalStyle />
     <Header />
     {children}
     <footer>© strandrover {new Date().getFullYear()}</footer>
-  </Main>
+  </main>
 )
 
 Layout.propTypes = {

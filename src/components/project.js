@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import random from 'lodash/random'
 
@@ -78,30 +78,40 @@ const Tag = styled.span`
   margin-right: 0.5vw;
 `
 
-const Project = ({ node: { title, tags, link, video, poster } }) => (
-  <StyledProject
-    style={{
-      '--space-bottom': `${random(20, 40)}vh`,
-      '--space-left': `${random(0, 30)}vw`,
-    }}
-  >
-    <header>
-      <h2>{title}</h2>
+class Project extends Component {
+  render() {
+    const { title, tags, link, video, poster } = this.props.node
 
-      <aside>
-        {tags.map((tag, index) => (
-          <Tag key={index}>{tag.content}</Tag>
-        ))}
-      </aside>
+    return (
+      <StyledProject
+        style={{
+          '--space-bottom': `${random(20, 40)}vh`,
+          '--space-left': `${random(0, 30)}vw`,
+        }}
+      >
+        <header>
+          <h2>{title}</h2>
 
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        <LinkIcon />
-        <span>{link}</span>
-      </a>
-    </header>
+          <aside>
+            {tags.map((tag, index) => (
+              <Tag key={index}>{tag.content}</Tag>
+            ))}
+          </aside>
 
-    <Video url={video.publicURL} poster={poster} />
-  </StyledProject>
-)
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            <LinkIcon />
+            <span>{link}</span>
+          </a>
+        </header>
+
+        <Video
+          url={video.publicURL}
+          poster={poster}
+          addVideo={this.props.addVideo}
+        />
+      </StyledProject>
+    )
+  }
+}
 
 export default Project

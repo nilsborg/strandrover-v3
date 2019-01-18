@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   padding-bottom: 60.5%;
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 3vh 3vh rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2vh 3vh rgba(0, 0, 0, 0.2);
 
   @media (min-width: 850px) {
     width: 720px;
@@ -41,19 +41,21 @@ const Wrapper = styled.div`
 `
 
 class Video extends Component {
-  constructor(props) {
-    super(props)
-    this.videoRef = React.createRef()
-  }
+  videoRef = React.createRef()
 
   componentDidMount() {
     const video = this.videoRef.current
     video.play()
     video.dataset.canPlay = true
+
+    console.log(video)
+
+    console.log(this.videoRef)
+    this.props.addVideo(this.videoRef)
   }
 
   handlePlay = event => {
-    console.log(event.type, event.currentTarget, event)
+    // console.log(event.type, event.currentTarget, event)
     event.currentTarget.play()
     event.currentTarget.dataset.canPlay = true
   }
