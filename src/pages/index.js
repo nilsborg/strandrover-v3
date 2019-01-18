@@ -47,7 +47,7 @@ class IndexPage extends Component {
   }
 
   updateShadow = () => {
-    this.state.videos.map(video => {
+    this.state.videos.map((video, i) => {
       const videoRect = video.current.getBoundingClientRect()
 
       if (this.isInViewport(videoRect)) {
@@ -56,16 +56,18 @@ class IndexPage extends Component {
           y: videoRect.y + videoRect.height / 2,
         }
 
-        let shadowX = (center.x - this.cursor.x) / 12
-        let shadowY = (center.y - this.cursor.y) / 12
+        const videoWrapper = video.current.parentElement
+        const project = video.current.parentElement.parentElement
 
-        video.current.parentElement.style.boxShadow = `${Math.ceil(
-          shadowX
-        )}px ${Math.ceil(shadowY)}px ${Math.abs(shadowX * shadowY) /
-          40}px rgba(0,0,0,0.1)`
+        const x = (center.x - this.cursor.x) / 12
+        const y = (center.y - this.cursor.y) / 12
 
-        video.current.parentElement.parentElement.style.transform = `translate3d(${shadowX *
-          -0.5}px, ${shadowY * -0.5}px, 0px)`
+        console.log(i, video.current, x, y)
+
+        // prettier-ignore
+        videoWrapper.style.boxShadow = `${Math.ceil(x)}px ${Math.ceil(y)}px ${Math.abs(x * y) / 40}px rgba(0,0,0,0.1)`
+        // prettier-ignore
+        project.style.transform = `translate3d(${x * -0.5}px, ${y * -0.5}px, 0px)`
       }
 
       return null

@@ -49,9 +49,7 @@ class Video extends Component {
     video.play()
     video.dataset.canPlay = true
 
-    console.log(video)
-
-    console.log(this.videoRef)
+    // add video to state
     this.props.addVideo(this.videoRef)
   }
 
