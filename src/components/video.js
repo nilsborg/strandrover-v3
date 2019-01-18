@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 2vh 3vh rgba(0, 0, 0, 0.2);
+  /* transition: box-shadow 100ms ease; */
 
   @media (min-width: 850px) {
     width: 720px;

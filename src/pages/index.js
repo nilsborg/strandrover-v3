@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import throttle from 'lodash/throttle'
 
 import Layout from '../components/layout'
 import Project from '../components/project'
@@ -18,6 +19,7 @@ const ProjectList = styled.ul`
 `
 
 class IndexPage extends Component {
+  boxRef = React.createRef()
   state = {
     videos: [],
   }
@@ -40,7 +42,7 @@ class IndexPage extends Component {
     this.updateShadow()
   }
 
-  handleScroll = event => {
+  handleScroll = () => {
     this.updateShadow()
   }
 
@@ -48,30 +50,39 @@ class IndexPage extends Component {
     this.state.videos.map(video => {
       const videoRect = video.current.getBoundingClientRect()
 
-      const center = {
-        x: videoRect.x + videoRect.width / 2,
-        y: videoRect.y + videoRect.height / 2,
+      if (this.isInViewport(videoRect)) {
+        const center = {
+          x: videoRect.x + videoRect.width / 2,
+          y: videoRect.y + videoRect.height / 2,
+        }
+
+        let shadowX = (center.x - this.cursor.x) / 12
+        let shadowY = (center.y - this.cursor.y) / 12
+
+        video.current.parentElement.style.boxShadow = `${Math.ceil(
+          shadowX
+        )}px ${Math.ceil(shadowY)}px ${Math.abs(shadowX * shadowY) /
+          40}px rgba(0,0,0,0.1)`
+
+        video.current.parentElement.parentElement.style.transform = `translate3d(${shadowX *
+          -0.5}px, ${shadowY * -0.5}px, 0px)`
       }
 
-      let shadowX = (center.x - this.cursor.x) / 12
-      let shadowY = (center.y - this.cursor.y) / 12
-
-      video.current.parentElement.style.boxShadow = `${Math.ceil(
-        shadowX
-      )}px ${Math.ceil(shadowY)}px ${Math.abs(shadowX * shadowY) /
-        40}px rgba(0,0,0,0.1)`
-
-      video.current.parentElement.parentElement.style.transform = `translate(${shadowX *
-        -1}px, ${shadowY * -1}px)`
+      return null
     })
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
+  isInViewport = boundingBox => {
+    return boundingBox.top < window.innerHeight && boundingBox.bottom > 0
+  }
 
-    setTimeout(() => {
-      this.updateShadow()
-    }, 300)
+  componentDidMount() {
+    window.addEventListener('scroll', throttle(this.handleScroll, 1000 / 60))
+
+    window.addEventListener(
+      'mousemove',
+      throttle(this.handleMouseMove, 1000 / 60)
+    )
   }
 
   render() {
@@ -79,7 +90,7 @@ class IndexPage extends Component {
 
     return (
       <Layout>
-        <ProjectList onMouseMove={this.handleMouseMove}>
+        <ProjectList>
           {data.projects.edges.map(({ node }, index) => (
             <Project node={node} key={index} addVideo={this.addVideo} />
           ))}

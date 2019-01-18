@@ -8,6 +8,7 @@ import LinkIcon from '../assets/images/link.svg'
 const StyledProject = styled.li`
   position: relative;
   margin-bottom: calc(var(--space-bottom) / 2);
+  /* transition: transform 100ms ease; */
 
   @media (min-width: 1100px) {
     margin-bottom: var(--space-bottom);
@@ -85,7 +86,7 @@ class Project extends Component {
     return (
       <StyledProject
         style={{
-          '--space-bottom': `${random(20, 40)}vh`,
+          '--space-bottom': `${random(10, 25)}vh`,
           '--space-left': `${random(0, 30)}vw`,
         }}
       >
