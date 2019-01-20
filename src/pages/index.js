@@ -55,7 +55,7 @@ class IndexPage extends Component {
       const videoWrap = project.lastElementChild
       const videoBoundingBox = videoWrap.getBoundingClientRect()
       const shadow = videoWrap.lastElementChild
-      // const video = videoWrap.firstElementChild
+      const video = videoWrap.firstElementChild.firstElementChild
 
       if (this.isInViewport(videoBoundingBox) && window.innerWidth > 850) {
         const center = {
@@ -72,11 +72,15 @@ class IndexPage extends Component {
         // shadow.style.opacity = 100 / distance
         shadow.style.filter = `blur(${distance / 50}px)`
 
+        video.play()
+
         // if (distance < 600) {
         //   video.style.transform = `translate3d(${x * -1}px, ${y * -1}px, 0px)`
         // } else {
         //   video.style.transform = `translate3d(0,0,0)`
         // }
+      } else {
+        video.pause()
       }
 
       return null
