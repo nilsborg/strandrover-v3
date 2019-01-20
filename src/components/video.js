@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  background-color: var(--color-offwhite);
+  /* background-color: var(--color-offwhite); */
   position: relative;
-  width: 720px;
+
+  @media (min-width: 850px) {
+    width: 720px;
+  }
 
   .mask  {
     border-radius: var(--radius);
@@ -12,6 +15,7 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 2;
     padding-bottom: 60.5%;
+    /* transition: transform 150ms ease-in-out; */
 
     @media (min-width: 850px) {
       padding-bottom: 450px;
@@ -50,8 +54,9 @@ const Wrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    transform: translate(10px, 10px);
+    background-color: rgba(0, 0, 0, 0.12);
+    /* transform: translate(10px, 10px); */
+    border-radius: var(--radius);
   }
 `
 

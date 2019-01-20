@@ -8,10 +8,12 @@ import Project from '../components/project'
 
 const ProjectList = styled.ul`
   list-style: none;
-  /* padding-left: 0; */
   margin-left: 0;
   padding: 5vw;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
   @media (min-width: 1110px) {
     padding-left: calc(7vw + 200px);
@@ -40,35 +42,41 @@ class IndexPage extends Component {
     this.cursor.x = event.clientX
     this.cursor.y = event.clientY
 
-    this.updateShadow()
+    this.updateAnimation()
   }
 
   handleScroll = () => {
-    this.updateShadow()
+    this.updateAnimation()
   }
 
-  updateShadow = () => {
-    this.state.projects.map((projectRef, i) => {
+  updateAnimation = () => {
+    this.state.projects.map(projectRef => {
       const project = projectRef.current
-      const video = project.lastElementChild
-      const videoBoundingBox = video.getBoundingClientRect()
-      const shadow = video.lastElementChild
+      const videoWrap = project.lastElementChild
+      const videoBoundingBox = videoWrap.getBoundingClientRect()
+      const shadow = videoWrap.lastElementChild
+      // const video = videoWrap.firstElementChild
 
-      if (this.isInViewport(videoBoundingBox)) {
+      if (this.isInViewport(videoBoundingBox) && window.innerWidth > 850) {
         const center = {
           x: videoBoundingBox.x + videoBoundingBox.width / 2,
           y: videoBoundingBox.y + videoBoundingBox.height / 2,
         }
 
-        const x = (center.x - this.cursor.x) / 12
-        const y = (center.y - this.cursor.y) / 12
+        const distance = this.calcDistance(center, this.cursor)
 
-        // prettier-ignore
-        // videoWrapper.style.boxShadow = `${Math.ceil(x)}px ${Math.ceil(y)}px ${Math.abs(x * y) / 40}px rgba(0,0,0,0.1)`
+        const x = (center.x - this.cursor.x) / 10
+        const y = (center.y - this.cursor.y) / 10
+
         shadow.style.transform = `translate3d(${x}px, ${y}px, 0px)`
+        // shadow.style.opacity = 100 / distance
+        shadow.style.filter = `blur(${distance / 50}px)`
 
-        // prettier-ignore
-        project.style.transform = `translate3d(${x * -0.5}px, ${y * -0.5}px, 0px)`
+        // if (distance < 600) {
+        //   video.style.transform = `translate3d(${x * -1}px, ${y * -1}px, 0px)`
+        // } else {
+        //   video.style.transform = `translate3d(0,0,0)`
+        // }
       }
 
       return null
@@ -77,6 +85,15 @@ class IndexPage extends Component {
 
   isInViewport = boundingBox => {
     return boundingBox.top < window.innerHeight && boundingBox.bottom > 0
+  }
+
+  calcDistance = (coord1, coord2) => {
+    const a = coord1.x - coord2.x
+    const b = coord1.y - coord2.y
+
+    const distance = Math.sqrt(a * a + b * b)
+
+    return distance
   }
 
   componentDidMount() {

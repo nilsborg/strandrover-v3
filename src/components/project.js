@@ -8,11 +8,29 @@ import LinkIcon from '../assets/images/link.svg'
 const StyledProject = styled.li`
   position: relative;
   margin-bottom: calc(var(--space-bottom) / 2);
-  /* transition: transform 100ms ease; */
 
   @media (min-width: 1100px) {
     margin-bottom: var(--space-bottom);
     margin-left: var(--space-left);
+  }
+
+  @media (min-width: 1200px) {
+    /* filter: grayscale(100%); */
+    opacity: 0.8;
+    transform: scale(0.8);
+    transform-origin: center;
+    transition: opacity 350ms ease-out, filter 500ms ease-out,
+      transform 450ms ease-out;
+
+    &:hover {
+      /* filter: grayscale(0%); */
+      opacity: 1;
+      transform: scale(1);
+
+      header {
+        opacity: 1;
+      }
+    }
   }
 
   header {
@@ -21,6 +39,8 @@ const StyledProject = styled.li`
     }
 
     @media (min-width: 1200px) {
+      transition: opacity 300ms 200ms ease-out;
+      opacity: 0;
       position: absolute;
       left: -10vw;
       bottom: -3vh;
@@ -31,6 +51,7 @@ const StyledProject = styled.li`
       background-color: rgba(255, 255, 255, 0.35);
       backdrop-filter: saturate(180%) blur(5px);
       /* mix-blend-mode: difference; */
+      /* transition: transform 250ms ease-in; */
     }
 
     h2 {
