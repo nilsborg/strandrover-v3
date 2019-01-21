@@ -22,7 +22,8 @@ const StyledProject = styled.li`
     transition: opacity 350ms ease-out, filter 500ms ease-out,
       transform 450ms ease-out;
 
-    &:hover {
+    &:hover,
+    &[data-active='true'] {
       /* filter: grayscale(0%); */
       opacity: 1;
       transform: scale(1);
@@ -112,6 +113,13 @@ class Project extends Component {
     console.log('project update: ', this.projectRef)
   }
 
+  handleMouseLeave = () => {
+    const project = this.projectRef.current
+    if (this.props.index === 0 && project.dataset.active === 'true') {
+      project.dataset.active = false
+    }
+  }
+
   render() {
     const { title, tags, link, video, poster } = this.props.node
 
@@ -122,6 +130,8 @@ class Project extends Component {
           '--space-left': `${random(0, 30)}vw`,
         }}
         ref={this.projectRef}
+        data-active={this.props.index === 0 ? true : false}
+        onMouseLeave={this.handleMouseLeave}
       >
         <header>
           <h2>{title}</h2>

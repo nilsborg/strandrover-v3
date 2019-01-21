@@ -111,7 +111,12 @@ class IndexPage extends Component {
       <Layout>
         <ProjectList>
           {data.projects.edges.map(({ node }, index) => (
-            <Project node={node} key={index} addProject={this.addProject} />
+            <Project
+              node={node}
+              key={index}
+              addProject={this.addProject}
+              index={index}
+            />
           ))}
         </ProjectList>
       </Layout>
