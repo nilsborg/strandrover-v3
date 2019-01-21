@@ -53,6 +53,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
     color: var(--color-secondary);
+
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-secondary)
+    }
   }
 
   a {
