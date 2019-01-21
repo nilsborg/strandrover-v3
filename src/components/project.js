@@ -42,60 +42,63 @@ const StyledProject = styled.li`
     @media (min-width: 1200px) {
       transition: opacity 300ms 200ms ease-out;
       opacity: 0;
-      position: absolute;
+      /* position: absolute;
       left: -10vw;
-      bottom: -3vh;
+      bottom: -3vh; */
       z-index: 3;
-      padding: 1vw;
-      padding-right: 3vw;
-      border-radius: var(--radius);
-      background-color: rgba(255, 255, 255, 0.35);
-      backdrop-filter: saturate(180%) blur(5px);
-      /* mix-blend-mode: difference; */
-      /* transition: transform 250ms ease-in; */
+      padding: 3vw;
+      /* padding-right: 3vw; */
+      /* border-radius: var(--radius); */
+      /* background-color: rgba(255, 255, 255, 0.35);
+      backdrop-filter: saturate(180%) blur(5px); */
     }
 
     h2 {
-      font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-family);
       font-weight: 300;
       margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75vh;
 
       @media (min-width: 800px) {
-        font-size: 60px;
+        font-size: 40px;
       }
     }
 
-    h2,
     aside {
-      margin-bottom: 2vh;
+      margin-bottom: 1vh;
     }
 
     a {
-      font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
-        'Bitstream Vera Sans Mono', Courier, monospace;
+      font-family: var(--font-family-mono);
+      font-style: italic;
+      text-decoration: none;
       display: flex;
       align-items: center;
-      text-decoration: none;
-      font-style: italic;
 
       @media (min-width: 800px) {
-        font-size: 22px;
+        font-size: 18px;
       }
-    }
 
-    svg {
-      fill: #cacbc1;
-      margin-right: 0.5em;
+      svg {
+        fill: var(--color-highlight);
+        margin-right: 0.5em;
+      }
+
+      &:hover svg path {
+        animation: fly 650ms ease-in-out infinite;
+      }
     }
   }
 `
 
 const Tag = styled.span`
   display: inline-block;
-  background-color: var(--color-secondary);
-  color: var(--color-offwhite);
+  color: var(--color-primary);
   padding: 3px 10px;
   border-radius: 3px;
+  border: 2px solid var(--color-offwhite);
   text-transform: uppercase;
   font-size: 12px;
   margin-right: 0.5vw;
@@ -126,13 +129,15 @@ class Project extends Component {
     return (
       <StyledProject
         style={{
-          '--space-bottom': `${random(10, 25)}vh`,
+          '--space-bottom': `${random(6, 17)}vh`,
           '--space-left': `${random(0, 30)}vw`,
         }}
         ref={this.projectRef}
         data-active={this.props.index === 0 ? true : false}
         onMouseLeave={this.handleMouseLeave}
       >
+        <Video url={video.publicURL} poster={poster} />
+
         <header>
           <h2>{title}</h2>
 
@@ -147,8 +152,6 @@ class Project extends Component {
             <span>{link}</span>
           </a>
         </header>
-
-        <Video url={video.publicURL} poster={poster} />
       </StyledProject>
     )
   }

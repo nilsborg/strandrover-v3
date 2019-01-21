@@ -47,7 +47,7 @@ class IndexPage extends Component {
   updateAnimation = () => {
     this.projects.map(projectRef => {
       const project = projectRef.current
-      const videoWrap = project.lastElementChild
+      const videoWrap = project.firstElementChild
       const videoBoundingBox = videoWrap.getBoundingClientRect()
       const shadow = videoWrap.lastElementChild
       const video = videoWrap.firstElementChild.firstElementChild
@@ -67,7 +67,7 @@ class IndexPage extends Component {
         // shadow.style.opacity = 100 / distance
         shadow.style.filter = `blur(${distance / 50}px)`
 
-        video.play()
+        if (video) video.play()
 
         // if (distance < 600) {
         //   video.style.transform = `translate3d(${x * -1}px, ${y * -1}px, 0px)`
@@ -75,7 +75,7 @@ class IndexPage extends Component {
         //   video.style.transform = `translate3d(0,0,0)`
         // }
       } else {
-        video.pause()
+        if (video) video.pause()
       }
 
       return null

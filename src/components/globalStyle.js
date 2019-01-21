@@ -40,9 +40,13 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --radius: 5px;
-    --color-primary: #347f7a;
-    --color-secondary: #162b3c;
+    --color-primary: #364f6b;
+    --color-secondary: #3fc1c9;
     --color-offwhite: #e7ecef;
+    --color-highlight: #fc5185;
+    --font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-mono: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
+        'Bitstream Vera Sans Mono', Courier, monospace;
   }
 
   html, body {
@@ -52,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-secondary)
@@ -60,11 +64,36 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     transition: color 200ms ease;
 
     &:hover {
       color: var(--color-secondary);
+    }
+  }
+
+  @keyframes fly {
+    0% {
+      transform: translate(0)
+    }
+    50% {
+      transform: translate(100%);
+      opacity: 1;
+    }
+    51% {
+      transform: translate(100%);
+      opacity: 0;
+    }
+    52% {
+      transform: translate(-100%);
+      opacity: 0;
+    }
+    53%{
+      transform: translate(-100%);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0);
     }
   }
 `
