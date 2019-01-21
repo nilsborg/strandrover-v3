@@ -21,10 +21,7 @@ const ProjectList = styled.ul`
 `
 
 class IndexPage extends Component {
-  boxRef = React.createRef()
-  state = {
-    projects: [],
-  }
+  projects = []
 
   cursor = {
     x: 0,
@@ -32,10 +29,8 @@ class IndexPage extends Component {
   }
 
   addProject = project => {
-    this.setState(state => ({
-      projects: [...state.projects, project],
-    }))
-    console.log(project.current)
+    this.projects.push(project)
+    console.log(this.projects)
   }
 
   handleMouseMove = event => {
@@ -50,7 +45,7 @@ class IndexPage extends Component {
   }
 
   updateAnimation = () => {
-    this.state.projects.map(projectRef => {
+    this.projects.map(projectRef => {
       const project = projectRef.current
       const videoWrap = project.lastElementChild
       const videoBoundingBox = videoWrap.getBoundingClientRect()

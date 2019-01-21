@@ -105,6 +105,11 @@ class Project extends Component {
 
   componentDidMount() {
     this.props.addProject(this.projectRef)
+    console.log('project mounted: ', this.projectRef)
+  }
+
+  componentDidUpdate() {
+    console.log('project update: ', this.projectRef)
   }
 
   render() {
