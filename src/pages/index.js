@@ -105,6 +105,15 @@ class IndexPage extends Component {
     )
   }
 
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', throttle(this.handleScroll, 1000 / 60))
+
+  //   window.removeEventListener(
+  //     'mousemove',
+  //     throttle(this.handleMouseMove, 1000 / 60)
+  //   )
+  // }
+
   render() {
     const data = this.props.data
 
