@@ -13,10 +13,11 @@ const ProjectList = styled.ul`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 
   @media (min-width: 1110px) {
     padding-left: calc(7vw + 200px);
+    align-items: flex-start;
   }
 `
 

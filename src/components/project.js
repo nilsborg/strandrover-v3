@@ -36,21 +36,15 @@ const StyledProject = styled.li`
 
   header {
     @media (max-width: 1199px) {
-      margin-bottom: 3vh;
+      margin-bottom: 7vh;
+      margin-top: 3vh;
     }
 
     @media (min-width: 1200px) {
       transition: opacity 300ms 200ms ease-out;
       opacity: 0;
-      /* position: absolute;
-      left: -10vw;
-      bottom: -3vh; */
       z-index: 3;
       padding: 3vw;
-      /* padding-right: 3vw; */
-      /* border-radius: var(--radius); */
-      /* background-color: rgba(255, 255, 255, 0.35);
-      backdrop-filter: saturate(180%) blur(5px); */
     }
 
     h2 {
