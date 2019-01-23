@@ -63,27 +63,52 @@ const StyledProject = styled.li`
     aside {
       margin-bottom: 1vh;
     }
+  }
+`
 
-    a {
-      font-family: var(--font-family-mono);
-      font-style: italic;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-
-      @media (min-width: 800px) {
-        font-size: 18px;
-      }
-
-      svg {
-        fill: var(--color-highlight);
-        margin-right: 0.5em;
-      }
-
-      &:hover svg path {
-        animation: fly 650ms ease-in-out infinite;
-      }
+const ViewProject = styled.a`
+  @keyframes fly {
+    0% {
+      transform: translate(0);
     }
+    50% {
+      transform: translate(100%);
+      opacity: 1;
+    }
+    51% {
+      transform: translate(100%);
+      opacity: 0;
+    }
+    52% {
+      transform: translate(-100%);
+      opacity: 0;
+    }
+    53% {
+      transform: translate(-100%);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  font-family: var(--font-family-mono);
+  font-style: italic;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 800px) {
+    font-size: 18px;
+  }
+
+  svg {
+    fill: var(--color-highlight);
+    margin-right: 0.5em;
+  }
+
+  &:hover svg path {
+    animation: fly 650ms ease-in-out infinite;
   }
 `
 
@@ -144,10 +169,10 @@ class Project extends Component {
             ))}
           </aside>
 
-          <a href={link} target="_blank" rel="noopener noreferrer">
+          <ViewProject href={link} target="_blank" rel="noopener noreferrer">
             <LinkIcon />
             <span>{link}</span>
-          </a>
+          </ViewProject>
         </header>
       </StyledProject>
     )

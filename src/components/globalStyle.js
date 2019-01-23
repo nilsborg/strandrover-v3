@@ -71,31 +71,6 @@ const GlobalStyle = createGlobalStyle`
       color: var(--color-secondary);
     }
   }
-
-  @keyframes fly {
-    0% {
-      transform: translate(0)
-    }
-    50% {
-      transform: translate(100%);
-      opacity: 1;
-    }
-    51% {
-      transform: translate(100%);
-      opacity: 0;
-    }
-    52% {
-      transform: translate(-100%);
-      opacity: 0;
-    }
-    53%{
-      transform: translate(-100%);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(0);
-    }
-  }
 `
 
 export default GlobalStyle
