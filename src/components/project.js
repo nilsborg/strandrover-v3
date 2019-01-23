@@ -101,17 +101,9 @@ const Tag = styled.span`
 class Project extends Component {
   projectRef = React.createRef()
 
-  componentDidMount() {
-    this.props.addProject(this.projectRef)
-    console.log('project mounted: ', this.projectRef)
-  }
-
-  componentDidUpdate() {
-    console.log('project update: ', this.projectRef)
-  }
-
   handleMouseLeave = () => {
     const project = this.projectRef.current
+
     if (this.props.index === 0 && project.dataset.active === 'true') {
       project.dataset.active = false
     }
@@ -122,15 +114,15 @@ class Project extends Component {
 
     return (
       <StyledProject
-        style={{
-          '--space-bottom': `${random(6, 17)}vh`,
-          '--space-left': `${random(0, 30)}vw`,
-        }}
         ref={this.projectRef}
         data-active={this.props.index === 0 ? true : false}
         onMouseLeave={this.handleMouseLeave}
       >
-        <Video url={video.publicURL} poster={poster} />
+        <Video
+          url={video.publicURL}
+          poster={poster}
+          cursor={this.props.cursor}
+        />
 
         <header>
           <h2>{title}</h2>

@@ -63,6 +63,10 @@ const Header = () => (
     <Link to="/">
       <Logo />
     </Link>
+
+    <nav>
+      <Link to="/about">About</Link>
+    </nav>
   </StyledHeader>
 )
 

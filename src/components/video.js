@@ -63,21 +63,72 @@ const Wrapper = styled.div`
 class Video extends Component {
   videoRef = React.createRef()
 
-  componentDidMount() {
+  handlePlay = () => {
+    if (!this.videoRef.current) return
+
     const video = this.videoRef.current
-    video.play()
-    video.dataset.canPlay = true
+
+    if (this.isInViewport(video.getBoundingClientRect())) {
+      video.play()
+      video.dataset.canPlay = true
+    } else {
+      video.pause()
+    }
   }
 
-  handlePlay = event => {
-    // console.log(event.type, event.currentTarget, event)
-    event.currentTarget.play()
-    event.currentTarget.dataset.canPlay = true
+  updateAnimation = (x, y) => {
+    const translate = {
+      x: 0,
+      y: 0,
+    }
+    let blur = 0
+
+    if (!this.videoRef.current) return { translate, blur }
+
+    const videoBoundingBox = this.videoRef.current.getBoundingClientRect()
+
+    if (this.isInViewport(videoBoundingBox)) {
+      const center = {
+        x: videoBoundingBox.x + videoBoundingBox.width / 2,
+        y: videoBoundingBox.y + videoBoundingBox.height / 2,
+      }
+
+      blur = this.calcDistance(center, this.props.cursor)
+
+      translate.x = (center.x - x) / 10
+      translate.y = (center.y - y) / 10
+
+      // this.videoRef.current.play() // besser nur on scroll
+    } else {
+      // this.videoRef.current.pause()
+    }
+
+    return { translate, blur }
+  }
+
+  isInViewport = boundingBox => {
+    return boundingBox.top < window.innerHeight && boundingBox.bottom > 0
+  }
+
+  calcDistance = (coord1, coord2) => {
+    const a = coord1.x - coord2.x
+    const b = coord1.y - coord2.y
+
+    const distance = Math.sqrt(a * a + b * b)
+
+    return distance
   }
 
   render() {
     const url = this.props.url
     const poster = this.props.poster
+
+    const { translate, blur } = this.updateAnimation(
+      this.props.cursor.x,
+      this.props.cursor.y
+    )
+
+    this.handlePlay()
 
     return (
       <Wrapper>
@@ -95,7 +146,13 @@ class Video extends Component {
           <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
         </div>
 
-        <div className="shadow" />
+        <div
+          className="shadow"
+          style={{
+            transform: `translate3d(${translate.x}px, ${translate.y}px, 0px)`,
+            filter: `blur(${blur / 50}px)`,
+          }}
+        />
       </Wrapper>
     )
   }
