@@ -8,16 +8,13 @@ import LogoPath from '../assets/images/logo.svg'
 const Image = ({ className }) => (
   <StaticQuery
     query={graphql`
-      fragment imageShit on File {
-        childImageSharp {
-          fixed(width: 141, height: 139, cropFocus: CENTER) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
       query {
         image: file(relativePath: { eq: "wallpapers/DSC08409.jpg" }) {
-          ...imageShit
+          childImageSharp {
+            fixed(width: 141, height: 139, cropFocus: CENTER) {
+              ...GatsbyImageSharpFixed
+            }
+          }
         }
       }
     `}
