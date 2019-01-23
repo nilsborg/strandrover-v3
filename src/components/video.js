@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  /* background-color: var(--color-offwhite); */
   position: relative;
 
   @media (min-width: 850px) {
@@ -15,7 +14,6 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 2;
     padding-bottom: 60.5%;
-    /* transition: transform 150ms ease-in-out; */
 
     @media (min-width: 850px) {
       padding-bottom: 450px;
@@ -55,7 +53,6 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.12);
-    /* transform: translate(10px, 10px); */
     border-radius: var(--radius);
   }
 `
@@ -97,10 +94,6 @@ class Video extends Component {
 
       translate.x = (center.x - x) / 10
       translate.y = (center.y - y) / 10
-
-      // this.videoRef.current.play() // besser nur on scroll
-    } else {
-      // this.videoRef.current.pause()
     }
 
     return { translate, blur }
