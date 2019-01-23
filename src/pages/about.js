@@ -12,18 +12,34 @@ const AboutPage = ({
     <Layout>
       <header>
         <h1>{headline}</h1>
-        {intro.content}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: intro.childMarkdownRemark.html,
+          }}
+        />
       </header>
 
       <div>
         <Img fluid={image.childImageSharp.fluid} />
 
-        <div>{maze.content}</div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: maze.childMarkdownRemark.html,
+          }}
+        />
 
-        <div>{nils.content}</div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: nils.childMarkdownRemark.html,
+          }}
+        />
       </div>
 
-      <div>{clientlist.content}</div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: clientlist.childMarkdownRemark.html,
+        }}
+      />
     </Layout>
   )
 }
@@ -33,7 +49,9 @@ export const pageQuery = graphql`
     about: cockpitGenericSingletonAbout {
       headline
       intro {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
       image {
         childImageSharp {
@@ -43,13 +61,19 @@ export const pageQuery = graphql`
         }
       }
       maze {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
       nils {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
       clientlist {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
