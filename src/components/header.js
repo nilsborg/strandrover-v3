@@ -11,8 +11,8 @@ const Image = ({ className }) => (
       query {
         image: file(relativePath: { eq: "wallpapers/DSC08409.jpg" }) {
           childImageSharp {
-            fixed(width: 141, height: 139, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed
+            fluid(maxWidth: 141, maxHeight: 141, cropFocus: CENTER) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -21,33 +21,55 @@ const Image = ({ className }) => (
     render={data => {
       return (
         <>
-          <LogoPath />
           <Img
             className={className}
             alt="strandrover logo"
-            fixed={data.image.childImageSharp.fixed}
+            fluid={data.image.childImageSharp.fluid}
           />
+          <LogoPath />
         </>
       )
     }}
   />
 )
 
-const Logo = styled(Image)`
+const LogoLink = styled(Link)`
+  @media (max-width: 699px) {
+    width: 70px;
+    height: 70px;
+
+    #logoPath {
+      transform: scale(0.5);
+    }
+  }
+
+  @media (min-width: 700px) {
+    width: 141px;
+    height: 139px;
+  }
+
   img {
     clip-path: url(#logoPath);
+  }
+
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
   }
 `
 
 const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+
   @media (max-width: 1099px) {
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding: 5vw;
     padding-bottom: 0;
   }
 
   @media (min-width: 1100px) {
+    flex-direction: column;
     position: fixed;
     z-index: 10;
     top: 7vh;
@@ -55,16 +77,78 @@ const StyledHeader = styled.header`
   }
 `
 
+const Stripe = styled.div`
+  letter-spacing: 0.075em;
+  font-weight: 300;
+
+  span  {
+    opacity: 0.6;
+
+    @media (max-width: 699px) {
+      display: none;
+    }
+
+    @media (min-width: 1110px) and (max-height: 640px) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 700px) {
+    display: flex;
+  }
+
+  @media (min-width: 1100px) {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin-left: -15px;
+    margin-top: 5vh;
+
+    @media (min-height: 800px) {
+      margin-top: 15vh;
+    }
+  }
+
+  nav {
+    @media (min-width: 700px) {
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: '';
+        background-color: var(--color-offwhite);
+        display: block;
+        margin-right: 4px;
+        width: 3em;
+        height: 1px;
+        margin: 0 1vw;
+
+        @media (min-width: 1100px) {
+          width: 1px;
+          height: 3em;
+          margin: 1vw 0;
+        }
+      }
+    }
+
+    a  {
+      text-decoration: none;
+      color: var(--color-highlight);
+    }
+  }
+`
+
 const Header = () => (
   <StyledHeader>
-    <Link to="/">
-      <Logo />
-    </Link>
+    <LogoLink to="/">
+      <Image />
+    </LogoLink>
 
-    <nav>
-      <Link to="/">Projects</Link>
-      <Link to="/about">About</Link>
-    </nav>
+    <Stripe>
+      <span>concept, branding, design, code</span>
+      <nav>
+        <Link to="/about">about</Link>
+      </nav>
+    </Stripe>
   </StyledHeader>
 )
 
