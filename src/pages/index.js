@@ -14,7 +14,7 @@ const ProjectList = styled.ul`
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: 1110px) {
+  @media (min-width: 1100px) {
     padding-left: calc(7vw + 200px);
     align-items: flex-start;
   }

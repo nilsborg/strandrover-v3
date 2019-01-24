@@ -71,6 +71,46 @@ const GlobalStyle = createGlobalStyle`
       color: var(--color-secondary);
     }
   }
+
+  h1, h2, h3 {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 2.2em;
+
+    @media (min-width: 800px) {
+      font-size: 3em;
+    }
+  }
+
+  h2 {
+    font-weight: 300;
+    font-size: 1.7em;
+
+    @media (min-width: 800px) {
+      font-size: 2em;
+    }
+  }
+
+  h2, h3 {
+    letter-spacing: 0.075em
+  }
+
+  h3 {
+    color: var(--color-highlight);
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0.7em;
+  }
 `
 
 export default GlobalStyle

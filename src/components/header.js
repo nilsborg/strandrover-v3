@@ -62,6 +62,7 @@ const Header = () => (
     </Link>
 
     <nav>
+      <Link to="/">Projects</Link>
       <Link to="/about">About</Link>
     </nav>
   </StyledHeader>
