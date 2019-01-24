@@ -104,7 +104,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h3 {
-    color: var(--color-highlight);
+    color: var(--color-secondary);
   }
 
   p {

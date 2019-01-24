@@ -99,9 +99,9 @@ const Stripe = styled.div`
 
   @media (min-width: 1100px) {
     writing-mode: vertical-rl;
-    text-orientation: mixed;
     margin-left: -15px;
     margin-top: 5vh;
+    letter-spacing: 0.1em;
 
     @media (min-height: 800px) {
       margin-top: 15vh;

@@ -112,6 +112,50 @@ const Profile = styled.div`
   }
 `
 
+const Contact = styled.address`
+  padding: 10vw;
+  font-style: normal;
+  font-weight: 300;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3vh;
+
+  @media (min-width: 1110px) {
+    text-align: center;
+  }
+
+  span:not(:last-of-type):after {
+    content: '/';
+    padding: 0 0.7em;
+    opacity: 0.4;
+    color: var(--color-secondary);
+  }
+
+  a {
+    font-size: 7vw;
+    color: var(--color-highlight);
+    background-image: linear-gradient(
+      to right,
+      var(--color-highlight) 40%,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    text-decoration: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media (min-width: 700px) {
+      font-size: 4vw;
+      font-weight: 300;
+    }
+
+    @media (min-width: 2000px) {
+      font-size: 77px;
+    }
+  }
+`
+
 const Clientlist = styled.div`
   padding: 10vw;
 
@@ -199,6 +243,22 @@ const AboutPage = ({
             }}
           />
         </Intro>
+
+        <Contact>
+          <span>
+            {[
+              'Say hi',
+              'Drop us a line',
+              'Hola',
+              'Waaatttuuuppp',
+              'Greetings Earthling',
+              '👋',
+            ].map(greeting => (
+              <span>{greeting}</span>
+            ))}
+          </span>
+          <a href="mailto: hello@strandrover.com">hello@strandrover.com</a>
+        </Contact>
 
         <Clientlist
           dangerouslySetInnerHTML={{
