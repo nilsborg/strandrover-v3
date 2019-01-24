@@ -14,6 +14,7 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 2;
     padding-bottom: 60.5%;
+    box-shadow: 0 1px 0 1px var(--color-offwhite);
 
     @media (min-width: 850px) {
       padding-bottom: 450px;
