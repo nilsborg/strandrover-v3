@@ -60,6 +60,39 @@ const Wrapper = styled.div`
 class Video extends Component {
   videoRef = React.createRef()
 
+  state = {
+    cursor: {
+      x: 0,
+      y: 0,
+    },
+    scrollY: 0,
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.updateScrollState)
+    window.addEventListener('mousemove', this.updateCursorState)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.updateScrollState)
+    window.removeEventListener('mousemove', this.updateCursorState)
+  }
+
+  updateCursorState = event => {
+    this.setState({
+      cursor: {
+        x: event.clientX,
+        y: event.clientY,
+      },
+    })
+  }
+
+  updateScrollState = () => {
+    this.setState({
+      scrollY: window.scrollY,
+    })
+  }
+
   handlePlay = () => {
     if (!this.videoRef.current) return
 
@@ -90,7 +123,7 @@ class Video extends Component {
         y: videoBoundingBox.y + videoBoundingBox.height / 2,
       }
 
-      blur = this.calcDistance(center, this.props.cursor)
+      blur = this.calcDistance(center, this.state.cursor)
 
       translate.x = (center.x - x) / 10
       translate.y = (center.y - y) / 10
@@ -117,8 +150,8 @@ class Video extends Component {
     const poster = this.props.poster
 
     const { translate, blur } = this.updateAnimation(
-      this.props.cursor.x,
-      this.props.cursor.y
+      this.state.cursor.x,
+      this.state.cursor.y
     )
 
     this.handlePlay()

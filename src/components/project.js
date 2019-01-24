@@ -154,11 +154,7 @@ class Project extends Component {
           '--space-left': `${this.state.margin.left}vw`,
         }}
       >
-        <Video
-          url={video.publicURL}
-          poster={poster}
-          cursor={this.props.cursor}
-        />
+        <Video url={video.publicURL} poster={poster} />
 
         <header>
           <h2>{title}</h2>

@@ -21,39 +21,6 @@ const ProjectList = styled.ul`
 `
 
 class IndexPage extends Component {
-  state = {
-    cursor: {
-      x: 0,
-      y: 0,
-    },
-    scrollY: 0,
-  }
-
-  updateCursorState = event => {
-    this.setState({
-      cursor: {
-        x: event.clientX,
-        y: event.clientY,
-      },
-    })
-  }
-
-  updateScrollState = () => {
-    this.setState({
-      scrollY: window.scrollY,
-    })
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.updateScrollState)
-    window.addEventListener('mousemove', this.updateCursorState)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.updateScrollState)
-    window.removeEventListener('mousemove', this.updateCursorState)
-  }
-
   render() {
     const data = this.props.data
 
@@ -61,12 +28,7 @@ class IndexPage extends Component {
       <Layout>
         <ProjectList>
           {data.projects.edges.map(({ node }, index) => (
-            <Project
-              node={node}
-              key={index}
-              index={index}
-              cursor={this.state.cursor}
-            />
+            <Project node={node} key={index} index={index} />
           ))}
         </ProjectList>
       </Layout>
