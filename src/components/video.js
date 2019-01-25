@@ -147,6 +147,7 @@ class Video extends Component {
   }
 
   isFirefox = () => {
+    if (typeof window === 'undefined') return
     return navigator.userAgent.toLowerCase().indexOf('firefox') > -1
   }
 
