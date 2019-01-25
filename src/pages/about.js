@@ -43,12 +43,12 @@ const Welcome = styled.div`
     margin-bottom: 3vh;
   }
 
-  div {
+  p {
     @media (min-width: 1110px) {
       font-size: 1.3em;
     }
 
-    p:last-child {
+    &:last-child {
       font-size: 2em;
     }
   }
@@ -77,8 +77,11 @@ const Intro = styled.article`
       opacity: 0.3;
     }
 
-    .banner {
+    .bannerWrap {
       grid-column: 1/3;
+    }
+
+    .banner {
       box-shadow: 0 0.4vh 0.5vh rgba(0, 0, 0, 0.1),
         0 3vh 7vh rgba(0, 0, 0, 0.05);
       border-radius: var(--radius);
@@ -211,7 +214,7 @@ const Clientlist = styled.div`
 `
 
 const PoserContainer = posed(Container)({
-  visible: { staggerChildren: 150 },
+  visible: { staggerChildren: 50 },
   invisible: { staggerChildren: 50 },
 })
 
@@ -219,7 +222,6 @@ const Poser = posed.div({
   visible: {
     opacity: 1,
     x: 0,
-    duration: 50,
     transition: { type: 'spring' },
   },
   invisible: {
@@ -243,20 +245,23 @@ const AboutPage = ({
               ['entering', 'entered'].includes(status) ? 'visible' : 'invisible'
             }
           >
-            <Poser>
-              <Welcome>
+            <Welcome>
+              <Poser>
                 <h1>{headline}</h1>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: intro.childMarkdownRemark.html,
-                  }}
-                />
-              </Welcome>
-            </Poser>
+              </Poser>
+
+              <Poser
+                dangerouslySetInnerHTML={{
+                  __html: intro.childMarkdownRemark.html,
+                }}
+              />
+            </Welcome>
 
             <Poser>
               <Intro>
-                <Img className="banner" fluid={image.childImageSharp.fluid} />
+                <Poser className="bannerWrap">
+                  <Img className="banner" fluid={image.childImageSharp.fluid} />
+                </Poser>
 
                 <Profile
                   className="maze"

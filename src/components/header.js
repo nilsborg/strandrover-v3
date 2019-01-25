@@ -159,6 +159,12 @@ const Stripe = styled.div`
     a  {
       text-decoration: none;
       color: var(--color-highlight);
+
+      &.active {
+        color: var(--color-primary);
+        text-decoration: underline;
+        pointer-events: none;
+      }
     }
   }
 `
@@ -202,11 +208,12 @@ class Header extends Component {
           <PosedNav>
             <Link
               to="/about"
+              activeClassName="active"
               exit={{
                 length: 0.6,
               }}
               entry={{
-                delay: 0.5,
+                delay: 0.2,
               }}
             >
               about
