@@ -12,7 +12,7 @@ import {
   Profile,
   Contact,
   Clientlist,
-} from './aboutStyles'
+} from '../components/aboutStyles'
 
 const PoserContainer = posed(Container)({
   visible: { staggerChildren: 50 },
