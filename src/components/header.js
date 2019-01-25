@@ -63,7 +63,7 @@ const StyledHeader = styled.header`
 const PosedHeader = posed(StyledHeader)({
   visible: {
     opacity: 1,
-    delay: 300,
+    delay: 600,
     beforeChildren: true,
     staggerChildren: 300,
   },
@@ -152,7 +152,7 @@ const Stripe = styled.div`
           width: 1px;
           height: 3em;
           margin: 1vw 0;
-          margin-right: 0.3em;
+          margin-right: 0.3 em;
         }
       }
     }
