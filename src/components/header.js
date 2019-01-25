@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link'
 import Img from 'gatsby-image'
 
 import styled from 'styled-components'
@@ -7,7 +8,7 @@ import posed from 'react-pose'
 
 import LogoPath from '../assets/images/logo.svg'
 
-const Image = ({ className }) => (
+const Logo = ({ className }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -101,8 +102,6 @@ const fadeInProps = {
   invisible: { opacity: 0 },
 }
 
-const PosedLogoLink = posed(LogoLink)(fadeInProps)
-
 // Stripe
 const Stripe = styled.div`
   letter-spacing: 0.075em;
@@ -186,14 +185,32 @@ class Header extends Component {
   render() {
     return (
       <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
-        <PosedLogoLink to="/">
-          <Image />
-        </PosedLogoLink>
+        <LogoLink
+          to="/"
+          exit={{
+            length: 0.6,
+          }}
+          entry={{
+            delay: 0.5,
+          }}
+        >
+          <Logo />
+        </LogoLink>
 
         <Stripe>
           <PosedSpan>concept, branding, design, code</PosedSpan>
           <PosedNav>
-            <Link to="/about">about</Link>
+            <Link
+              to="/about"
+              exit={{
+                length: 0.6,
+              }}
+              entry={{
+                delay: 0.5,
+              }}
+            >
+              about
+            </Link>
           </PosedNav>
         </Stripe>
       </PosedHeader>

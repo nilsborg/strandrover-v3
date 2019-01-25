@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
+import { TransitionState } from 'gatsby-plugin-transition-link'
+
 import styled from 'styled-components'
 import posed from 'react-pose'
 
-import Layout from '../components/layout'
 import Project from '../components/project'
 
 const ProjectList = styled.ul`
@@ -23,7 +24,7 @@ const ProjectList = styled.ul`
 
 const PosedProjectList = posed(ProjectList)({
   visible: { staggerChildren: 250 },
-  invisible: { staggerChildren: 100 },
+  invisible: { staggerChildren: 200 },
 })
 
 const PosedProjectWrap = posed.div({
@@ -34,32 +35,35 @@ const PosedProjectWrap = posed.div({
   },
   invisible: {
     opacity: 0,
-    x: 150,
+    x: 250,
+    transition: { type: 'spring' },
   },
 })
 
 class IndexPage extends Component {
-  state = {
-    isVisible: false,
-  }
-
-  componentDidMount() {
-    this.setState({ isVisible: true })
-  }
-
   render() {
     const data = this.props.data
 
     return (
-      <Layout>
-        <PosedProjectList pose={this.state.isVisible ? 'visible' : 'invisible'}>
-          {data.projects.edges.map(({ node }, index) => (
-            <PosedProjectWrap key={index}>
-              <Project node={node} key={index} index={index} />
-            </PosedProjectWrap>
-          ))}
-        </PosedProjectList>
-      </Layout>
+      <TransitionState>
+        {({ transitionStatus: status }) => {
+          return (
+            <PosedProjectList
+              pose={
+                ['entering', 'entered'].includes(status)
+                  ? 'visible'
+                  : 'invisible'
+              }
+            >
+              {data.projects.edges.map(({ node }, index) => (
+                <PosedProjectWrap key={index}>
+                  <Project node={node} key={index} index={index} />
+                </PosedProjectWrap>
+              ))}
+            </PosedProjectList>
+          )
+        }}
+      </TransitionState>
     )
   }
 }

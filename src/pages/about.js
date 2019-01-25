@@ -2,9 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import random from 'lodash/random'
+import { TransitionState } from 'gatsby-plugin-transition-link'
 
-import Layout from '../components/layout'
 import styled from 'styled-components'
+import posed from 'react-pose'
 
 const Container = styled.div`
   @media (max-width: 1099px) {
@@ -209,64 +210,101 @@ const Clientlist = styled.div`
   }
 `
 
+const PoserContainer = posed(Container)({
+  visible: { staggerChildren: 150 },
+  invisible: { staggerChildren: 50 },
+})
+
+const Poser = posed.div({
+  visible: {
+    opacity: 1,
+    x: 0,
+    duration: 50,
+    transition: { type: 'spring' },
+  },
+  invisible: {
+    opacity: 0,
+    x: -250,
+    transition: { type: 'spring' },
+  },
+})
+
 const AboutPage = ({
   data: {
     about: { headline, intro, image, maze, nils, clientlist },
   },
 }) => {
   return (
-    <Layout>
-      <Container>
-        <Welcome>
-          <h1>{headline}</h1>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: intro.childMarkdownRemark.html,
-            }}
-          />
-        </Welcome>
+    <TransitionState>
+      {({ transitionStatus: status }) => {
+        return (
+          <PoserContainer
+            pose={
+              ['entering', 'entered'].includes(status) ? 'visible' : 'invisible'
+            }
+          >
+            <Poser>
+              <Welcome>
+                <h1>{headline}</h1>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: intro.childMarkdownRemark.html,
+                  }}
+                />
+              </Welcome>
+            </Poser>
 
-        <Intro>
-          <Img className="banner" fluid={image.childImageSharp.fluid} />
+            <Poser>
+              <Intro>
+                <Img className="banner" fluid={image.childImageSharp.fluid} />
 
-          <Profile
-            className="maze"
-            dangerouslySetInnerHTML={{
-              __html: maze.childMarkdownRemark.html,
-            }}
-          />
+                <Profile
+                  className="maze"
+                  dangerouslySetInnerHTML={{
+                    __html: maze.childMarkdownRemark.html,
+                  }}
+                />
 
-          <Profile
-            className="nils"
-            dangerouslySetInnerHTML={{
-              __html: nils.childMarkdownRemark.html,
-            }}
-          />
-        </Intro>
+                <Profile
+                  className="nils"
+                  dangerouslySetInnerHTML={{
+                    __html: nils.childMarkdownRemark.html,
+                  }}
+                />
+              </Intro>
+            </Poser>
 
-        <Contact>
-          <span>
-            {[
-              'Say hi',
-              'Drop us a line',
-              'Hola',
-              'Waaatttuuuppp',
-              'Greetings Earthling',
-              '👋',
-            ].map(greeting => (
-              <span>{greeting}</span>
-            ))}
-          </span>
-          <a href="mailto: hello@strandrover.com">hello@strandrover.com</a>
-        </Contact>
+            <Poser>
+              <Contact>
+                <span>
+                  {[
+                    'Say hi',
+                    'Drop us a line',
+                    'Hola',
+                    'Waaatttuuuppp',
+                    'Greetings Earthling',
+                    '👋',
+                  ].map((greeting, index) => (
+                    <span key={index}>{greeting}</span>
+                  ))}
+                </span>
+                <a href="mailto: hello@strandrover.com">
+                  hello@strandrover.com
+                </a>
+              </Contact>
+            </Poser>
 
-        <Clientlist
-          dangerouslySetInnerHTML={{
-            __html: clientlist.childMarkdownRemark.html,
-          }}
-        />
-      </Container>
-    </Layout>
+            <Poser>
+              <Clientlist
+                dangerouslySetInnerHTML={{
+                  __html: clientlist.childMarkdownRemark.html,
+                }}
+              />
+            </Poser>
+          </PoserContainer>
+        )
+      }}
+    </TransitionState>
   )
 }
 
