@@ -111,7 +111,7 @@ class Video extends Component {
     if (!this.isFirefox()) {
       shadowStyle.filter = `blur(${distance / 50}px)`
     } else {
-      shadowStyle.opacity = Math.min(1, distance / 1000.0)
+      shadowStyle.opacity = 1.0 - Math.min(1, distance / 1000.0)
     }
 
     this.handlePlay()
