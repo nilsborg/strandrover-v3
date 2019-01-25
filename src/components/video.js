@@ -28,7 +28,7 @@ const Wrapper = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: blur(10px);
+      /* filter: blur(10px); */
     }
 
     video {
@@ -112,9 +112,9 @@ class Video extends Component {
       x: 0,
       y: 0,
     }
-    let blur = 0
+    let distance = 0
 
-    if (!this.videoRef.current) return { translate, blur }
+    if (!this.videoRef.current) return { translate, distance }
 
     const videoBoundingBox = this.videoRef.current.getBoundingClientRect()
 
@@ -124,13 +124,13 @@ class Video extends Component {
         y: videoBoundingBox.y + videoBoundingBox.height / 2,
       }
 
-      blur = this.calcDistance(center, this.state.cursor)
+      distance = this.calcDistance(center, this.state.cursor)
 
       translate.x = (center.x - x) / 10
       translate.y = (center.y - y) / 10
     }
 
-    return { translate, blur }
+    return { translate, distance }
   }
 
   isInViewport = boundingBox => {
@@ -146,14 +146,28 @@ class Video extends Component {
     return distance
   }
 
+  isFirefox = () => {
+    return navigator.userAgent.toLowerCase().indexOf('firefox') > -1
+  }
+
   render() {
     const url = this.props.url
     const poster = this.props.poster
 
-    const { translate, blur } = this.updateAnimation(
+    const { translate, distance } = this.updateAnimation(
       this.state.cursor.x,
       this.state.cursor.y
     )
+
+    let shadowStyle = {
+      transform: `translate3d(${translate.x}px, ${translate.y}px, 0px)`,
+    }
+
+    if (!this.isFirefox()) {
+      shadowStyle.filter = `blur(${distance / 50}px)`
+    } else {
+      shadowStyle.opacity = Math.min(1, distance / 1000.0)
+    }
 
     this.handlePlay()
 
@@ -173,13 +187,7 @@ class Video extends Component {
           <img src={poster.childImageSharp.fluid.base64} alt="placeholder" />
         </div>
 
-        <div
-          className="shadow"
-          style={{
-            transform: `translate3d(${translate.x}px, ${translate.y}px, 0px)`,
-            filter: `blur(${blur / 50}px)`,
-          }}
-        />
+        <div className="shadow" style={shadowStyle} />
       </Wrapper>
     )
   }
