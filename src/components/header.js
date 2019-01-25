@@ -64,6 +64,8 @@ const PosedHeader = posed(StyledHeader)({
   visible: {
     opacity: 1,
     delay: 300,
+    beforeChildren: true,
+    staggerChildren: 300,
   },
   invisible: { opacity: 0 },
 })
@@ -93,6 +95,13 @@ const LogoLink = styled(Link)`
     height: 100%;
   }
 `
+
+const fadeInProps = {
+  visible: { opacity: 1 },
+  invisible: { opacity: 0 },
+}
+
+const PosedLogoLink = posed(LogoLink)(fadeInProps)
 
 // Stripe
 const Stripe = styled.div`
@@ -135,7 +144,6 @@ const Stripe = styled.div`
         content: '';
         background-color: var(--color-offwhite);
         display: block;
-        margin-right: 4px;
         width: 3em;
         height: 1px;
         margin: 0 1vw;
@@ -144,6 +152,7 @@ const Stripe = styled.div`
           width: 1px;
           height: 3em;
           margin: 1vw 0;
+          margin-right: 0.3em;
         }
       }
     }
@@ -154,6 +163,16 @@ const Stripe = styled.div`
     }
   }
 `
+
+const PosedSpan = posed.span(fadeInProps)
+
+const PosedNav = posed.nav({
+  visible: { opacity: 1 },
+  invisible: { opacity: 0 },
+  pressable: true,
+  init: { scaleY: 1 },
+  press: { scaleY: 1.2 },
+})
 
 class Header extends Component {
   state = {
@@ -167,15 +186,15 @@ class Header extends Component {
   render() {
     return (
       <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
-        <LogoLink to="/">
+        <PosedLogoLink to="/">
           <Image />
-        </LogoLink>
+        </PosedLogoLink>
 
         <Stripe>
-          <span>concept, branding, design, code</span>
-          <nav>
+          <PosedSpan>concept, branding, design, code</PosedSpan>
+          <PosedNav>
             <Link to="/about">about</Link>
-          </nav>
+          </PosedNav>
         </Stripe>
       </PosedHeader>
     )
