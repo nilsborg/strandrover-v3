@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import styled from 'styled-components'
+import posed from 'react-pose'
+
 import LogoPath from '../assets/images/logo.svg'
 
 const Image = ({ className }) => (
@@ -33,6 +35,40 @@ const Image = ({ className }) => (
   />
 )
 
+/**
+ * Styling
+ */
+
+// Header
+const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1099px) {
+    justify-content: space-around;
+    padding: 5vw;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 1100px) {
+    flex-direction: column;
+    position: fixed;
+    z-index: 10;
+    top: 7vh;
+    left: 7vw;
+  }
+`
+
+// turned styled header into an animated header with pose :)
+const PosedHeader = posed(StyledHeader)({
+  visible: {
+    opacity: 1,
+    delay: 300,
+  },
+  invisible: { opacity: 0 },
+})
+
+// Logo
 const LogoLink = styled(Link)`
   @media (max-width: 699px) {
     width: 70px;
@@ -58,25 +94,7 @@ const LogoLink = styled(Link)`
   }
 `
 
-const StyledHeader = styled.header`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 1099px) {
-    justify-content: space-around;
-    padding: 5vw;
-    padding-bottom: 0;
-  }
-
-  @media (min-width: 1100px) {
-    flex-direction: column;
-    position: fixed;
-    z-index: 10;
-    top: 7vh;
-    left: 7vw;
-  }
-`
-
+// Stripe
 const Stripe = styled.div`
   letter-spacing: 0.075em;
   font-weight: 300;
@@ -137,19 +155,31 @@ const Stripe = styled.div`
   }
 `
 
-const Header = () => (
-  <StyledHeader>
-    <LogoLink to="/">
-      <Image />
-    </LogoLink>
+class Header extends Component {
+  state = {
+    isVisible: false,
+  }
 
-    <Stripe>
-      <span>concept, branding, design, code</span>
-      <nav>
-        <Link to="/about">about</Link>
-      </nav>
-    </Stripe>
-  </StyledHeader>
-)
+  componentDidMount() {
+    this.setState({ isVisible: true })
+  }
+
+  render() {
+    return (
+      <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
+        <LogoLink to="/">
+          <Image />
+        </LogoLink>
+
+        <Stripe>
+          <span>concept, branding, design, code</span>
+          <nav>
+            <Link to="/about">about</Link>
+          </nav>
+        </Stripe>
+      </PosedHeader>
+    )
+  }
+}
 
 export default Header
