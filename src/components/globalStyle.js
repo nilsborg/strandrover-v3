@@ -54,9 +54,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-family);
     font-weight: 500;
     color: var(--color-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-secondary)
