@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { TransitionState } from 'gatsby-plugin-transition-link'
 
 import posed from 'react-pose'
 
@@ -14,7 +13,7 @@ import {
   Clientlist,
 } from '../components/aboutStyles'
 
-const PoserContainer = posed(Container)({
+const PosedContainer = posed(Container)({
   visible: { staggerChildren: 50 },
   invisible: { staggerChildren: 50 },
 })
@@ -32,86 +31,89 @@ const Poser = posed.div({
   },
 })
 
-const AboutPage = ({
-  data: {
-    about: { headline, intro, image, maze, nils, clientlist },
-  },
-}) => {
-  return (
-    <TransitionState>
-      {({ transitionStatus: status }) => {
-        return (
-          <PoserContainer
-            pose={
-              ['entering', 'entered'].includes(status) ? 'visible' : 'invisible'
-            }
-          >
-            <Welcome>
-              <Poser>
-                <h1>{headline}</h1>
-              </Poser>
+class AboutPage extends Component {
+  state = {
+    isVisible: false,
+  }
 
-              <Poser
-                dangerouslySetInnerHTML={{
-                  __html: intro.childMarkdownRemark.html,
-                }}
-              />
-            </Welcome>
+  componentDidMount() {
+    this.setState({ isVisible: true })
+  }
 
-            <Poser>
-              <Intro>
-                <Poser className="bannerWrap">
-                  <Img className="banner" fluid={image.childImageSharp.fluid} />
-                </Poser>
+  render() {
+    const {
+      headline,
+      intro,
+      image,
+      maze,
+      nils,
+      clientlist,
+    } = this.props.data.about
 
-                <Profile
-                  className="maze"
-                  dangerouslySetInnerHTML={{
-                    __html: maze.childMarkdownRemark.html,
-                  }}
-                />
+    return (
+      <PosedContainer pose={this.state.isVisible ? 'visible' : 'invisible'}>
+        <Welcome>
+          <Poser>
+            <h1>{headline}</h1>
+          </Poser>
 
-                <Profile
-                  className="nils"
-                  dangerouslySetInnerHTML={{
-                    __html: nils.childMarkdownRemark.html,
-                  }}
-                />
-              </Intro>
+          <Poser
+            dangerouslySetInnerHTML={{
+              __html: intro.childMarkdownRemark.html,
+            }}
+          />
+        </Welcome>
+
+        <Poser>
+          <Intro>
+            <Poser className="bannerWrap">
+              <Img className="banner" fluid={image.childImageSharp.fluid} />
             </Poser>
 
-            <Poser>
-              <Contact>
-                <span>
-                  {[
-                    'Say hi',
-                    'Drop us a line',
-                    'Hola',
-                    'Waaatttuuuppp',
-                    'Greetings Earthling',
-                    '👋',
-                  ].map((greeting, index) => (
-                    <span key={index}>{greeting}</span>
-                  ))}
-                </span>
-                <a href="mailto: hello@strandrover.com">
-                  hello@strandrover.com
-                </a>
-              </Contact>
-            </Poser>
+            <Profile
+              className="maze"
+              dangerouslySetInnerHTML={{
+                __html: maze.childMarkdownRemark.html,
+              }}
+            />
 
-            <Poser>
-              <Clientlist
-                dangerouslySetInnerHTML={{
-                  __html: clientlist.childMarkdownRemark.html,
-                }}
-              />
-            </Poser>
-          </PoserContainer>
-        )
-      }}
-    </TransitionState>
-  )
+            <Profile
+              className="nils"
+              dangerouslySetInnerHTML={{
+                __html: nils.childMarkdownRemark.html,
+              }}
+            />
+          </Intro>
+        </Poser>
+
+        <Poser>
+          <Contact>
+            <span>
+              {[
+                'Say hi',
+                'Drop us a line',
+                'Hola',
+                'Waaatttuuuppp',
+                'Greetings Earthling',
+                '👋',
+              ].map((greeting, index) => (
+                <span key={index}>{greeting}</span>
+              ))}
+            </span>
+            <a href="mailto: hello@strandrover.com">hello@strandrover.com</a>
+          </Contact>
+        </Poser>
+
+        <Poser>
+          <Clientlist
+            dangerouslySetInnerHTML={{
+              __html: clientlist.childMarkdownRemark.html,
+            }}
+          />
+        </Poser>
+      </PosedContainer>
+    )
+  }
 }
 
 export const pageQuery = graphql`

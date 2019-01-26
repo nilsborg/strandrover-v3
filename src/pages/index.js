@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-import { TransitionState } from 'gatsby-plugin-transition-link'
 
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -41,29 +40,25 @@ const PosedProjectWrap = posed.div({
 })
 
 class IndexPage extends Component {
+  state = {
+    isVisible: false,
+  }
+
+  componentDidMount() {
+    this.setState({ isVisible: true })
+  }
+
   render() {
     const data = this.props.data
 
     return (
-      <TransitionState>
-        {({ transitionStatus: status }) => {
-          return (
-            <PosedProjectList
-              pose={
-                ['entering', 'entered'].includes(status)
-                  ? 'visible'
-                  : 'invisible'
-              }
-            >
-              {data.projects.edges.map(({ node }, index) => (
-                <PosedProjectWrap key={index}>
-                  <Project node={node} key={index} index={index} />
-                </PosedProjectWrap>
-              ))}
-            </PosedProjectList>
-          )
-        }}
-      </TransitionState>
+      <PosedProjectList pose={this.state.isVisible ? 'visible' : 'invisible'}>
+        {data.projects.edges.map(({ node }, index) => (
+          <PosedProjectWrap key={index}>
+            <Project node={node} key={index} index={index} />
+          </PosedProjectWrap>
+        ))}
+      </PosedProjectList>
     )
   }
 }

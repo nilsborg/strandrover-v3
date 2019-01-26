@@ -45,9 +45,9 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
     {
-      resolve: 'gatsby-plugin-transition-link',
+      resolve: `gatsby-plugin-layout`,
       options: {
-        layout: require.resolve(`./src/components/layout.js`),
+        component: require.resolve(`./src/components/layout.js`),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

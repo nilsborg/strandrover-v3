@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import Link from 'gatsby-plugin-transition-link'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import posed from 'react-pose'
@@ -100,31 +99,14 @@ class Header extends Component {
   render() {
     return (
       <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
-        <LogoLink
-          to="/"
-          exit={{
-            length: 0.6,
-          }}
-          entry={{
-            delay: 0.5,
-          }}
-        >
+        <LogoLink to="/">
           <Logo />
         </LogoLink>
 
         <Stripe>
           <PosedSpan>concept, branding, design, code</PosedSpan>
           <PosedNav>
-            <Link
-              to="/about"
-              activeClassName="active"
-              exit={{
-                length: 0.6,
-              }}
-              entry={{
-                delay: 0.2,
-              }}
-            >
+            <Link to="/about" activeClassName="active">
               about
             </Link>
           </PosedNav>
