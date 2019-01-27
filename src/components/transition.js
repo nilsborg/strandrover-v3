@@ -4,12 +4,12 @@ import posed, { PoseGroup } from 'react-pose'
 class Transition extends React.PureComponent {
   render() {
     const RoutesContainer = posed.div({
-      enter: { staggerChildren: 150, delayChildren: 200 },
+      enter: { staggerChildren: 150, delayChildren: 100 },
       exit: { staggerChildren: 50 },
     })
 
     return (
-      <PoseGroup>
+      <PoseGroup animateOnMount={true}>
         <RoutesContainer key={this.props.location.key}>
           {this.props.children}
         </RoutesContainer>
@@ -19,3 +19,5 @@ class Transition extends React.PureComponent {
 }
 
 export default Transition
+
+// position: absolute; top: 16px; left: 0px; width: 1665px; height: 3084px;

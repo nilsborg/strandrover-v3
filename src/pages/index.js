@@ -8,7 +8,7 @@ import Project from '../components/project'
 
 const ProjectList = styled.ul`
   list-style: none;
-  margin-left: 0;
+  margin: 0;
   padding: 5vw;
   overflow: hidden;
   display: flex;

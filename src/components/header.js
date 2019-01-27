@@ -96,17 +96,25 @@ class Header extends Component {
     this.setState({ isVisible: true })
   }
 
+  handleClick = event => {
+    console.log(event, window.scrollY)
+  }
+
   render() {
     return (
       <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
-        <LogoLink to="/">
+        <LogoLink to="/" onClick={this.handleClick}>
           <Logo />
         </LogoLink>
 
         <Stripe>
           <PosedSpan>concept, branding, design, code</PosedSpan>
           <PosedNav>
-            <Link to="/about" activeClassName="active">
+            <Link
+              to="/about"
+              activeClassName="active"
+              onClick={this.handleClick}
+            >
               about
             </Link>
           </PosedNav>
