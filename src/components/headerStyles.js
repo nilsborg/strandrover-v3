@@ -1,10 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
 const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
+  to {
     opacity: 1;
   }
 `
@@ -12,7 +9,6 @@ const fadeIn = keyframes`
 export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
-  animation: ${fadeIn} 600ms 300ms ease-out backwards;
 
   @media (max-width: 1099px) {
     justify-content: space-around;
@@ -27,6 +23,28 @@ export const StyledHeader = styled.header`
     top: 7vh;
     left: 7vw;
   }
+
+  /* Animate in! */
+
+  .logo,
+  span,
+  nav {
+    opacity: 0;
+  }
+
+  &[data-loaded='true'] {
+    .logo {
+      animation: ${fadeIn} 600ms 300ms ease-out forwards;
+    }
+
+    span {
+      animation: ${fadeIn} 600ms 600ms ease-out forwards;
+    }
+
+    nav {
+      animation: ${fadeIn} 600ms 900ms ease-out forwards;
+    }
+  }
 `
 export const Stripe = styled.div`
   letter-spacing: 0.075em;
@@ -39,10 +57,6 @@ export const Stripe = styled.div`
 
     @media (min-width: 1100px) and (max-height: 640px) {
       display: none;
-    }
-
-    @media (min-width: 1100px) {
-      animation: ${fadeIn} 600ms 600ms ease-out backwards;
     }
   }
 
@@ -81,10 +95,6 @@ export const Stripe = styled.div`
           margin-right: 0.3em;
         }
       }
-    }
-
-    @media (min-width: 1100px) {
-      animation: ${fadeIn} 600ms 900ms ease-out backwards;
     }
 
     a  {

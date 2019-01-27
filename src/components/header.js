@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import LogoPath from '../assets/images/logo.svg'
 import { StyledHeader, Stripe } from './headerStyles'
 
-const Logo = ({ className }) => (
+const Logo = ({ className, onLoad }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -28,6 +28,8 @@ const Logo = ({ className }) => (
             className={className}
             alt="strandrover logo"
             fluid={data.image.childImageSharp.fluid}
+            critical={true}
+            onLoad={onLoad}
           />
           <LogoPath />
         </>
@@ -63,17 +65,15 @@ const LogoLink = styled(Link)`
 `
 
 class Header extends Component {
-  state = {
-    isVisible: false,
-  }
-
-  componentDidMount() {
-    this.setState({ isVisible: true })
+  handleLogoLoad = () => {
+    // i know, i know … don't touch the DOM... but there's no other way
+    // on page load, when react isnt yet loaded
+    document.querySelector('#main-header').dataset.loaded = true
   }
 
   render() {
     return (
-      <StyledHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
+      <StyledHeader id="main-header">
         <LogoLink
           to="/"
           exit={{
@@ -83,7 +83,7 @@ class Header extends Component {
             delay: 0.5,
           }}
         >
-          <Logo />
+          <Logo onLoad={this.handleLogoLoad} className="logo" />
         </LogoLink>
 
         <Stripe>
