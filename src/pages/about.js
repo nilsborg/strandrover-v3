@@ -13,18 +13,13 @@ import {
   Clientlist,
 } from '../components/aboutStyles'
 
-const PosedContainer = posed(Container)({
-  visible: { staggerChildren: 50 },
-  invisible: { staggerChildren: 50 },
-})
-
 const Poser = posed.div({
-  visible: {
+  enter: {
     opacity: 1,
     x: 0,
     transition: { type: 'spring' },
   },
-  invisible: {
+  exit: {
     opacity: 0,
     x: -250,
     transition: { type: 'spring' },
@@ -51,7 +46,7 @@ class AboutPage extends Component {
     } = this.props.data.about
 
     return (
-      <PosedContainer pose={this.state.isVisible ? 'visible' : 'invisible'}>
+      <Container>
         <Welcome>
           <Poser>
             <h1>{headline}</h1>
@@ -111,7 +106,7 @@ class AboutPage extends Component {
             }}
           />
         </Poser>
-      </PosedContainer>
+      </Container>
     )
   }
 }

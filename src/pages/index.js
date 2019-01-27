@@ -21,18 +21,13 @@ const ProjectList = styled.ul`
   }
 `
 
-const PosedProjectList = posed(ProjectList)({
-  visible: { staggerChildren: 250 },
-  invisible: { staggerChildren: 200 },
-})
-
 const PosedProjectWrap = posed.div({
-  visible: {
+  enter: {
     opacity: 1,
     x: 0,
     transition: { type: 'spring' },
   },
-  invisible: {
+  exit: {
     opacity: 0,
     x: 250,
     transition: { type: 'spring' },
@@ -52,13 +47,13 @@ class IndexPage extends Component {
     const data = this.props.data
 
     return (
-      <PosedProjectList pose={this.state.isVisible ? 'visible' : 'invisible'}>
+      <ProjectList>
         {data.projects.edges.map(({ node }, index) => (
           <PosedProjectWrap key={index}>
             <Project node={node} key={index} index={index} />
           </PosedProjectWrap>
         ))}
-      </PosedProjectList>
+      </ProjectList>
     )
   }
 }
