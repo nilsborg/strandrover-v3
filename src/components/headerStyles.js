@@ -1,8 +1,18 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 
 export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
+  animation: ${fadeIn} 600ms 300ms ease-out backwards;
 
   @media (max-width: 1099px) {
     justify-content: space-around;
@@ -20,17 +30,19 @@ export const StyledHeader = styled.header`
 `
 export const Stripe = styled.div`
   letter-spacing: 0.075em;
-  font-weight: 300;
+  font-weight: 400;
 
   span  {
-    opacity: 0.6;
-
     @media (max-width: 699px) {
       display: none;
     }
 
-    @media (min-width: 1110px) and (max-height: 640px) {
+    @media (min-width: 1100px) and (max-height: 640px) {
       display: none;
+    }
+
+    @media (min-width: 1100px) {
+      animation: ${fadeIn} 600ms 600ms ease-out backwards;
     }
   }
 
@@ -66,9 +78,13 @@ export const Stripe = styled.div`
           width: 1px;
           height: 3em;
           margin: 1vw 0;
-          margin-right: 0.3 em;
+          margin-right: 0.3em;
         }
       }
+    }
+
+    @media (min-width: 1100px) {
+      animation: ${fadeIn} 600ms 900ms ease-out backwards;
     }
 
     a  {

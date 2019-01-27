@@ -3,7 +3,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import Link from 'gatsby-plugin-transition-link'
 import Img from 'gatsby-image'
 
-import posed from 'react-pose'
 import styled from 'styled-components'
 
 import LogoPath from '../assets/images/logo.svg'
@@ -37,16 +36,6 @@ const Logo = ({ className }) => (
   />
 )
 
-const PosedHeader = posed(StyledHeader)({
-  visible: {
-    opacity: 1,
-    delay: 600,
-    beforeChildren: true,
-    staggerChildren: 300,
-  },
-  invisible: { opacity: 0 },
-})
-
 // Logo
 const LogoLink = styled(Link)`
   @media (max-width: 699px) {
@@ -73,21 +62,6 @@ const LogoLink = styled(Link)`
   }
 `
 
-const fadeInProps = {
-  visible: { opacity: 1 },
-  invisible: { opacity: 0 },
-}
-
-const PosedSpan = posed.span(fadeInProps)
-
-const PosedNav = posed.nav({
-  visible: { opacity: 1 },
-  invisible: { opacity: 0 },
-  pressable: true,
-  init: { scaleY: 1 },
-  press: { scaleY: 1.2 },
-})
-
 class Header extends Component {
   state = {
     isVisible: false,
@@ -99,7 +73,7 @@ class Header extends Component {
 
   render() {
     return (
-      <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
+      <StyledHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
         <LogoLink
           to="/"
           exit={{
@@ -113,8 +87,8 @@ class Header extends Component {
         </LogoLink>
 
         <Stripe>
-          <PosedSpan>concept, branding, design, code</PosedSpan>
-          <PosedNav>
+          <span>concept, branding, design, code</span>
+          <nav>
             <Link
               to="/about"
               activeClassName="active"
@@ -127,9 +101,9 @@ class Header extends Component {
             >
               about
             </Link>
-          </PosedNav>
+          </nav>
         </Stripe>
-      </PosedHeader>
+      </StyledHeader>
     )
   }
 }
