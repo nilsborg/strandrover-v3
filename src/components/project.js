@@ -8,13 +8,6 @@ import { StyledProject, ViewProject, Tag } from './projectStyles'
 class Project extends Component {
   projectRef = React.createRef()
 
-  state = {
-    margin: {
-      bottom: random(3, 8),
-      left: random(0, 30),
-    },
-  }
-
   handleMouseLeave = () => {
     const project = this.projectRef.current
 
@@ -31,10 +24,6 @@ class Project extends Component {
         ref={this.projectRef}
         data-active={this.props.index === 0 ? true : false}
         onMouseLeave={this.handleMouseLeave}
-        style={{
-          '--space-bottom': `${this.state.margin.bottom}vh`,
-          '--space-left': `${this.state.margin.left}vw`,
-        }}
       >
         <Video url={video.publicURL} poster={poster} />
 

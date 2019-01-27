@@ -18,7 +18,7 @@ const ProjectList = styled.ul`
 
   @media (min-width: 1100px) {
     padding-left: calc(7vw + 200px);
-    align-items: flex-start;
+    /* align-items: flex-start; */
   }
 `
 
@@ -27,7 +27,25 @@ const PosedProjectList = posed(ProjectList)({
   invisible: { staggerChildren: 200 },
 })
 
-const PosedProjectWrap = posed.div({
+const ProjectWrap = styled.li`
+  margin-bottom: 5vh;
+
+  @media (min-width: 1100px) {
+    margin-bottom: 2vh;
+    margin-left: -20vw;
+
+    &:nth-child(2n) {
+      margin-bottom: 5vh;
+      margin-left: 5vw;
+    }
+
+    &:nth-child(3n) {
+      margin-left: -3vw;
+    }
+  }
+`
+
+const PosedProjectWrap = posed(ProjectWrap)({
   visible: {
     opacity: 1,
     x: 0,

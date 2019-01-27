@@ -1,13 +1,7 @@
 import styled from 'styled-components'
 
-export const StyledProject = styled.li`
+export const StyledProject = styled.div`
   position: relative;
-  margin-bottom: calc(var(--space-bottom) / 2);
-
-  @media (min-width: 1100px) {
-    margin-bottom: var(--space-bottom);
-    margin-left: var(--space-left);
-  }
 
   @media (min-width: 1200px) {
     opacity: 0.8;
