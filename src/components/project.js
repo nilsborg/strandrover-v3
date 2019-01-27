@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import random from 'lodash/random'
 
 import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
