@@ -5,7 +5,7 @@ import SEO from '../components/seo'
 import GlobalStyle from './globalStyle'
 
 import Header from './header'
-import Footer from './footer'
+// import Footer from './footer'
 
 const Layout = ({ children }) => (
   <main>
@@ -13,7 +13,7 @@ const Layout = ({ children }) => (
     <GlobalStyle />
     <Header />
     {children}
-    <Footer />
+    {/* <Footer /> */}
   </main>
 )
 
