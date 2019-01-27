@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link'
 import Img from 'gatsby-image'
 
-import posed from 'react-pose'
 import styled from 'styled-components'
 
 import LogoPath from '../assets/images/logo.svg'
 import { StyledHeader, Stripe } from './headerStyles'
 
-const Logo = ({ className }) => (
+const Logo = ({ className, onLoad }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -28,6 +28,8 @@ const Logo = ({ className }) => (
             className={className}
             alt="strandrover logo"
             fluid={data.image.childImageSharp.fluid}
+            critical={true}
+            onLoad={onLoad}
           />
           <LogoPath />
         </>
@@ -35,16 +37,6 @@ const Logo = ({ className }) => (
     }}
   />
 )
-
-const PosedHeader = posed(StyledHeader)({
-  visible: {
-    opacity: 1,
-    delay: 600,
-    beforeChildren: true,
-    staggerChildren: 300,
-  },
-  invisible: { opacity: 0 },
-})
 
 // Logo
 const LogoLink = styled(Link)`
@@ -72,54 +64,46 @@ const LogoLink = styled(Link)`
   }
 `
 
-const fadeInProps = {
-  visible: { opacity: 1 },
-  invisible: { opacity: 0 },
-}
-
-const PosedSpan = posed.span(fadeInProps)
-
-const PosedNav = posed.nav({
-  visible: { opacity: 1 },
-  invisible: { opacity: 0 },
-  pressable: true,
-  init: { scaleY: 1 },
-  press: { scaleY: 1.2 },
-})
-
 class Header extends Component {
-  state = {
-    isVisible: false,
-  }
-
-  componentDidMount() {
-    this.setState({ isVisible: true })
-  }
-
-  handleClick = event => {
-    console.log(event, window.scrollY)
+  handleLogoLoad = () => {
+    // i know, i know … don't touch the DOM... but there's no other way
+    // on page load, when react isnt yet loaded
+    document.querySelector('#main-header').dataset.loaded = true
   }
 
   render() {
     return (
-      <PosedHeader pose={this.state.isVisible ? 'visible' : 'invisible'}>
-        <LogoLink to="/" onClick={this.handleClick}>
-          <Logo />
+      <StyledHeader id="main-header">
+        <LogoLink
+          to="/"
+          exit={{
+            length: 0.6,
+          }}
+          entry={{
+            delay: 0.5,
+          }}
+        >
+          <Logo onLoad={this.handleLogoLoad} className="logo" />
         </LogoLink>
 
         <Stripe>
-          <PosedSpan>concept, branding, design, code</PosedSpan>
-          <PosedNav>
+          <span>concept, branding, design, code</span>
+          <nav>
             <Link
               to="/about"
               activeClassName="active"
-              onClick={this.handleClick}
+              exit={{
+                length: 0.6,
+              }}
+              entry={{
+                delay: 0.2,
+              }}
             >
               about
             </Link>
-          </PosedNav>
+          </nav>
         </Stripe>
-      </PosedHeader>
+      </StyledHeader>
     )
   }
 }

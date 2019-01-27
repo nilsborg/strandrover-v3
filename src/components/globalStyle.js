@@ -44,8 +44,8 @@ const GlobalStyle = createGlobalStyle`
     --color-secondary: #3fc1c9;
     --color-offwhite: #e7ecef;
     --color-highlight: #fc5185;
-    --font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
-    --font-family-mono: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
+    --font-family: 'Helvetica Neue', Arial, sans-serif;
+    --font-family-mono:  'Menlo', 'DejaVu Sans Mono',
         'Bitstream Vera Sans Mono', Courier, monospace;
   }
 
@@ -55,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: var(--font-family);
-    font-weight: 500;
+    font-weight: 400;
     color: var(--color-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -107,6 +107,7 @@ const GlobalStyle = createGlobalStyle`
 
   h3 {
     color: var(--color-secondary);
+    font-weight: 500;
   }
 
   p {

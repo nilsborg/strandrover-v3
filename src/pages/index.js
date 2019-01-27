@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
+import { TransitionState } from 'gatsby-plugin-transition-link'
 
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -8,7 +9,7 @@ import Project from '../components/project'
 
 const ProjectList = styled.ul`
   list-style: none;
-  margin: 0;
+  margin-left: 0;
   padding: 5vw;
   overflow: hidden;
   display: flex;
@@ -20,6 +21,11 @@ const ProjectList = styled.ul`
     /* align-items: flex-start; */
   }
 `
+
+const PosedProjectList = posed(ProjectList)({
+  visible: { staggerChildren: 250 },
+  invisible: { staggerChildren: 200 },
+})
 
 const ProjectWrap = styled.li`
   margin-bottom: 5vh;
@@ -40,12 +46,12 @@ const ProjectWrap = styled.li`
 `
 
 const PosedProjectWrap = posed(ProjectWrap)({
-  enter: {
+  visible: {
     opacity: 1,
     x: 0,
     transition: { type: 'spring' },
   },
-  exit: {
+  invisible: {
     opacity: 0,
     x: 250,
     transition: { type: 'spring' },
@@ -53,25 +59,29 @@ const PosedProjectWrap = posed(ProjectWrap)({
 })
 
 class IndexPage extends Component {
-  state = {
-    isVisible: false,
-  }
-
-  componentDidMount() {
-    this.setState({ isVisible: true })
-  }
-
   render() {
     const data = this.props.data
 
     return (
-      <ProjectList>
-        {data.projects.edges.map(({ node }, index) => (
-          <PosedProjectWrap key={index}>
-            <Project node={node} key={index} index={index} />
-          </PosedProjectWrap>
-        ))}
-      </ProjectList>
+      <TransitionState>
+        {({ transitionStatus: status }) => {
+          return (
+            <PosedProjectList
+              pose={
+                ['entering', 'entered'].includes(status)
+                  ? 'visible'
+                  : 'invisible'
+              }
+            >
+              {data.projects.edges.map(({ node }, index) => (
+                <PosedProjectWrap key={index}>
+                  <Project node={node} key={index} index={index} />
+                </PosedProjectWrap>
+              ))}
+            </PosedProjectList>
+          )
+        }}
+      </TransitionState>
     )
   }
 }

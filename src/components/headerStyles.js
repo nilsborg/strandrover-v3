@@ -1,4 +1,10 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  to {
+    opacity: 1;
+  }
+`
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -17,19 +23,39 @@ export const StyledHeader = styled.header`
     top: 7vh;
     left: 7vw;
   }
+
+  /* Animate in! */
+
+  .logo,
+  span,
+  nav {
+    opacity: 0;
+  }
+
+  &[data-loaded='true'] {
+    .logo {
+      animation: ${fadeIn} 600ms 300ms ease-out forwards;
+    }
+
+    span {
+      animation: ${fadeIn} 600ms 600ms ease-out forwards;
+    }
+
+    nav {
+      animation: ${fadeIn} 600ms 900ms ease-out forwards;
+    }
+  }
 `
 export const Stripe = styled.div`
   letter-spacing: 0.075em;
-  font-weight: 300;
+  font-weight: 400;
 
   span  {
-    opacity: 0.6;
-
     @media (max-width: 699px) {
       display: none;
     }
 
-    @media (min-width: 1110px) and (max-height: 640px) {
+    @media (min-width: 1100px) and (max-height: 640px) {
       display: none;
     }
   }
@@ -66,7 +92,7 @@ export const Stripe = styled.div`
           width: 1px;
           height: 3em;
           margin: 1vw 0;
-          margin-right: 0.3 em;
+          margin-right: 0.3em;
         }
       }
     }
