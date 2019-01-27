@@ -9,7 +9,7 @@ class Transition extends React.PureComponent {
     })
 
     return (
-      <PoseGroup animateOnMount={true}>
+      <PoseGroup animateOnMount={false}>
         <RoutesContainer key={this.props.location.key}>
           {this.props.children}
         </RoutesContainer>
