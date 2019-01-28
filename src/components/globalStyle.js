@@ -44,8 +44,8 @@ const GlobalStyle = createGlobalStyle`
     --color-secondary: #3fc1c9;
     --color-offwhite: #e7ecef;
     --color-highlight: #fc5185;
-    --font-family: 'Helvetica Neue', Arial, sans-serif;
-    --font-family-mono:  'Menlo', 'DejaVu Sans Mono',
+    --font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-mono:  'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
         'Bitstream Vera Sans Mono', Courier, monospace;
   }
 
