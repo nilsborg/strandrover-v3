@@ -18,7 +18,6 @@ const ProjectList = styled.ul`
 
   @media (min-width: 1100px) {
     padding-left: calc(7vw + 200px);
-    /* align-items: flex-start; */
   }
 `
 
@@ -29,6 +28,12 @@ const PosedProjectList = posed(ProjectList)({
 
 const ProjectWrap = styled.li`
   margin-bottom: 5vh;
+  width: 100%;
+
+  @media (min-width: 900px) {
+    width: 60vw;
+    max-width: 900px;
+  }
 
   @media (min-width: 1100px) {
     margin-bottom: 2vh;

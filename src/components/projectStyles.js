@@ -5,7 +5,7 @@ export const StyledProject = styled.div`
 
   @media (min-width: 1200px) {
     opacity: 0.8;
-    transform: scale(0.8);
+    transform: scale(0.9);
     transform-origin: center;
     transition: opacity 350ms ease-out, filter 500ms ease-out,
       transform 450ms ease-out;
@@ -92,6 +92,10 @@ export const ViewProject = styled.a`
   svg {
     fill: var(--color-highlight);
     margin-right: 0.5em;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
   &:hover svg path {
