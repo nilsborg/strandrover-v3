@@ -65,15 +65,21 @@ const LogoLink = styled(Link)`
 `
 
 class Header extends Component {
-  handleLogoLoad = () => {
-    // i know, i know … don't touch the DOM... but there's no other way
-    // on page load, when react isnt yet loaded
-    document.querySelector('#main-header').dataset.loaded = true
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      loaded: false,
+    }
+  }
+
+  componentDidMount() {
+    this.setState({ loaded: true })
   }
 
   render() {
     return (
-      <StyledHeader id="main-header">
+      <StyledHeader className={this.state.loaded ? 'loaded' : false}>
         <LogoLink
           to="/"
           exit={{
@@ -83,7 +89,7 @@ class Header extends Component {
             delay: 0.5,
           }}
         >
-          <Logo onLoad={this.handleLogoLoad} className="logo" />
+          <Logo className="logo" />
         </LogoLink>
 
         <Stripe>
