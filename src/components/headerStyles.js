@@ -32,7 +32,7 @@ export const StyledHeader = styled.header`
     opacity: 0;
   }
 
-  &[data-loaded='true'] {
+  &.loaded {
     .logo {
       animation: ${fadeIn} 600ms 300ms ease-out forwards;
     }
