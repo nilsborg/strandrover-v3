@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import SEO from '../components/seo'
 import GlobalStyle from './globalStyle'
 
+import '../assets/fonts.css'
+
 import Header from './header'
 // import Footer from './footer'
 
