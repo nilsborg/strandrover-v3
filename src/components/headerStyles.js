@@ -50,6 +50,21 @@ export const Stripe = styled.div`
   letter-spacing: 0.075em;
   font-weight: 400;
 
+  @media (min-width: 700px) {
+    display: flex;
+  }
+
+  @media (min-width: 1100px) {
+    writing-mode: vertical-lr;
+    margin-left: -15px;
+    margin-top: 5vh;
+    letter-spacing: 0.1em;
+
+    @media (min-height: 800px) {
+      margin-top: 15vh;
+    }
+  }
+
   span  {
     @media (max-width: 699px) {
       display: none;
@@ -58,20 +73,9 @@ export const Stripe = styled.div`
     @media (min-width: 1100px) and (max-height: 640px) {
       display: none;
     }
-  }
 
-  @media (min-width: 700px) {
-    display: flex;
-  }
-
-  @media (min-width: 1100px) {
-    writing-mode: vertical-rl;
-    margin-left: -15px;
-    margin-top: 5vh;
-    letter-spacing: 0.1em;
-
-    @media (min-height: 800px) {
-      margin-top: 15vh;
+    @media (min-width: 1100px) {
+      transform: rotate(180deg);
     }
   }
 
@@ -92,7 +96,7 @@ export const Stripe = styled.div`
           width: 1px;
           height: 3em;
           margin: 1vw 0;
-          margin-right: 0.3em;
+          /* margin-right: 0.3em; */
         }
       }
     }
@@ -105,6 +109,10 @@ export const Stripe = styled.div`
         color: var(--color-primary);
         text-decoration: underline;
         pointer-events: none;
+      }
+
+      @media (min-width: 1100px) {
+        transform: rotate(180deg);
       }
     }
   }

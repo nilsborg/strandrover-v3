@@ -46,5 +46,6 @@ export const Wrapper = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.12);
     border-radius: var(--radius);
+    will-change: transform, opacity, filter;
   }
 `

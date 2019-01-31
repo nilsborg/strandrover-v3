@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import LogoPath from '../assets/images/logo.svg'
 import { StyledHeader, Stripe } from './headerStyles'
 
-const Logo = ({ className, onLoad }) => (
+const Logo = ({ className }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -29,7 +29,6 @@ const Logo = ({ className, onLoad }) => (
             alt="strandrover logo"
             fluid={data.image.childImageSharp.fluid}
             critical={true}
-            onLoad={onLoad}
           />
           <LogoPath />
         </>
@@ -65,12 +64,8 @@ const LogoLink = styled(Link)`
 `
 
 class Header extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      loaded: false,
-    }
+  state = {
+    loaded: false,
   }
 
   componentDidMount() {
@@ -93,7 +88,7 @@ class Header extends Component {
         </LogoLink>
 
         <Stripe>
-          <span>concept, branding, design, code</span>
+          <span>branding, design, code</span>
           <nav>
             <Link
               to="/about"
