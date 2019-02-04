@@ -16,15 +16,16 @@ class Project extends Component {
   }
 
   render() {
-    const { title, tags, link, video, poster } = this.props.node
+    const { title, type, tags, link, video, poster } = this.props.node
 
     return (
       <StyledProject
         ref={this.projectRef}
         data-active={this.props.index === 0 ? true : false}
         onMouseLeave={this.handleMouseLeave}
+        className={`type--${type.toLowerCase()}`}
       >
-        <Video url={video.publicURL} poster={poster} />
+        <Video type={type} url={video.publicURL} poster={poster} />
 
         <header>
           <h2>{title}</h2>

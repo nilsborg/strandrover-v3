@@ -37,7 +37,7 @@ const ProjectWrap = styled.li`
 
   @media (min-width: 1100px) {
     margin-bottom: 2vh;
-    margin-left: -20vw;
+    margin-left: -15vw;
 
     &:nth-child(2n) {
       margin-bottom: 5vh;
@@ -102,6 +102,7 @@ export const pageQuery = graphql`
             content
           }
           link
+          type
           poster {
             childImageSharp {
               fluid(maxWidth: 2000) {

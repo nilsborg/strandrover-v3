@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const StyledProject = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: 1200px) {
     opacity: 0.8;
@@ -32,6 +34,7 @@ export const StyledProject = styled.div`
       opacity: 0;
       z-index: 3;
       padding: 3vw;
+      padding-left: 0;
     }
 
     h2 {

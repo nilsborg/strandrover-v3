@@ -96,8 +96,7 @@ class Video extends Component {
   }
 
   render() {
-    const url = this.props.url
-    const poster = this.props.poster
+    const { url, poster, type } = this.props
 
     const { translate, distance } = this.updateAnimation(
       this.state.cursor.x,
@@ -117,7 +116,7 @@ class Video extends Component {
     this.handlePlay()
 
     return (
-      <Wrapper>
+      <Wrapper className={`type--${type.toLowerCase()}`}>
         <div className="mask">
           <video
             ref={this.videoRef}

@@ -3,12 +3,20 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   position: relative;
 
+  &.type--mobile {
+    width: 60%;
+    max-width: 350px;
+
+    @media (max-width: 1099px) {
+      align-self: center;
+    }
+  }
+
   .mask  {
     border-radius: var(--radius);
     overflow: hidden;
     position: relative;
     z-index: 2;
-    padding-bottom: 60.5%;
     box-shadow: 0 1px 0 1px var(--color-offwhite);
 
     img {
@@ -35,6 +43,14 @@ export const Wrapper = styled.div`
     video[data-can-play='true'] {
       opacity: 1;
     }
+  }
+
+  &.type--desktop .mask {
+    padding-bottom: 60.5%;
+  }
+
+  &.type--mobile .mask {
+    padding-bottom: 178%;
   }
 
   .shadow {
