@@ -65,7 +65,7 @@ export const Stripe = styled.div`
     }
   }
 
-  span  {
+  .claim {
     @media (max-width: 699px) {
       display: none;
     }
@@ -101,15 +101,17 @@ export const Stripe = styled.div`
       }
     }
 
-    a  {
+    a {
       text-decoration: none;
       color: var(--color-highlight);
 
-      background-image: linear-gradient(
-        to bottom,
-        var(--color-highlight),
-        var(--color-secondary)
-      );
+      span.gradient {
+        background-image: linear-gradient(
+          to bottom,
+          var(--color-highlight),
+          var(--color-secondary)
+        );
+      }
 
       &.active {
         color: var(--color-primary);

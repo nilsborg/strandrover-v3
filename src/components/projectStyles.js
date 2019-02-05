@@ -85,6 +85,7 @@ export const StyledProject = styled.div`
     p  {
       font-family: var(--font-family-serif);
       font-weight: 300;
+      font-style: italic;
       line-height: 1.6;
 
       @media (min-width: 500px) {
@@ -131,8 +132,9 @@ export const ViewProject = styled.a`
   }
 
   font-family: var(--font-family-mono);
-  /* font-style: italic; */
-  text-decoration: none;
+  font-weight: 300;
+  font-style: normal;
+  /* text-decoration: none; */
   display: flex;
   align-items: center;
 

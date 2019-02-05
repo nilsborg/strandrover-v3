@@ -32,21 +32,21 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     color: var(--color-highlight);
-    transition: color 200ms ease;
-    background-image: linear-gradient(
-      to right,
-      var(--color-highlight) 25%,
-      var(--color-primary),
-      var(--color-secondary)
-    );
     text-decoration: none;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 
-    /* &:hover {
-      color: var(--color-secondary);
-    } */
+    span.gradient {
+      transition: color 200ms ease;
+      background-image: linear-gradient(
+        to right,
+        var(--color-highlight) 25%,
+        var(--color-secondary),
+        var(--color-primary)
+      );
+      text-decoration: none;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   h1, h2, h3 {

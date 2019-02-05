@@ -95,7 +95,7 @@ const AboutPage = ({
                   ))}
                 </span>
                 <a href="mailto: hello@strandrover.com">
-                  hello@strandrover.com
+                  <span className="gradient">hello@strandrover.com</span>
                 </a>
               </Contact>
             </Poser>

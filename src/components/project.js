@@ -143,7 +143,7 @@ class Project extends Component {
           rel="noopener noreferrer"
         >
           <LinkIcon />
-          <span>{link}</span>
+          <span className="gradient">{link}</span>
         </PosedViewProject>
       </StyledProject>
     )

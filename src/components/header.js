@@ -88,7 +88,7 @@ class Header extends Component {
         </LogoLink>
 
         <Stripe>
-          <span>branding, design, code</span>
+          <span className="claim">branding, design, code</span>
           <nav>
             <Link
               to="/about"
@@ -100,7 +100,7 @@ class Header extends Component {
                 delay: 0.5,
               }}
             >
-              about
+              <span className="gradient">about</span>
             </Link>
           </nav>
         </Stripe>
