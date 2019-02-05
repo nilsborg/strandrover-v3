@@ -4,6 +4,8 @@ import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
 import { StyledProject, ViewProject, Tag } from './projectStyles'
 
+import { isInViewport } from '../helpers'
+
 import posed from 'react-pose'
 
 const posePrefs = {
@@ -19,13 +21,45 @@ const posePrefs = {
   },
 }
 
-const PosedHeader = posed.header(posePrefs)
-const PosedDesc = posed.p(posePrefs)
-const PosedVideoWrap = posed.div(posePrefs)
-const PosedTestimonial = posed.blockquote(posePrefs)
-const PosedViewProject = posed(ViewProject)(posePrefs)
+const Poser = posed.div(posePrefs)
 
 class Project extends Component {
+  descriptionRef = React.createRef()
+
+  state = {
+    scrollY: 0,
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.updateScrollState)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.updateScrollState)
+  }
+
+  updateScrollState = () => {
+    this.setState({
+      scrollY: window.scrollY,
+    })
+  }
+
+  calcParallax = ref => {
+    let translateY = 0
+
+    if (!ref.current) return translateY
+
+    const elBoundingBox = ref.current.getBoundingClientRect()
+
+    if (isInViewport(elBoundingBox)) {
+      console.log('in viewport')
+
+      translateY = (elBoundingBox.y - this.state.scrollY) / 10
+    }
+
+    return translateY
+  }
+
   render() {
     const {
       title,
@@ -39,49 +73,65 @@ class Project extends Component {
       poster,
     } = this.props.node
 
+    const descriptionTranslateY = this.calcParallax(this.descriptionRef)
+
     return (
       <StyledProject
         className={`type--${type.toLowerCase()} index--${this.props.index}`}
       >
-        <PosedHeader className="header">
-          <h2>{title}</h2>
+        <Poser>
+          <header className="header">
+            <h2>{title}</h2>
 
-          <aside>
-            {tags.map((tag, index) => (
-              <Tag key={index}>{tag.content}</Tag>
-            ))}
-          </aside>
-        </PosedHeader>
+            <aside>
+              {tags.map((tag, index) => (
+                <Tag key={index}>{tag.content}</Tag>
+              ))}
+            </aside>
+          </header>
+        </Poser>
 
         {description && (
-          <PosedDesc className="description">{description}</PosedDesc>
+          <Poser>
+            <p
+              className="description"
+              ref={this.descriptionRef}
+              style={{
+                transform: `translate3d(0px, ${descriptionTranslateY}px, 0px)`,
+              }}
+            >
+              {description}
+            </p>
+          </Poser>
         )}
 
-        <PosedVideoWrap>
+        <Poser>
           <Video
             className="video"
             type={type}
             url={video.publicURL}
             poster={poster}
           />
-        </PosedVideoWrap>
+        </Poser>
 
         {quote && (
-          <PosedTestimonial className="testimonial">
+          <blockquote className="testimonial">
             <p>{quote}</p>
             <span>{quoteMeta}</span>
-          </PosedTestimonial>
+          </blockquote>
         )}
 
-        <PosedViewProject
-          className="link"
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <LinkIcon />
-          <span>{link}</span>
-        </PosedViewProject>
+        <Poser>
+          <ViewProject
+            className="link"
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkIcon />
+            <span>{link}</span>
+          </ViewProject>
+        </Poser>
       </StyledProject>
     )
   }
