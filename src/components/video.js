@@ -116,7 +116,9 @@ class Video extends Component {
     this.handlePlay()
 
     return (
-      <Wrapper className={`type--${type.toLowerCase()}`}>
+      <Wrapper
+        className={`${this.props.className} type--${type.toLowerCase()}`}
+      >
         <div className="mask">
           <video
             ref={this.videoRef}

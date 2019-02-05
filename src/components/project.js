@@ -4,6 +4,27 @@ import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
 import { StyledProject, ViewProject, Tag } from './projectStyles'
 
+import posed from 'react-pose'
+
+const posePrefs = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring' },
+  },
+  invisible: {
+    opacity: 0,
+    x: 250,
+    transition: { type: 'spring' },
+  },
+}
+
+const PosedHeader = posed.header(posePrefs)
+const PosedDesc = posed.p(posePrefs)
+const PosedVideoWrap = posed.div(posePrefs)
+const PosedTestimonial = posed.blockquote(posePrefs)
+const PosedViewProject = posed(ViewProject)(posePrefs)
+
 class Project extends Component {
   projectRef = React.createRef()
 
@@ -35,7 +56,7 @@ class Project extends Component {
         onMouseLeave={this.handleMouseLeave}
         className={`type--${type.toLowerCase()}`}
       >
-        <header>
+        <PosedHeader className="header">
           <h2>{title}</h2>
 
           <aside>
@@ -43,23 +64,37 @@ class Project extends Component {
               <Tag key={index}>{tag.content}</Tag>
             ))}
           </aside>
-        </header>
+        </PosedHeader>
 
-        {description && <p className="description">{description}</p>}
-
-        <Video type={type} url={video.publicURL} poster={poster} />
-
-        {quote && (
-          <blockquote>
-            <p>{quote}</p>
-            <span>{quoteMeta}</span>
-          </blockquote>
+        {description && (
+          <PosedDesc className="description">{description}</PosedDesc>
         )}
 
-        <ViewProject href={link} target="_blank" rel="noopener noreferrer">
+        <PosedVideoWrap>
+          <Video
+            className="video"
+            type={type}
+            url={video.publicURL}
+            poster={poster}
+          />
+        </PosedVideoWrap>
+
+        {quote && (
+          <PosedTestimonial className="testimonial">
+            <p>{quote}</p>
+            <span>{quoteMeta}</span>
+          </PosedTestimonial>
+        )}
+
+        <PosedViewProject
+          className="link"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <LinkIcon />
           <span>{link}</span>
-        </ViewProject>
+        </PosedViewProject>
       </StyledProject>
     )
   }

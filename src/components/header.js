@@ -97,7 +97,7 @@ class Header extends Component {
                 length: 0.6,
               }}
               entry={{
-                delay: 0.2,
+                delay: 0.5,
               }}
             >
               about

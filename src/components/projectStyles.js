@@ -29,7 +29,15 @@ export const StyledProject = styled.div`
     } */
   }
 
-  header {
+  .header,
+  .description,
+  .video,
+  .testimonial,
+  .link {
+    /* border: 1px solid coral; */
+  }
+
+  .header {
     @media (min-width: 1100px) {
       grid-column: 1 / 3;
     }
@@ -81,7 +89,7 @@ export const StyledProject = styled.div`
     line-height: 1.8;
   }
 
-  blockquote {
+  .testimonial {
     margin: 0;
 
     @media (min-width: 1100px) {
@@ -103,7 +111,7 @@ export const StyledProject = styled.div`
     }
   }
 
-  a {
+  .link {
     @media (min-width: 1100px) {
       grid-column: 1 / 3;
     }

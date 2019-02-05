@@ -30,11 +30,6 @@ const ProjectWrap = styled.li`
   margin-bottom: 5vh;
   width: 100%;
 
-  /* @media (min-width: 900px) {
-    width: 50vw;
-    max-width: 900px;
-  } */
-
   @media (min-width: 1100px) {
     margin-bottom: 40vh;
     /* margin-left: -15vw;
@@ -49,19 +44,6 @@ const ProjectWrap = styled.li`
     } */
   }
 `
-
-const PosedProjectWrap = posed(ProjectWrap)({
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring' },
-  },
-  invisible: {
-    opacity: 0,
-    x: 250,
-    transition: { type: 'spring' },
-  },
-})
 
 class IndexPage extends Component {
   render() {
@@ -79,9 +61,9 @@ class IndexPage extends Component {
               }
             >
               {data.projects.edges.map(({ node }, index) => (
-                <PosedProjectWrap key={index}>
+                <ProjectWrap key={index}>
                   <Project node={node} key={index} index={index} />
-                </PosedProjectWrap>
+                </ProjectWrap>
               ))}
             </PosedProjectList>
           )
