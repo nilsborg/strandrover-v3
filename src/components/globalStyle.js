@@ -6,12 +6,13 @@ const GlobalStyle = createGlobalStyle`
     --color-primary: #364f6b;
     --color-secondary: #3fc1c9;
     --color-offwhite: #e7ecef;
-    --color-highlight: #fc5185;
+    --color-highlight: #71e8b3;
     --font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-serif: 'IBM Plex Serif', 'Georgia', Times, serif;
     --font-family-mono:  'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
         'Bitstream Vera Sans Mono', Courier, monospace;
-  } 
-  
+  }
+
 
   html, body {
     margin: 0;
@@ -30,12 +31,22 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: var(--color-secondary);
+    color: var(--color-highlight);
     transition: color 200ms ease;
+    background-image: linear-gradient(
+      to right,
+      var(--color-highlight) 25%,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    text-decoration: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-    &:hover {
+    /* &:hover {
       color: var(--color-secondary);
-    }
+    } */
   }
 
   h1, h2, h3 {

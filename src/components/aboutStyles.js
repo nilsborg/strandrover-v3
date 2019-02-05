@@ -30,7 +30,7 @@ export const Welcome = styled.div`
 
   h1 {
     font-weight: 300;
-    color: var(--color-highlight);
+    color: var(--color-secondary);
     line-height: 1.3;
     /* text-transform: uppercase; */
     margin-top: 0;
@@ -132,16 +132,6 @@ export const Contact = styled.address`
   a {
     font-size: 7vw;
     color: var(--color-highlight);
-    background-image: linear-gradient(
-      to right,
-      var(--color-highlight) 40%,
-      var(--color-primary),
-      var(--color-secondary)
-    );
-    text-decoration: none;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 
     @media (min-width: 700px) {
       font-size: 4vw;

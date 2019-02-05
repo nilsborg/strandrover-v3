@@ -2,6 +2,15 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   position: relative;
+  width: 100%;
+
+  &.type--desktop {
+    max-width: 800px;
+
+    @media (max-width: 1099px) {
+      align-self: center;
+    }
+  }
 
   &.type--mobile {
     width: 60%;

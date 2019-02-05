@@ -16,7 +16,17 @@ class Project extends Component {
   }
 
   render() {
-    const { title, type, tags, link, video, poster } = this.props.node
+    const {
+      title,
+      description,
+      quote,
+      quoteMeta,
+      type,
+      tags,
+      link,
+      video,
+      poster,
+    } = this.props.node
 
     return (
       <StyledProject
@@ -25,8 +35,6 @@ class Project extends Component {
         onMouseLeave={this.handleMouseLeave}
         className={`type--${type.toLowerCase()}`}
       >
-        <Video type={type} url={video.publicURL} poster={poster} />
-
         <header>
           <h2>{title}</h2>
 
@@ -35,12 +43,23 @@ class Project extends Component {
               <Tag key={index}>{tag.content}</Tag>
             ))}
           </aside>
-
-          <ViewProject href={link} target="_blank" rel="noopener noreferrer">
-            <LinkIcon />
-            <span>{link}</span>
-          </ViewProject>
         </header>
+
+        {description && <p className="description">{description}</p>}
+
+        <Video type={type} url={video.publicURL} poster={poster} />
+
+        {quote && (
+          <blockquote>
+            <p>{quote}</p>
+            <span>{quoteMeta}</span>
+          </blockquote>
+        )}
+
+        <ViewProject href={link} target="_blank" rel="noopener noreferrer">
+          <LinkIcon />
+          <span>{link}</span>
+        </ViewProject>
       </StyledProject>
     )
   }

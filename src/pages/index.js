@@ -30,14 +30,14 @@ const ProjectWrap = styled.li`
   margin-bottom: 5vh;
   width: 100%;
 
-  @media (min-width: 900px) {
-    width: 60vw;
+  /* @media (min-width: 900px) {
+    width: 50vw;
     max-width: 900px;
-  }
+  } */
 
   @media (min-width: 1100px) {
-    margin-bottom: 2vh;
-    margin-left: -15vw;
+    margin-bottom: 40vh;
+    /* margin-left: -15vw;
 
     &:nth-child(2n) {
       margin-bottom: 5vh;
@@ -46,7 +46,7 @@ const ProjectWrap = styled.li`
 
     &:nth-child(3n) {
       margin-left: -3vw;
-    }
+    } */
   }
 `
 
@@ -97,12 +97,15 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          type
           title
+          description
           tags {
             content
           }
+          quote
+          quoteMeta
           link
-          type
           poster {
             childImageSharp {
               fluid(maxWidth: 2000) {

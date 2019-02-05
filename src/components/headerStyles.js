@@ -105,6 +105,12 @@ export const Stripe = styled.div`
       text-decoration: none;
       color: var(--color-highlight);
 
+      background-image: linear-gradient(
+        to bottom,
+        var(--color-highlight),
+        var(--color-secondary)
+      );
+
       &.active {
         color: var(--color-primary);
         text-decoration: underline;
