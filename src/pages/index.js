@@ -32,16 +32,6 @@ const ProjectWrap = styled.li`
 
   @media (min-width: 1100px) {
     margin-bottom: 40vh;
-    /* margin-left: -15vw;
-
-    &:nth-child(2n) {
-      margin-bottom: 5vh;
-      margin-left: 5vw;
-    }
-
-    &:nth-child(3n) {
-      margin-left: -3vw;
-    } */
   }
 `
 

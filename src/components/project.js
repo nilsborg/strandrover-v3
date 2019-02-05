@@ -26,16 +26,6 @@ const PosedTestimonial = posed.blockquote(posePrefs)
 const PosedViewProject = posed(ViewProject)(posePrefs)
 
 class Project extends Component {
-  projectRef = React.createRef()
-
-  handleMouseLeave = () => {
-    const project = this.projectRef.current
-
-    if (this.props.index === 0 && project.dataset.active === 'true') {
-      project.dataset.active = false
-    }
-  }
-
   render() {
     const {
       title,
@@ -51,10 +41,7 @@ class Project extends Component {
 
     return (
       <StyledProject
-        ref={this.projectRef}
-        data-active={this.props.index === 0 ? true : false}
-        onMouseLeave={this.handleMouseLeave}
-        className={`type--${type.toLowerCase()}`}
+        className={`type--${type.toLowerCase()} index--${this.props.index}`}
       >
         <PosedHeader className="header">
           <h2>{title}</h2>
