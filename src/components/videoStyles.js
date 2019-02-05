@@ -61,16 +61,4 @@ export const Wrapper = styled.div`
   &.type--mobile .mask {
     padding-bottom: 178%;
   }
-
-  .shadow {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.12);
-    border-radius: var(--radius);
-    will-change: transform, opacity, filter;
-  }
 `
