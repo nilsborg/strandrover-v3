@@ -1,81 +1,14 @@
 import React, { Component } from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 import Link from 'gatsby-plugin-transition-link'
-import Img from 'gatsby-image'
 
-import styled from 'styled-components'
-
-import LogoPath from '../assets/images/logo.svg'
+import Logo from '../assets/images/logo.svg'
 import { StyledHeader, Stripe } from './headerStyles'
 
-const Logo = ({ className }) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        image: file(relativePath: { eq: "wallpapers/DSC08409.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 141, maxHeight: 141, cropFocus: CENTER) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `}
-    render={data => {
-      return (
-        <>
-          <Img
-            className={className}
-            alt="strandrover logo"
-            fluid={data.image.childImageSharp.fluid}
-            critical={true}
-          />
-          <LogoPath />
-        </>
-      )
-    }}
-  />
-)
-
-// Logo
-const LogoLink = styled(Link)`
-  @media (max-width: 699px) {
-    width: 70px;
-    height: 70px;
-
-    #logoPath {
-      transform: scale(0.5);
-    }
-  }
-
-  @media (min-width: 700px) {
-    width: 141px;
-    height: 139px;
-  }
-
-  img {
-    clip-path: url(#logoPath);
-  }
-
-  .gatsby-image-wrapper {
-    width: 100%;
-    height: 100%;
-  }
-`
-
 class Header extends Component {
-  state = {
-    loaded: false,
-  }
-
-  componentDidMount() {
-    this.setState({ loaded: true })
-  }
-
   render() {
     return (
-      <StyledHeader className={this.state.loaded ? 'loaded' : false}>
-        <LogoLink
+      <StyledHeader>
+        <Link
           to="/"
           exit={{
             length: 0.6,
@@ -85,7 +18,7 @@ class Header extends Component {
           }}
         >
           <Logo className="logo" />
-        </LogoLink>
+        </Link>
 
         <Stripe>
           <span className="claim">branding, design, code</span>

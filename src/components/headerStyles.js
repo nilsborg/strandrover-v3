@@ -1,6 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
 const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
   to {
     opacity: 1;
   }
@@ -24,26 +27,28 @@ export const StyledHeader = styled.header`
     left: 7vw;
   }
 
-  /* Animate in! */
+  .logo {
+    width: 50px;
+    height: 50px;
+    fill: url(#svg-gradient) var(--color-secondary);
 
-  .logo,
-  span,
-  nav {
-    opacity: 0;
+    @media (min-width: 800px) {
+      width: 80px;
+      height: 80px;
+    }
   }
 
-  &.loaded {
-    .logo {
-      animation: ${fadeIn} 600ms 300ms ease-out forwards;
-    }
+  /* Animate in! */
+  .logo {
+    animation: ${fadeIn} 600ms 300ms ease-out backwards;
+  }
 
-    span {
-      animation: ${fadeIn} 600ms 600ms ease-out forwards;
-    }
+  span {
+    animation: ${fadeIn} 600ms 600ms ease-out backwards;
+  }
 
-    nav {
-      animation: ${fadeIn} 600ms 900ms ease-out forwards;
-    }
+  nav {
+    animation: ${fadeIn} 600ms 900ms ease-out backwards;
   }
 `
 export const Stripe = styled.div`
