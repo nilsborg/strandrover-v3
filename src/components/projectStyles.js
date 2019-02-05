@@ -22,7 +22,6 @@ export const StyledProject = styled.div`
   .video,
   .testimonial,
   .link {
-    /* border: 1px solid coral; */
     position: relative;
   }
 
@@ -38,7 +37,6 @@ export const StyledProject = styled.div`
 
     @media (min-width: 1200px) {
       transition: opacity 300ms 200ms ease-out;
-      /* opacity: 0; */
       z-index: 3;
     }
 
@@ -59,10 +57,6 @@ export const StyledProject = styled.div`
         font-size: 60px;
         margin-bottom: 3vh;
       }
-
-      /* @media (min-width: 800px) {
-        font-size: 40px;
-      } */
     }
 
     aside {

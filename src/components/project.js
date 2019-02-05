@@ -27,8 +27,6 @@ const PosedTestimonial = posed.blockquote(posePrefs)
 const PosedViewProject = posed(ViewProject)(posePrefs)
 
 const Parallaxer = styled.div`
-  border: 1px solid coral;
-  /* transition: transform 200ms ease-in-out; */
   will-change: transform;
 `
 
