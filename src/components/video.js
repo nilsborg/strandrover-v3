@@ -32,9 +32,7 @@ class Video extends Component {
     const { url, poster, type } = this.props
 
     return (
-      <Wrapper
-        className={`${this.props.className} type--${type.toLowerCase()}`}
-      >
+      <Wrapper className={`type--${type.toLowerCase()}`}>
         <div className="mask">
           <video
             ref={this.videoRef}

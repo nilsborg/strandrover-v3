@@ -12,21 +12,9 @@ export const StyledProject = styled.div`
   }
 
   @media (min-width: 1200px) {
-    /* opacity: 0.8;
-    transform: scale(0.97); */
     transform-origin: center;
     transition: opacity 350ms ease-out, filter 500ms ease-out,
       transform 450ms ease-out;
-
-    /* &:hover,
-    &[data-active='true'] {
-      opacity: 1;
-      transform: scale(1);
-
-      header {
-        opacity: 1;
-      }
-    } */
   }
 
   .header,
@@ -35,6 +23,7 @@ export const StyledProject = styled.div`
   .testimonial,
   .link {
     /* border: 1px solid coral; */
+    position: relative;
   }
 
   .header {
@@ -77,10 +66,8 @@ export const StyledProject = styled.div`
     }
 
     aside {
-      margin-bottom: 1vh;
-
-      @media (min-width: 1100px) {
-        margin-bottom: 3vh;
+      @media (max-width: 1099px) {
+        margin-bottom: 1vh;
       }
     }
   }
@@ -89,8 +76,13 @@ export const StyledProject = styled.div`
     line-height: 1.8;
   }
 
+  .video {
+    z-index: 1;
+  }
+
   .testimonial {
     margin: 0;
+    z-index: 2;
 
     @media (min-width: 1100px) {
       grid-column: 2 / 3;

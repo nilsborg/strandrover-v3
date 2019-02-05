@@ -4,8 +4,7 @@ import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
 import { StyledProject, ViewProject, Tag } from './projectStyles'
 
-import { isInViewport } from '../helpers'
-
+import styled from 'styled-components'
 import posed from 'react-pose'
 
 const posePrefs = {
@@ -21,17 +20,39 @@ const posePrefs = {
   },
 }
 
-const Poser = posed.div(posePrefs)
+const PosedHeader = posed.header(posePrefs)
+const PosedDesc = posed.div(posePrefs)
+const PosedVideoWrap = posed.div(posePrefs)
+const PosedTestimonial = posed.blockquote(posePrefs)
+const PosedViewProject = posed(ViewProject)(posePrefs)
+
+const Parallaxer = styled.div`
+  border: 1px solid coral;
+  /* transition: transform 200ms ease-in-out; */
+  will-change: transform;
+`
 
 class Project extends Component {
-  descriptionRef = React.createRef()
+  projectRef = React.createRef()
 
   state = {
     scrollY: 0,
+    offsetTop: 0,
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.updateScrollState)
+
+    const projectListStyle = window.getComputedStyle(
+      this.projectRef.current.parentElement.parentElement
+    )
+    const projectListTopPadding = parseInt(
+      projectListStyle.getPropertyValue('padding-top').replace('px', '')
+    )
+
+    this.setState({
+      offsetTop: this.projectRef.current.offsetTop - projectListTopPadding,
+    })
   }
 
   componentWillUnmount() {
@@ -44,20 +65,10 @@ class Project extends Component {
     })
   }
 
-  calcParallax = ref => {
-    let translateY = 0
+  calcParallax = (factor, direction = 'speedUp') => {
+    const translateY = (this.state.offsetTop - this.state.scrollY) / factor
 
-    if (!ref.current) return translateY
-
-    const elBoundingBox = ref.current.getBoundingClientRect()
-
-    if (isInViewport(elBoundingBox)) {
-      console.log('in viewport')
-
-      translateY = (elBoundingBox.y - this.state.scrollY) / 10
-    }
-
-    return translateY
+    return direction === 'slowDown' ? translateY * -1 : translateY
   }
 
   render() {
@@ -73,14 +84,21 @@ class Project extends Component {
       poster,
     } = this.props.node
 
-    const descriptionTranslateY = this.calcParallax(this.descriptionRef)
+    const headerY = this.calcParallax(9, 'slowDown')
+    const descY = this.calcParallax(10, 'slowDown')
+    const testimonialY = this.calcParallax(8, 'slowDown')
 
     return (
       <StyledProject
         className={`type--${type.toLowerCase()} index--${this.props.index}`}
+        ref={this.projectRef}
       >
-        <Poser>
-          <header className="header">
+        <PosedHeader className="header">
+          <Parallaxer
+            style={{
+              transform: `translate3d(0px, ${headerY}px, 0px)`,
+            }}
+          >
             <h2>{title}</h2>
 
             <aside>
@@ -88,50 +106,47 @@ class Project extends Component {
                 <Tag key={index}>{tag.content}</Tag>
               ))}
             </aside>
-          </header>
-        </Poser>
+          </Parallaxer>
+        </PosedHeader>
 
         {description && (
-          <Poser>
-            <p
-              className="description"
-              ref={this.descriptionRef}
+          <PosedDesc className="description">
+            <Parallaxer
               style={{
-                transform: `translate3d(0px, ${descriptionTranslateY}px, 0px)`,
+                transform: `translate3d(0px, ${descY}px, 0px)`,
               }}
             >
               {description}
-            </p>
-          </Poser>
+            </Parallaxer>
+          </PosedDesc>
         )}
 
-        <Poser>
-          <Video
-            className="video"
-            type={type}
-            url={video.publicURL}
-            poster={poster}
-          />
-        </Poser>
+        <PosedVideoWrap className="video">
+          <Video type={type} url={video.publicURL} poster={poster} />
+        </PosedVideoWrap>
 
         {quote && (
-          <blockquote className="testimonial">
-            <p>{quote}</p>
-            <span>{quoteMeta}</span>
-          </blockquote>
+          <PosedTestimonial className="testimonial">
+            <Parallaxer
+              style={{
+                transform: `translate3d(0px, ${testimonialY}px, 0px)`,
+              }}
+            >
+              <p>{quote}</p>
+              <span>{quoteMeta}</span>
+            </Parallaxer>
+          </PosedTestimonial>
         )}
 
-        <Poser>
-          <ViewProject
-            className="link"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <LinkIcon />
-            <span>{link}</span>
-          </ViewProject>
-        </Poser>
+        <PosedViewProject
+          className="link"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkIcon />
+          <span>{link}</span>
+        </PosedViewProject>
       </StyledProject>
     )
   }
