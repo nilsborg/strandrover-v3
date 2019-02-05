@@ -81,7 +81,21 @@ export const pageQuery = graphql`
           link
           poster {
             childImageSharp {
-              fluid(maxWidth: 2000) {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          image1 {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          image2 {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
                 ...GatsbyImageSharpFluid
               }
             }

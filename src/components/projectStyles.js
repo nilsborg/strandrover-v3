@@ -7,7 +7,7 @@ export const StyledProject = styled.div`
 
   @media (min-width: 1100px) {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5vw;
   }
 
@@ -27,7 +27,7 @@ export const StyledProject = styled.div`
 
   .header {
     @media (min-width: 1100px) {
-      grid-column: 1 / 3;
+      grid-column: 1 / -1;
     }
 
     @media (max-width: 1199px) {
@@ -68,10 +68,34 @@ export const StyledProject = styled.div`
 
   .description {
     line-height: 1.8;
+
+    @media (min-width: 1100px) {
+      grid-column: 1 / 3;
+    }
   }
 
   .video {
-    z-index: 1;
+    z-index: 10;
+
+    @media (min-width: 1100px) {
+      grid-column: 3 / -1;
+    }
+  }
+
+  .extraImage1 {
+    @media (min-width: 1100px) {
+      grid-column: 1 / 4;
+      /* transform: translateY(-50%); */
+      /* margin-top: -10vh; */
+    }
+  }
+
+  .extraImage2 {
+    @media (min-width: 1100px) {
+      grid-column: 4 / 7;
+      /* transform: translateY(50%); */
+      /* margin-bottom: 20%; */
+    }
   }
 
   .testimonial {
@@ -79,7 +103,7 @@ export const StyledProject = styled.div`
     z-index: 2;
 
     @media (min-width: 1100px) {
-      grid-column: 2 / 3;
+      grid-column: 3 / -1;
     }
 
     p  {
@@ -100,7 +124,7 @@ export const StyledProject = styled.div`
 
   .link {
     @media (min-width: 1100px) {
-      grid-column: 1 / 3;
+      grid-column: 1 / -1;
     }
   }
 `
@@ -157,6 +181,22 @@ export const ViewProject = styled.a`
 
   &:hover svg path {
     animation: fly 650ms ease-in-out infinite;
+  }
+`
+
+export const ExtraImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  figure {
+    width: 100%;
+    margin: 0;
+    position: relative;
+
+    .gatsby-image-wrapper {
+      z-index: 2;
+      border-radius: var(--radius);
+    }
   }
 `
 

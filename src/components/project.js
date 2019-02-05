@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import Img from 'gatsby-image'
 
 import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
-import { StyledProject, ViewProject, Tag } from './projectStyles'
+import Shadow from './shadow'
+
+import {
+  StyledProject,
+  ViewProject,
+  Tag,
+  ExtraImageWrapper,
+} from './projectStyles'
 
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -29,6 +37,17 @@ const PosedViewProject = posed(ViewProject)(posePrefs)
 const Parallaxer = styled.div`
   will-change: transform;
 `
+
+const ExtraImage = ({ className, image }) => {
+  return (
+    <ExtraImageWrapper className={className}>
+      <figure>
+        <Img fluid={image.childImageSharp.fluid} />
+        <Shadow />
+      </figure>
+    </ExtraImageWrapper>
+  )
+}
 
 class Project extends Component {
   projectRef = React.createRef()
@@ -80,11 +99,16 @@ class Project extends Component {
       link,
       video,
       poster,
+      image1,
+      image2,
     } = this.props.node
 
-    const headerY = this.calcParallax(9, 'slowDown')
-    const descY = this.calcParallax(10, 'slowDown')
-    const testimonialY = this.calcParallax(8, 'slowDown')
+    // const headerY = this.calcParallax(9, 'slowDown')
+    // const descY = this.calcParallax(10, 'slowDown')
+    // const testimonialY = this.calcParallax(8, 'slowDown')
+    const headerY = 0
+    const descY = 0
+    const testimonialY = 0
 
     return (
       <StyledProject
@@ -122,6 +146,10 @@ class Project extends Component {
         <PosedVideoWrap className="video">
           <Video type={type} url={video.publicURL} poster={poster} />
         </PosedVideoWrap>
+
+        {image1 && <ExtraImage className="extraImage1" image={image1} />}
+
+        {image2 && <ExtraImage className="extraImage2" image={image2} />}
 
         {quote && (
           <PosedTestimonial className="testimonial">
