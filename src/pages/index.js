@@ -12,7 +12,6 @@ const ProjectList = styled.ul`
   margin-left: 0;
   margin-top: 0;
   padding: 7vh 5vw;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;

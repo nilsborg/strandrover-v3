@@ -16,6 +16,27 @@ export const StyledProject = styled.div`
     }
   }
 
+  &.ltr:after {
+    content: '';
+    position: absolute;
+    top: -5vh;
+    left: -5vw;
+    right: -5vw;
+    bottom: -5vh;
+    background-color: var(--color-offwhiter);
+    z-index: -1;
+    transform: skewY(-40deg);
+
+    @media (min-width: 450px) and (max-width: 999px) {
+      left: -10vw;
+      right: -10vw;
+    }
+
+    @media (min-width: 1100px) {
+      left: calc((7vw + 200px) * -1);
+    }
+  }
+
   .header,
   .description,
   .video,

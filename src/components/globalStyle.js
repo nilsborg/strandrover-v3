@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     --color-primary: #364f6b;
     --color-secondary: #3fc1c9;
     --color-offwhite: #e7ecef;
+    --color-offwhiter: rgba(231, 236, 239, 0.3);
     --color-highlight: #71e8b3;
     --font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
     --font-family-serif: 'IBM Plex Serif', 'Georgia', Times, serif;
