@@ -9,10 +9,8 @@ const StyledShadow = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(54, 79, 107, 0.2);
+  background-color: rgba(var(--color-primary-rgb), 0.2);
   border-radius: var(--radius);
-  /* filter: blur(10px); */
-
   will-change: transform, opacity;
 `
 

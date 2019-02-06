@@ -221,18 +221,6 @@ export const ViewProject = styled.a`
   }
 `
 
-export const ExtraImageWrapper = styled.div`
-  figure {
-    margin: 0;
-    position: relative;
-
-    .gatsby-image-wrapper {
-      z-index: 2;
-      border-radius: var(--radius);
-    }
-  }
-`
-
 export const Tag = styled.span`
   display: inline-block;
   color: var(--color-primary);

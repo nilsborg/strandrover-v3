@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --radius: 5px;
     --color-primary: #364f6b;
+    --color-primary-rgb: 54, 79, 107;
     --color-secondary: #3fc1c9;
     --color-offwhite: #e7ecef;
     --color-offwhiter: rgba(231, 236, 239, 0.3);

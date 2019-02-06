@@ -1,9 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { TransitionState } from 'gatsby-plugin-transition-link'
 
 import posed from 'react-pose'
+
+import ShadowImage from '../components/shadowImage'
 
 import {
   Container,
@@ -34,7 +35,7 @@ const Poser = posed.div({
 
 const AboutPage = ({
   data: {
-    about: { headline, intro, image, maze, nils, clientlist },
+    about: { headline, intro, image, image1, image2, maze, nils, clientlist },
   },
 }) => {
   return (
@@ -47,38 +48,25 @@ const AboutPage = ({
             }
           >
             <Welcome>
-              <Poser>
-                <h1>{headline}</h1>
+              <Poser className="headline">
+                <h1 dangerouslySetInnerHTML={{ __html: headline }} />
+              </Poser>
+
+              <Poser className="extraImage1">
+                <ShadowImage image={image1} />
+              </Poser>
+
+              <Poser className="extraImage2">
+                <ShadowImage image={image2} />
               </Poser>
 
               <Poser
+                className="introText"
                 dangerouslySetInnerHTML={{
                   __html: intro.childMarkdownRemark.html,
                 }}
               />
             </Welcome>
-
-            <Poser>
-              <Intro>
-                <Poser className="bannerWrap">
-                  <Img className="banner" fluid={image.childImageSharp.fluid} />
-                </Poser>
-
-                <Profile
-                  className="maze"
-                  dangerouslySetInnerHTML={{
-                    __html: maze.childMarkdownRemark.html,
-                  }}
-                />
-
-                <Profile
-                  className="nils"
-                  dangerouslySetInnerHTML={{
-                    __html: nils.childMarkdownRemark.html,
-                  }}
-                />
-              </Intro>
-            </Poser>
 
             <Poser>
               <Contact>
@@ -98,6 +86,28 @@ const AboutPage = ({
                   <span className="gradient">hello@strandrover.com</span>
                 </a>
               </Contact>
+            </Poser>
+
+            <Poser>
+              <Intro>
+                <Poser className="bannerWrap">
+                  <ShadowImage className="banner" image={image} />
+                </Poser>
+
+                <Profile
+                  className="maze"
+                  dangerouslySetInnerHTML={{
+                    __html: maze.childMarkdownRemark.html,
+                  }}
+                />
+
+                <Profile
+                  className="nils"
+                  dangerouslySetInnerHTML={{
+                    __html: nils.childMarkdownRemark.html,
+                  }}
+                />
+              </Intro>
             </Poser>
 
             <Poser>
@@ -121,6 +131,20 @@ export const pageQuery = graphql`
       intro {
         childMarkdownRemark {
           html
+        }
+      }
+      image1 {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      image2 {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
       image {

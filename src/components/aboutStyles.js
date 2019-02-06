@@ -2,13 +2,12 @@ import styled from 'styled-components'
 import random from 'lodash/random'
 
 export const Container = styled.div`
-  @media (max-width: 1099px) {
-    margin-top: 5vh;
-  }
+  padding: 7vh 5vw;
+  overflow: hidden;
 
   @media (min-width: 1100px) {
+    padding-top: calc(7vh + 100px + 80px - 0.6em);
     padding-left: calc(7vw + 200px);
-    padding-right: 7vw;
   }
 
   p {
@@ -22,28 +21,67 @@ export const Container = styled.div`
 `
 
 export const Welcome = styled.div`
-  padding: 10vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3vh;
+
+  @media (min-width: 1000px) {
+    grid-gap: 5vw;
+  }
 
   @media (min-width: 1100px) {
-    padding-bottom: 10vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
-  h1 {
-    font-weight: 300;
-    color: var(--color-secondary);
-    line-height: 1.3;
-    /* text-transform: uppercase; */
-    margin-top: 0;
-    margin-bottom: 3vh;
+  .headline {
+    grid-column: 1 / -1;
+
+    h1 {
+      font-weight: 300;
+      color: var(--color-secondary);
+      line-height: 1.3;
+      text-transform: uppercase;
+      margin: 0;
+    }
   }
 
-  p {
-    @media (min-width: 1110px) {
-      font-size: 1.3em;
+  .extraImage1,
+  .extraImage2 {
+    position: relative;
+  }
+
+  .extraImage1 {
+    @media (min-width: 1100px) {
+      grid-column: 1 / 4;
+      z-index: 2;
+    }
+  }
+
+  .extraImage2 {
+    @media (min-width: 1100px) {
+      grid-column: 4 / 6;
+      align-self: end;
+      margin-left: -10vw;
+      margin-bottom: -20vh;
+      z-index: 1;
+    }
+  }
+
+  .introText {
+    grid-column: 1 / -1;
+
+    @media (min-width: 1100px) {
+      grid-column: 1 / 3;
     }
 
-    &:last-child {
-      font-size: 2em;
+    p {
+      @media (min-width: 1110px) {
+        font-size: 1.2em;
+      }
+
+      &:last-child {
+        font-size: 2em;
+      }
     }
   }
 `
@@ -56,29 +94,15 @@ export const Intro = styled.article`
   @media (min-width: 1100px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    position: relative;
-
-    &:after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: 5vh;
-      right: -3vw;
-      bottom: 8vh;
-      left: -10vw;
-      background-color: var(--color-offwhite);
-      border-radius: calc(2 * var(--radius));
-      opacity: 0.3;
-    }
 
     .bannerWrap {
       grid-column: 1/3;
     }
 
     .banner {
-      box-shadow: 0 0.4vh 0.5vh rgba(0, 0, 0, 0.1),
-        0 3vh 7vh rgba(0, 0, 0, 0.05);
       border-radius: var(--radius);
+      margin-left: calc((7vw + 170px) * -1);
+      width: calc(100% + 7vw + 170px + 5vw - 30px);
     }
   }
 `
@@ -95,12 +119,8 @@ export const Profile = styled.div`
   @media (min-width: 1100px) {
     padding: 4vw;
 
-    &.maze {
-      padding-top: ${random(4, 8)}vh;
-    }
-
     &.nils {
-      padding-top: ${random(6, 11)}vh;
+      padding-top: 10vh;
     }
   }
 
@@ -111,16 +131,16 @@ export const Profile = styled.div`
 `
 
 export const Contact = styled.address`
-  padding: 10vw;
+  padding: 10vw 0;
   font-style: normal;
   font-weight: 300;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 3vh;
 
-  @media (min-width: 1110px) {
+  /* @media (min-width: 1110px) {
     text-align: center;
-  }
+  } */
 
   span:not(:last-of-type):after {
     content: '/';

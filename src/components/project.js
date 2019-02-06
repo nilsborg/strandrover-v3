@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import Img from 'gatsby-image'
 
+import ShadowImage from './shadowImage'
 import Video from '../components/video'
 import LinkIcon from '../assets/images/link.svg'
-import Shadow from './shadow'
 
-import {
-  StyledProject,
-  ViewProject,
-  Tag,
-  ExtraImageWrapper,
-} from './projectStyles'
+import { StyledProject, ViewProject, Tag } from './projectStyles'
 
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -38,17 +32,6 @@ const PosedViewProject = posed(ViewProject)(posePrefs)
 const Parallaxer = styled.div`
   will-change: transform;
 `
-
-const ExtraImage = ({ className, image }) => {
-  return (
-    <ExtraImageWrapper className={className}>
-      <figure>
-        <Img fluid={image.childImageSharp.fluid} />
-        <Shadow />
-      </figure>
-    </ExtraImageWrapper>
-  )
-}
 
 class Project extends Component {
   projectRef = React.createRef()
@@ -160,7 +143,7 @@ class Project extends Component {
                 transform: `translate3d(0px, ${image1Y}px, 0px)`,
               }}
             >
-              <ExtraImage image={image1} />
+              <ShadowImage image={image1} />
             </Parallaxer>
           </PoserGeneral>
         )}
@@ -172,7 +155,7 @@ class Project extends Component {
                 transform: `translate3d(0px, ${image2Y}px, 0px)`,
               }}
             >
-              <ExtraImage image={image2} />
+              <ShadowImage image={image2} />
             </Parallaxer>
           </PoserGeneral>
         )}
