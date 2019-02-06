@@ -105,7 +105,8 @@ export const StyledProject = styled.div`
 
   .testimonial {
     margin: 0;
-    z-index: 2;
+    z-index: 11;
+    mix-blend-mode: hard-light;
 
     @media (min-width: 1000px) {
       grid-column: 3 / -1;
