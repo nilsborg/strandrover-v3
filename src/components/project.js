@@ -112,7 +112,9 @@ class Project extends Component {
 
     return (
       <StyledProject
-        className={`type--${type.toLowerCase()} index--${this.props.index}`}
+        className={`type--${type.toLowerCase()} ${
+          this.props.index % 2 === 0 ? 'ltr' : 'rtl'
+        }`}
         ref={this.projectRef}
       >
         <PosedHeader className="header">

@@ -9,6 +9,10 @@ export const StyledProject = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5vw;
+
+    &.rtl {
+      direction: rtl;
+    }
   }
 
   @media (min-width: 1200px) {
@@ -23,6 +27,7 @@ export const StyledProject = styled.div`
   .testimonial,
   .link {
     position: relative;
+    direction: ltr; /* to counter the rtl on every second project */
   }
 
   .header {
