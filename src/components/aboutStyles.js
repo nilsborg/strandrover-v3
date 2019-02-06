@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import random from 'lodash/random'
 
 export const Container = styled.div`
   padding: 7vh 5vw;
