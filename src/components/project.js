@@ -103,12 +103,11 @@ class Project extends Component {
       image2,
     } = this.props.node
 
-    // const headerY = this.calcParallax(9, 'slowDown')
-    // const descY = this.calcParallax(10, 'slowDown')
-    // const testimonialY = this.calcParallax(8, 'slowDown')
-    const headerY = 0
-    const descY = 0
-    const testimonialY = 0
+    const headerY = this.calcParallax(10)
+    const descY = this.calcParallax(10, 'slowDown')
+    const image1Y = this.calcParallax(5, 'slowDown')
+    const image2Y = this.calcParallax(12)
+    const testimonialY = this.calcParallax(8)
 
     return (
       <StyledProject
@@ -149,9 +148,27 @@ class Project extends Component {
           <Video type={type} url={video.publicURL} poster={poster} />
         </PosedVideoWrap>
 
-        {image1 && <ExtraImage className="extraImage1" image={image1} />}
+        {image1 && (
+          <Parallaxer
+            className="extraImage1"
+            style={{
+              transform: `translate3d(0px, ${image1Y}px, 0px)`,
+            }}
+          >
+            <ExtraImage image={image1} />
+          </Parallaxer>
+        )}
 
-        {image2 && <ExtraImage className="extraImage2" image={image2} />}
+        {image2 && (
+          <Parallaxer
+            className="extraImage2"
+            style={{
+              transform: `translate3d(0px, ${image2Y}px, 0px)`,
+            }}
+          >
+            <ExtraImage image={image2} />
+          </Parallaxer>
+        )}
 
         {quote && (
           <PosedTestimonial className="testimonial">
