@@ -11,7 +11,9 @@ const StyledShadow = styled.div`
   height: 100%;
   background-color: rgba(54, 79, 107, 0.2);
   border-radius: var(--radius);
-  will-change: transform, opacity, filter;
+  /* filter: blur(10px); */
+
+  will-change: transform, opacity;
 `
 
 class Shadow extends Component {
@@ -96,17 +98,15 @@ class Shadow extends Component {
       this.state.cursor.y
     )
 
-    let shadowStyle = {
-      transform: `translate3d(${translate.x}px, ${translate.y}px, 0px)`,
-    }
-
-    if (!this.isFirefox()) {
-      shadowStyle.filter = `blur(${distance / 50}px)`
-    } else {
-      shadowStyle.opacity = 1.0 - Math.min(1, distance / 1000.0)
-    }
-
-    return <StyledShadow ref={this.shadowRef} style={shadowStyle} />
+    return (
+      <StyledShadow
+        ref={this.shadowRef}
+        style={{
+          transform: `translate3d(${translate.x}px, ${translate.y}px, 0px)`,
+          opacity: 1.0 - Math.min(1, distance / 1000.0),
+        }}
+      />
+    )
   }
 }
 

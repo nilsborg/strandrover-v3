@@ -114,8 +114,6 @@ class Project extends Component {
     const image2Y = this.calcParallax(12)
     const testimonialY = this.calcParallax(8)
 
-    console.log(this.props.status)
-
     return (
       <StyledProject
         className={`type--${type.toLowerCase()} ${
