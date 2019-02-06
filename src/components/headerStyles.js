@@ -111,7 +111,7 @@ export const Stripe = styled.div`
     a {
       text-decoration: none;
       color: var(--color-highlight);
-      padding: 0.5em 0;
+      padding: 0 0.3em;
       transition: opacity 250ms, filter 250ms;
 
       span.gradient {
@@ -132,6 +132,7 @@ export const Stripe = styled.div`
 
       @media (min-width: 1100px) {
         transform: rotate(180deg);
+        padding: 0.4em 0;
       }
     }
   }
