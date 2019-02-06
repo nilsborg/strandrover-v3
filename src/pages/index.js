@@ -15,6 +15,7 @@ const ProjectList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 
   @media (min-width: 450px) and (max-width: 999px) {
     padding: 10vh 10vw;
@@ -61,7 +62,12 @@ class IndexPage extends Component {
             >
               {data.projects.edges.map(({ node }, index) => (
                 <ProjectWrap key={index}>
-                  <Project node={node} key={index} index={index} />
+                  <Project
+                    node={node}
+                    key={index}
+                    index={index}
+                    status={status}
+                  />
                 </ProjectWrap>
               ))}
             </PosedProjectList>

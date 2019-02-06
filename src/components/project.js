@@ -25,12 +25,16 @@ const posePrefs = {
     opacity: 0,
     x: 250,
     transition: { type: 'spring' },
+    // transition: {
+    //   duration: 30000,
+    // },
   },
 }
 
-const PosedHeader = posed.header(posePrefs)
+const PoserGeneral = posed.div(posePrefs)
+
+const PosedHeader = posed.div(posePrefs)
 const PosedDesc = posed.div(posePrefs)
-const PosedVideoWrap = posed.div(posePrefs)
 const PosedTestimonial = posed.blockquote(posePrefs)
 const PosedViewProject = posed(ViewProject)(posePrefs)
 
@@ -112,11 +116,13 @@ class Project extends Component {
     const image2Y = this.calcParallax(12)
     const testimonialY = this.calcParallax(8)
 
+    console.log(this.props.status)
+
     return (
       <StyledProject
         className={`type--${type.toLowerCase()} ${
           this.props.index % 2 === 0 ? 'ltr' : 'rtl'
-        }`}
+        } status--${this.props.status}`}
         ref={this.projectRef}
       >
         <PosedHeader className="header">
@@ -147,30 +153,32 @@ class Project extends Component {
           </PosedDesc>
         )}
 
-        <PosedVideoWrap className="video">
+        <PoserGeneral className="video">
           <Video type={type} url={video.publicURL} poster={poster} />
-        </PosedVideoWrap>
+        </PoserGeneral>
 
         {image1 && (
-          <Parallaxer
-            className="extraImage1"
-            style={{
-              transform: `translate3d(0px, ${image1Y}px, 0px)`,
-            }}
-          >
-            <ExtraImage image={image1} />
-          </Parallaxer>
+          <PoserGeneral className="extraImage1">
+            <Parallaxer
+              style={{
+                transform: `translate3d(0px, ${image1Y}px, 0px)`,
+              }}
+            >
+              <ExtraImage image={image1} />
+            </Parallaxer>
+          </PoserGeneral>
         )}
 
         {image2 && (
-          <Parallaxer
-            className="extraImage2"
-            style={{
-              transform: `translate3d(0px, ${image2Y}px, 0px)`,
-            }}
-          >
-            <ExtraImage image={image2} />
-          </Parallaxer>
+          <PoserGeneral className="extraImage2">
+            <Parallaxer
+              style={{
+                transform: `translate3d(0px, ${image2Y}px, 0px)`,
+              }}
+            >
+              <ExtraImage image={image2} />
+            </Parallaxer>
+          </PoserGeneral>
         )}
 
         {quote && (

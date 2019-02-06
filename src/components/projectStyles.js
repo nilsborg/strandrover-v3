@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const StyledProject = styled.div`
   position: relative;
@@ -16,24 +16,33 @@ export const StyledProject = styled.div`
     }
   }
 
-  &.ltr:after {
-    content: '';
-    position: absolute;
-    top: -5vh;
-    left: -5vw;
-    right: -5vw;
-    bottom: -5vh;
-    background-color: var(--color-offwhiter);
-    z-index: -1;
-    transform: skewY(-40deg);
+  /* Absperrband */
+  &.ltr {
+    &:after {
+      content: '';
+      position: absolute;
+      top: -5vh;
+      left: -5vw;
+      right: -5vw;
+      bottom: -5vh;
+      background-color: var(--color-offwhiter);
+      z-index: -1;
+      transform: skewY(-40deg);
+      transition: opacity 500ms;
+      opacity: 0;
 
-    @media (min-width: 450px) and (max-width: 999px) {
-      left: -10vw;
-      right: -10vw;
+      @media (min-width: 450px) and (max-width: 999px) {
+        left: -10vw;
+        right: -10vw;
+      }
+
+      @media (min-width: 1100px) {
+        left: calc((7vw + 200px) * -1);
+      }
     }
 
-    @media (min-width: 1100px) {
-      left: calc((7vw + 200px) * -1);
+    &.status--entered:after {
+      opacity: 1;
     }
   }
 
@@ -57,11 +66,6 @@ export const StyledProject = styled.div`
   .header {
     @media (min-width: 1000px) {
       grid-column: 1 / -1;
-    }
-
-    @media (min-width: 1200px) {
-      transition: opacity 300ms 200ms ease-out;
-      z-index: 3;
     }
 
     h2 {
@@ -162,32 +166,32 @@ export const StyledProject = styled.div`
   }
 `
 
-export const ViewProject = styled.a`
-  @keyframes fly {
-    0% {
-      transform: translate(0);
-    }
-    50% {
-      transform: translate(100%);
-      opacity: 1;
-    }
-    51% {
-      transform: translate(100%);
-      opacity: 0;
-    }
-    52% {
-      transform: translate(-100%);
-      opacity: 0;
-    }
-    53% {
-      transform: translate(-100%);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(0);
-    }
+const fly = keyframes`
+  0% {
+    transform: translate(0);
   }
+  50% {
+    transform: translate(100%);
+    opacity: 1;
+  }
+  51% {
+    transform: translate(100%);
+    opacity: 0;
+  }
+  52% {
+    transform: translate(-100%);
+    opacity: 0;
+  }
+  53% {
+    transform: translate(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0);
+  }
+`
 
+export const ViewProject = styled.a`
   font-family: var(--font-family-mono);
   font-weight: 300;
   font-style: normal;
@@ -213,7 +217,7 @@ export const ViewProject = styled.a`
   }
 
   &:hover svg path {
-    animation: fly 650ms ease-in-out infinite;
+    animation: ${fly} 650ms ease-in-out infinite;
   }
 `
 
