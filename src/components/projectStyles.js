@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const StyledProject = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5vh;
 
-  @media (min-width: 1100px) {
-    display: grid;
+  @media (min-width: 1000px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5vw;
     align-items: start;
@@ -16,29 +16,26 @@ export const StyledProject = styled.div`
     }
   }
 
-  @media (min-width: 1200px) {
-    transform-origin: center;
-    transition: opacity 350ms ease-out, filter 500ms ease-out,
-      transform 450ms ease-out;
+  .header,
+  .description,
+  .video,
+  .extraImage1,
+  .extraImage2,
+  .testimonial,
+  .link {
+    position: relative;
   }
 
   .header,
   .description,
-  .video,
   .testimonial,
   .link {
-    position: relative;
     direction: ltr; /* to counter the rtl on every second project */
   }
 
   .header {
-    @media (min-width: 1100px) {
+    @media (min-width: 1000px) {
       grid-column: 1 / -1;
-    }
-
-    @media (max-width: 1199px) {
-      margin-bottom: 7vh;
-      margin-top: 3vh;
     }
 
     @media (min-width: 1200px) {
@@ -59,7 +56,7 @@ export const StyledProject = styled.div`
         line-height: 1;
       }
 
-      @media (min-width: 1100px) {
+      @media (min-width: 1000px) {
         font-size: 60px;
         margin-bottom: 3vh;
       }
@@ -75,7 +72,11 @@ export const StyledProject = styled.div`
   .description {
     line-height: 1.8;
 
-    @media (min-width: 1100px) {
+    @media (max-width: 999px) {
+      margin-bottom: 3vh;
+    }
+
+    @media (min-width: 1000px) {
       grid-column: 1 / 3;
     }
   }
@@ -83,20 +84,20 @@ export const StyledProject = styled.div`
   .video {
     z-index: 10;
 
-    @media (min-width: 1100px) {
+    @media (min-width: 1000px) {
       grid-column: 3 / -1;
     }
   }
 
   .extraImage1 {
-    @media (min-width: 1100px) {
+    @media (min-width: 1000px) {
       grid-column: 1 / 4;
       margin-top: -30%;
     }
   }
 
   .extraImage2 {
-    @media (min-width: 1100px) {
+    @media (min-width: 1000px) {
       grid-column: 4 / 7;
       margin-top: 20%;
     }
@@ -106,7 +107,7 @@ export const StyledProject = styled.div`
     margin: 0;
     z-index: 2;
 
-    @media (min-width: 1100px) {
+    @media (min-width: 1000px) {
       grid-column: 3 / -1;
     }
 
@@ -124,10 +125,16 @@ export const StyledProject = styled.div`
         font-size: 36px;
       }
     }
+
+    span {
+      @media (max-width: 500px) {
+        font-size: 11px;
+      }
+    }
   }
 
   .link {
-    @media (min-width: 1100px) {
+    @media (min-width: 1000px) {
       grid-column: 1 / -1;
     }
   }
@@ -170,7 +177,7 @@ export const ViewProject = styled.a`
     font-size: 18px;
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 1000px) {
     font-size: 30px;
   }
 

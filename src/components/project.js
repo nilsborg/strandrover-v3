@@ -83,6 +83,9 @@ class Project extends Component {
   }
 
   calcParallax = (factor, direction = 'speedUp') => {
+    // only run this on iPad and up …
+    if (window.innerWidth < 1000) return 0
+
     const translateY = (this.state.offsetTop - this.state.scrollY) / factor
 
     return direction === 'slowDown' ? translateY * -1 : translateY

@@ -11,11 +11,15 @@ const ProjectList = styled.ul`
   list-style: none;
   margin-left: 0;
   margin-top: 0;
-  padding: 5vw;
+  padding: 7vh 5vw;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 450px) and (max-width: 999px) {
+    padding: 10vh 10vw;
+  }
 
   @media (min-width: 1100px) {
     padding-left: calc(7vw + 200px);
@@ -31,6 +35,10 @@ const PosedProjectList = posed(ProjectList)({
 const ProjectWrap = styled.li`
   margin-bottom: 5vh;
   width: 100%;
+
+  @media (min-width: 1000px) {
+    margin-bottom: 25vh;
+  }
 
   @media (min-width: 1100px) {
     margin-bottom: 40vh;

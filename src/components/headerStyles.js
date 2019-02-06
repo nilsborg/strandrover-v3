@@ -14,7 +14,6 @@ export const StyledHeader = styled.header`
   align-items: center;
 
   @media (max-width: 1099px) {
-    justify-content: space-around;
     padding: 5vw;
     padding-bottom: 0;
   }
@@ -31,6 +30,10 @@ export const StyledHeader = styled.header`
     width: 50px;
     height: 50px;
     fill: url(#svg-gradient) var(--color-secondary);
+
+    @media (max-width: 1099px) {
+      margin-right: 4vw;
+    }
 
     @media (min-width: 800px) {
       width: 80px;
@@ -59,7 +62,7 @@ export const Stripe = styled.div`
   letter-spacing: 0.075em;
   font-weight: 400;
 
-  @media (min-width: 700px) {
+  @media (min-width: 500px) {
     display: flex;
   }
 
@@ -71,7 +74,7 @@ export const Stripe = styled.div`
   }
 
   .claim {
-    @media (max-width: 699px) {
+    @media (max-width: 499px) {
       display: none;
     }
 
@@ -85,7 +88,7 @@ export const Stripe = styled.div`
   }
 
   nav {
-    @media (min-width: 700px) {
+    @media (min-width: 500px) {
       display: flex;
       align-items: center;
 
@@ -101,7 +104,6 @@ export const Stripe = styled.div`
           width: 1px;
           height: 3em;
           margin: 1vw 0;
-          /* margin-right: 0.3em; */
         }
       }
     }

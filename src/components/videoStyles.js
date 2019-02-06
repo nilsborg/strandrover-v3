@@ -3,6 +3,8 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
+  /* display: flex;
+  flex-direction: column; */
 
   &.type--desktop {
     max-width: 800px;
@@ -14,11 +16,8 @@ export const Wrapper = styled.div`
 
   &.type--mobile {
     width: 60%;
-    max-width: 350px;
-
-    @media (max-width: 1099px) {
-      align-self: center;
-    }
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .mask  {
