@@ -111,6 +111,8 @@ export const Stripe = styled.div`
     a {
       text-decoration: none;
       color: var(--color-highlight);
+      padding: 0.5em 0;
+      transition: opacity 250ms, filter 250ms;
 
       span.gradient {
         background-image: linear-gradient(
@@ -122,8 +124,10 @@ export const Stripe = styled.div`
 
       &.active {
         color: var(--color-primary);
-        text-decoration: underline;
+        /* text-decoration: underline; */
         pointer-events: none;
+        opacity: 0.4;
+        filter: saturate(0);
       }
 
       @media (min-width: 1100px) {

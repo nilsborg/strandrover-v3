@@ -25,9 +25,6 @@ const posePrefs = {
     opacity: 0,
     x: 250,
     transition: { type: 'spring' },
-    // transition: {
-    //   duration: 30000,
-    // },
   },
 }
 

@@ -25,6 +25,19 @@ class Header extends Component {
           <span className="claim">branding, design, code</span>
           <nav>
             <Link
+              to="/"
+              activeClassName="active"
+              exit={{
+                length: 0.6,
+              }}
+              entry={{
+                delay: 0.5,
+              }}
+            >
+              <span className="gradient">projects</span>
+            </Link>
+
+            <Link
               to="/about"
               activeClassName="active"
               exit={{
