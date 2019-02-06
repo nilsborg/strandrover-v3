@@ -11,12 +11,21 @@ class Video extends Component {
     if (!this.videoRef.current) return
 
     const video = this.videoRef.current
+    const videoCoords = video.getBoundingClientRect()
 
-    if (isInViewport(video.getBoundingClientRect())) {
-      video.play()
-      video.dataset.canPlay = true
+    if (isInViewport(videoCoords)) {
+      if (video.paused) {
+        console.log('playing video: ', video)
+
+        video.play()
+        video.dataset.canPlay = true
+      }
     } else {
-      video.pause()
+      if (!video.paused) {
+        console.log('pausing video: ', video)
+
+        video.pause()
+      }
     }
   }
 
