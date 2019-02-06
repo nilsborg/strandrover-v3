@@ -9,6 +9,7 @@ class Header extends Component {
     return (
       <StyledHeader>
         <Link
+          className="logo"
           to="/"
           exit={{
             length: 0.6,
@@ -17,7 +18,7 @@ class Header extends Component {
             delay: 0.5,
           }}
         >
-          <Logo className="logo" />
+          <Logo />
         </Link>
 
         <Stripe>

@@ -36,6 +36,10 @@ export const StyledHeader = styled.header`
       width: 80px;
       height: 80px;
     }
+
+    svg {
+      display: block;
+    }
   }
 
   /* Animate in! */
@@ -62,12 +66,8 @@ export const Stripe = styled.div`
   @media (min-width: 1100px) {
     writing-mode: vertical-lr;
     margin-left: -15px;
-    margin-top: 5vh;
+    margin-top: 100px;
     letter-spacing: 0.1em;
-
-    @media (min-height: 800px) {
-      margin-top: 15vh;
-    }
   }
 
   .claim {

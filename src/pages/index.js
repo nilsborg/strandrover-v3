@@ -19,6 +19,7 @@ const ProjectList = styled.ul`
 
   @media (min-width: 1100px) {
     padding-left: calc(7vw + 200px);
+    padding-top: calc(7vh + 100px + 80px - 0.6em);
   }
 `
 
