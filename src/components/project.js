@@ -84,6 +84,7 @@ class Project extends Component {
   }
 
   calcParallax = (factor, direction = 'speedUp') => {
+    if (typeof window === 'undefined') return 0
     // only run this on iPad and up …
     if (window.innerWidth < 1000) return 0
 
