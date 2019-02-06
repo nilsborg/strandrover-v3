@@ -9,6 +9,7 @@ export const StyledProject = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5vw;
+    align-items: start;
 
     &.rtl {
       direction: rtl;
@@ -90,16 +91,14 @@ export const StyledProject = styled.div`
   .extraImage1 {
     @media (min-width: 1100px) {
       grid-column: 1 / 4;
-      /* transform: translateY(-50%); */
-      /* margin-top: -10vh; */
+      margin-top: -30%;
     }
   }
 
   .extraImage2 {
     @media (min-width: 1100px) {
       grid-column: 4 / 7;
-      /* transform: translateY(50%); */
-      /* margin-bottom: 20%; */
+      margin-top: 20%;
     }
   }
 
@@ -190,11 +189,7 @@ export const ViewProject = styled.a`
 `
 
 export const ExtraImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
   figure {
-    width: 100%;
     margin: 0;
     position: relative;
 
