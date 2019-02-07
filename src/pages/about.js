@@ -13,6 +13,7 @@ import {
   Profile,
   Contact,
   Clientlist,
+  About,
 } from '../components/aboutStyles'
 
 const PoserContainer = posed(Container)({
@@ -35,7 +36,17 @@ const Poser = posed.div({
 
 const AboutPage = ({
   data: {
-    about: { headline, intro, image, image1, image2, maze, nils, clientlist },
+    about: {
+      headline,
+      intro,
+      image,
+      image1,
+      image2,
+      maze,
+      nils,
+      clientlist,
+      about,
+    },
   },
 }) => {
   return (
@@ -117,6 +128,14 @@ const AboutPage = ({
                 }}
               />
             </Poser>
+
+            <Poser>
+              <About
+                dangerouslySetInnerHTML={{
+                  __html: about.childMarkdownRemark.html,
+                }}
+              />
+            </Poser>
           </PoserContainer>
         )
       }}
@@ -165,6 +184,11 @@ export const pageQuery = graphql`
         }
       }
       clientlist {
+        childMarkdownRemark {
+          html
+        }
+      }
+      about {
         childMarkdownRemark {
           html
         }

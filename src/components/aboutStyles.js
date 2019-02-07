@@ -51,17 +51,17 @@ export const Welcome = styled.div`
 
   .extraImage1 {
     @media (min-width: 1100px) {
-      grid-column: 1 / 4;
+      grid-column: 1 / 5;
       z-index: 2;
     }
   }
 
   .extraImage2 {
     @media (min-width: 1100px) {
-      grid-column: 4 / 6;
+      grid-column: 5 / 6;
       align-self: end;
-      margin-left: -10vw;
-      margin-bottom: -20vh;
+      margin-left: -20vw;
+      margin-bottom: -40vh;
       z-index: 1;
     }
   }
@@ -76,10 +76,6 @@ export const Welcome = styled.div`
     p {
       @media (min-width: 1110px) {
         font-size: 1.2em;
-      }
-
-      &:last-child {
-        font-size: 2em;
       }
     }
   }
@@ -214,4 +210,8 @@ export const Clientlist = styled.div`
       }
     }
   }
+`
+
+export const About = styled.article`
+  border: 1px solid coral;
 `
