@@ -132,9 +132,11 @@ class Project extends Component {
           </PosedDesc>
         )}
 
-        <PoserGeneral className="video">
-          <Video type={type} url={video.publicURL} poster={poster} />
-        </PoserGeneral>
+        {video && (
+          <PoserGeneral className="video">
+            <Video type={type} url={video.publicURL} poster={poster} />
+          </PoserGeneral>
+        )}
 
         {image1 && (
           <PoserGeneral className="extraImage1">
