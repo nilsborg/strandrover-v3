@@ -50,6 +50,39 @@ module.exports = {
         layout: require.resolve(`./src/components/layout.js`),
       },
     },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './src/assets/images/favicon.png',
+
+        // WebApp Manifest Configuration
+        appName: 'strandrover', // Inferred with your package.json
+        appDescription: null,
+        developerName: '@nilsborgboehmer',
+        developerURL: 'https://strandrover.com',
+        dir: 'auto',
+        lang: 'de-DE',
+        background: '#fff',
+        theme_color: '#fff',
+        display: 'standalone',
+        orientation: 'any',
+        start_url: '/?homescreen=1',
+        version: '1.0',
+
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          opengraph: true,
+          twitter: true,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
