@@ -265,7 +265,7 @@ const DataPrivacyPage = () => (
           Wilton Place, Dublin 2, Irland) – Datenschutzerklärung:{' '}
           <a
             href="https://www.linkedin.com/legal/privacy-policy"
-            rel="nofollow"
+            rel="noopener noreferrer"
             target="_blank"
           >
             https://www.linkedin.com/legal/privacy-policy
@@ -273,7 +273,7 @@ const DataPrivacyPage = () => (
           , Cookie-Richtlinie und Opt-Out:{' '}
           <a
             href="https://www.linkedin.com/legal/cookie-policy"
-            rel="nofollow"
+            rel="noopener noreferrer"
             target="_blank"
           >
             https://www.linkedin.com/legal/cookie-policy
@@ -281,7 +281,7 @@ const DataPrivacyPage = () => (
           , Privacy Shield der US-Firma LinkedIn Inc.:{' '}
           <a
             href="https://www.privacyshield.gov/participant?id=a2zt0000000L0UZAA0&status=Active"
-            rel="nofollow"
+            rel="noopener noreferrer"
             target="_blank"
           >
             https://www.privacyshield.gov/participant?id=a2zt0000000L0UZAA0&status=Active

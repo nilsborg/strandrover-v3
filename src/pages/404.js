@@ -1,13 +1,40 @@
 import React from 'react'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+
+import styled from 'styled-components'
 
 import SEO from '../components/seo'
 
-const NotFoundPage = () => (
+const Wallpaper = styled(Img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+`
+
+const NotFoundPage = ({ data }) => (
   <>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+
+    <Wallpaper
+      fluid={data.image.childImageSharp.fluid}
+      imgStyle={{ objectFit: 'cover' }}
+    />
   </>
 )
+
+export const pageQuery = graphql`
+  query NotFoundPageQuery {
+    image: file(relativePath: { eq: "404.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 4000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 export default NotFoundPage
