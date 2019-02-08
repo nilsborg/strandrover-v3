@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import posed from 'react-pose'
 
 import Project from '../components/project'
+import Footer from '../components/footer'
 
 const ProjectList = styled.ul`
   list-style: none;
@@ -53,24 +54,27 @@ class IndexPage extends Component {
       <TransitionState>
         {({ transitionStatus: status }) => {
           return (
-            <PosedProjectList
-              pose={
-                ['entering', 'entered'].includes(status)
-                  ? 'visible'
-                  : 'invisible'
-              }
-            >
-              {data.projects.edges.map(({ node }, index) => (
-                <ProjectWrap key={index}>
-                  <Project
-                    node={node}
-                    key={index}
-                    index={index}
-                    status={status}
-                  />
-                </ProjectWrap>
-              ))}
-            </PosedProjectList>
+            <>
+              <PosedProjectList
+                pose={
+                  ['entering', 'entered'].includes(status)
+                    ? 'visible'
+                    : 'invisible'
+                }
+              >
+                {data.projects.edges.map(({ node }, index) => (
+                  <ProjectWrap key={index}>
+                    <Project
+                      node={node}
+                      key={index}
+                      index={index}
+                      status={status}
+                    />
+                  </ProjectWrap>
+                ))}
+              </PosedProjectList>
+              <Footer />
+            </>
           )
         }}
       </TransitionState>

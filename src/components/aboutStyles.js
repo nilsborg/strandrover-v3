@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 7vh 5vw;
+  padding: 7vh 5vw 0;
   overflow: hidden;
 
   @media (min-width: 1100px) {
@@ -36,17 +36,8 @@ export const Welcome = styled.div`
     grid-column: 1 / -1;
 
     h1 {
-      font-weight: 300;
       margin: 0;
-
-      @media (min-width: 500px) {
-        font-size: 40px;
-        line-height: 1.2;
-      }
-
-      @media (min-width: 1000px) {
-        font-size: 60px;
-      }
+      font-weight: 300;
     }
   }
 

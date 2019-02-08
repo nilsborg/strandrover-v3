@@ -6,7 +6,6 @@ import GlobalStyle from './globalStyle'
 import '../assets/fonts.css'
 
 import Header from './header'
-// import Footer from './footer'
 
 const Layout = ({ children }) => (
   <main>
@@ -14,7 +13,6 @@ const Layout = ({ children }) => (
     <GlobalStyle />
     <Header />
     {children}
-    {/* <Footer /> */}
   </main>
 )
 

@@ -6,6 +6,7 @@ import posed from 'react-pose'
 
 import ShadowImage from '../components/shadowImage'
 import Map from '../components/map'
+import Footer from '../components/footer'
 
 import {
   Container,
@@ -90,108 +91,111 @@ class AboutPage extends Component {
       <TransitionState>
         {({ transitionStatus: status }) => {
           return (
-            <PoserContainer
-              pose={
-                ['entering', 'entered'].includes(status)
-                  ? 'visible'
-                  : 'invisible'
-              }
-            >
-              <Welcome>
-                <Poser className="headline">
-                  <h1 dangerouslySetInnerHTML={{ __html: headline }} />
-                </Poser>
-
-                <Poser className="extraImage1">
-                  <ShadowImage image={image1} />
-                </Poser>
-
-                <Poser className="extraImage2">
-                  <ShadowImage image={image2} />
-                </Poser>
-
-                <Poser
-                  className="introText"
-                  dangerouslySetInnerHTML={{
-                    __html: intro.childMarkdownRemark.html,
-                  }}
-                />
-              </Welcome>
-
-              <Poser>
-                <Contact>
-                  <span>
-                    {[
-                      'Say hi',
-                      'Drop us a line',
-                      'Hola',
-                      'Waaatttuuuppp',
-                      'Greetings Earthling',
-                      '👋',
-                    ].map((greeting, index) => (
-                      <span key={index}>{greeting}</span>
-                    ))}
-                  </span>
-                  <a href="mailto: hello@strandrover.com">
-                    <span className="gradient">hello@strandrover.com</span>
-                  </a>
-                </Contact>
-              </Poser>
-
-              <Poser>
-                <Intro>
-                  <Poser className="bannerWrap">
-                    <ShadowImage className="banner" image={image} />
+            <>
+              <PoserContainer
+                pose={
+                  ['entering', 'entered'].includes(status)
+                    ? 'visible'
+                    : 'invisible'
+                }
+              >
+                <Welcome>
+                  <Poser className="headline">
+                    <h1 dangerouslySetInnerHTML={{ __html: headline }} />
                   </Poser>
 
-                  <Profile
-                    className="maze"
+                  <Poser className="extraImage1">
+                    <ShadowImage image={image1} />
+                  </Poser>
+
+                  <Poser className="extraImage2">
+                    <ShadowImage image={image2} />
+                  </Poser>
+
+                  <Poser
+                    className="introText"
                     dangerouslySetInnerHTML={{
-                      __html: maze.childMarkdownRemark.html,
+                      __html: intro.childMarkdownRemark.html,
                     }}
                   />
+                </Welcome>
 
-                  <Profile
-                    className="nils"
+                <Poser>
+                  <Contact>
+                    <span>
+                      {[
+                        'Say hi',
+                        'Drop us a line',
+                        'Hola',
+                        'Waaatttuuuppp',
+                        'Greetings Earthling',
+                        '👋',
+                      ].map((greeting, index) => (
+                        <span key={index}>{greeting}</span>
+                      ))}
+                    </span>
+                    <a href="mailto: hello@strandrover.com">
+                      <span className="gradient">hello@strandrover.com</span>
+                    </a>
+                  </Contact>
+                </Poser>
+
+                <Poser>
+                  <Intro>
+                    <Poser className="bannerWrap">
+                      <ShadowImage className="banner" image={image} />
+                    </Poser>
+
+                    <Profile
+                      className="maze"
+                      dangerouslySetInnerHTML={{
+                        __html: maze.childMarkdownRemark.html,
+                      }}
+                    />
+
+                    <Profile
+                      className="nils"
+                      dangerouslySetInnerHTML={{
+                        __html: nils.childMarkdownRemark.html,
+                      }}
+                    />
+                  </Intro>
+                </Poser>
+
+                {largeScreen && (
+                  <PosedMapContainer>
+                    <Map markers={markers} center={mapCenter} />
+                  </PosedMapContainer>
+                )}
+
+                <Poser>
+                  <Clientlist
                     dangerouslySetInnerHTML={{
-                      __html: nils.childMarkdownRemark.html,
-                    }}
-                  />
-                </Intro>
-              </Poser>
-
-              {largeScreen && (
-                <PosedMapContainer>
-                  <Map markers={markers} center={mapCenter} />
-                </PosedMapContainer>
-              )}
-
-              <Poser>
-                <Clientlist
-                  dangerouslySetInnerHTML={{
-                    __html: clientlist.childMarkdownRemark.html,
-                  }}
-                />
-              </Poser>
-
-              <About>
-                <Poser className="aboutText">
-                  <article
-                    dangerouslySetInnerHTML={{
-                      __html: about.childMarkdownRemark.html,
+                      __html: clientlist.childMarkdownRemark.html,
                     }}
                   />
                 </Poser>
 
-                <Poser className="aboutImage1">
-                  <ShadowImage image={aboutImage1} />
-                </Poser>
+                <About>
+                  <Poser className="aboutText">
+                    <article
+                      dangerouslySetInnerHTML={{
+                        __html: about.childMarkdownRemark.html,
+                      }}
+                    />
+                  </Poser>
 
-                <Poser className="aboutImage2">
-                  <ShadowImage image={aboutImage2} />
-                </Poser>
-              </About>
-            </PoserContainer>
+                  <Poser className="aboutImage1">
+                    <ShadowImage image={aboutImage1} />
+                  </Poser>
+
+                  <Poser className="aboutImage2">
+                    <ShadowImage image={aboutImage2} />
+                  </Poser>
+                </About>
+              </PoserContainer>
+              <Footer />
+            </>
           )
         }}
       </TransitionState>

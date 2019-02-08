@@ -68,10 +68,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 2.2em;
+    @media (min-width: 500px) {
+      font-size: 40px;
+      line-height: 1.2;
+    }
 
-    @media (min-width: 800px) {
-      font-size: 3em;
+    @media (min-width: 1000px) {
+      font-size: 60px;
     }
   }
 
