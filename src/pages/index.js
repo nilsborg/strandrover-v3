@@ -28,8 +28,8 @@ const ProjectList = styled.ul`
 `
 
 const PosedProjectList = posed(ProjectList)({
-  visible: { staggerChildren: 250 },
-  invisible: { staggerChildren: 200 },
+  visible: { staggerChildren: 50 },
+  invisible: { staggerChildren: 150 },
 })
 
 const ProjectWrap = styled.li`

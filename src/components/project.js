@@ -93,8 +93,8 @@ class Project extends Component {
 
     const headerY = this.calcParallax(10)
     const descY = this.calcParallax(10, 'slowDown')
-    const image1Y = this.calcParallax(5, 'slowDown')
-    const image2Y = this.calcParallax(12)
+    const image1Y = this.calcParallax(12)
+    const image2Y = this.calcParallax(5)
     const testimonialY = this.calcParallax(8)
 
     return (
