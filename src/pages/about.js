@@ -5,6 +5,7 @@ import { TransitionState } from 'gatsby-plugin-transition-link'
 import posed from 'react-pose'
 
 import ShadowImage from '../components/shadowImage'
+import Map from '../components/map'
 
 import {
   Container,
@@ -14,6 +15,7 @@ import {
   Contact,
   Clientlist,
   About,
+  MapContainer,
 } from '../components/aboutStyles'
 
 const PoserContainer = posed(Container)({
@@ -21,7 +23,7 @@ const PoserContainer = posed(Container)({
   invisible: { staggerChildren: 50 },
 })
 
-const Poser = posed.div({
+const poserPrefs = {
   visible: {
     opacity: 1,
     x: 0,
@@ -32,7 +34,11 @@ const Poser = posed.div({
     x: -250,
     transition: { type: 'spring' },
   },
-})
+}
+
+const Poser = posed.div(poserPrefs)
+
+const PosedMapContainer = posed(MapContainer)(poserPrefs)
 
 const AboutPage = ({
   data: {
@@ -52,6 +58,22 @@ const AboutPage = ({
   return (
     <TransitionState>
       {({ transitionStatus: status }) => {
+        const markers = [
+          {
+            longitude: 8.76244,
+            latitude: 50.098903,
+          },
+          {
+            longitude: 13.424494,
+            latitude: 52.467192,
+          },
+        ]
+
+        const mapCenter = {
+          longitude: 11.291,
+          latitude: 51.666,
+        }
+
         return (
           <PoserContainer
             pose={
@@ -120,6 +142,10 @@ const AboutPage = ({
                 />
               </Intro>
             </Poser>
+
+            <PosedMapContainer>
+              <Map markers={markers} center={mapCenter} />
+            </PosedMapContainer>
 
             <Poser>
               <Clientlist

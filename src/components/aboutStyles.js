@@ -215,3 +215,16 @@ export const Clientlist = styled.div`
 export const About = styled.article`
   border: 1px solid coral;
 `
+
+export const MapContainer = styled.div`
+  height: 70vh;
+
+  @media (max-width: 999px) {
+    display: none;
+  }
+
+  @media (min-width: 1100px) {
+    margin-left: calc((7vw + 200px) * -1);
+    width: calc(100% + 7vw + 200px + 5vw);
+  }
+`
