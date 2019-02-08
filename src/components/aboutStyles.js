@@ -60,8 +60,12 @@ export const Welcome = styled.div`
       grid-column: 4 / 6;
       align-self: end;
       z-index: 10;
-      margin-bottom: -80%;
+      /* margin-top: -100%; */
       margin-left: 10%;
+
+      figure {
+        transform: translateY(-50%);
+      }
     }
   }
 

@@ -4,44 +4,77 @@ import Link from 'gatsby-plugin-transition-link'
 import styled from 'styled-components'
 
 const StyledFooter = styled.footer`
-  padding: 1em;
-  font-size: 0.75em;
-  opacity: 0.5;
-  text-align: center;
-  border: 1px solid coral;
+  /* border: 1px solid coral; */
   position: relative;
-  padding-top: 20vh;
+  padding: 7vh 5vw 2vh;
+  overflow: hidden;
 
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    z-index: -1;
-    background-color: var(--color-secondary);
-    width: 50%;
-    max-width: 600px;
-    transform: skewY(-45deg);
+  background: url('/triangle.svg') no-repeat;
+  background-position: right center;
+
+  @media (min-width: 1100px) {
+    padding-top: calc(7vh + 100px + 80px - 0.8em);
+    padding-left: calc(7vw + 200px);
+  }
+
+  address {
+    font-style: normal;
+    display: flex;
+
+    @media (min-width: 600px) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .hello  {
+    mix-blend-mode: screen;
+    font-size: 30px;
+    margin-bottom: 1em;
+
+    @media (min-width: 800px) {
+      font-size: 60px;
+      font-weight: 300;
+    }
+  }
+
+  .smallText {
+    mix-blend-mode: color-dodge;
+
+    @media (min-width: 600px) {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    a {
+      margin-right: 1em;
+    }
+  }
+
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
   }
 `
 
 const Header = () => (
   <StyledFooter>
     <address>
-      <a href="mailto: hello@strandrover.com">
+      <a className="hello" href="mailto: hello@strandrover.com">
         <span className="gradient">hello@strandrover.com</span>
       </a>
     </address>
 
-    <nav className="legal">
-      <Link to="/impressum">Impressum</Link>
-      <Link to="/datenschutz">Datenschutz</Link>
-    </nav>
+    <div className="smallText">
+      <nav className="legal">
+        <Link to="/impressum">Impressum</Link>
+        <Link to="/datenschutz">Datenschutz</Link>
+      </nav>
 
-    <aside className="copyright">
-      © strandrover {new Date().getFullYear()}
-    </aside>
+      <aside className="copyright">
+        © strandrover {new Date().getFullYear()}
+      </aside>
+    </div>
   </StyledFooter>
 )
 

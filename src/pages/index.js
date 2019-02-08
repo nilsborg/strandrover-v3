@@ -34,15 +34,18 @@ const PosedProjectList = posed(ProjectList)({
 })
 
 const ProjectWrap = styled.li`
-  margin-bottom: 5vh;
   width: 100%;
 
-  @media (min-width: 1000px) {
-    margin-bottom: 25vh;
-  }
+  &:not(:last-child) {
+    margin-bottom: 5vh;
 
-  @media (min-width: 1100px) {
-    margin-bottom: 40vh;
+    @media (min-width: 1000px) {
+      margin-bottom: 25vh;
+    }
+
+    @media (min-width: 1100px) {
+      margin-bottom: 40vh;
+    }
   }
 `
 
