@@ -5,7 +5,7 @@ export const Container = styled.div`
   overflow: hidden;
 
   @media (min-width: 1100px) {
-    padding-top: calc(7vh + 100px + 80px - 0.6em);
+    padding-top: calc(7vh + 100px + 80px - 0.8em);
     padding-left: calc(7vw + 200px);
   }
 
@@ -37,10 +37,16 @@ export const Welcome = styled.div`
 
     h1 {
       font-weight: 300;
-      color: var(--color-secondary);
-      line-height: 1.3;
-      text-transform: uppercase;
       margin: 0;
+
+      @media (min-width: 500px) {
+        font-size: 40px;
+        line-height: 1.2;
+      }
+
+      @media (min-width: 1000px) {
+        font-size: 60px;
+      }
     }
   }
 
@@ -224,6 +230,10 @@ export const About = styled.article`
 
   .aboutText {
     grid-column: 1 / -1;
+
+    h2 {
+      margin-bottom: 1.5em;
+    }
   }
 
   .aboutImage1 {
@@ -239,6 +249,10 @@ export const About = styled.article`
       grid-column: 4 / 6;
       margin-bottom: -100%;
       margin-top: 20vh;
+
+      figure {
+        transform: translate(-30%, 0);
+      }
     }
   }
 `

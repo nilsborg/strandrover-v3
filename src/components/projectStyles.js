@@ -69,12 +69,9 @@ export const StyledProject = styled.div`
     }
 
     h2 {
-      font-family: var(--font-family);
-      font-weight: 300;
       margin-top: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
       margin-bottom: 0.75vh;
+      font-weight: 300;
 
       @media (min-width: 500px) {
         font-size: 40px;

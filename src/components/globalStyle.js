@@ -54,14 +54,20 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3 {
     margin-top: 2em;
     margin-bottom: 0.5em;
+    letter-spacing: 0.075em;
 
     &:first-child {
       margin-top: 0;
     }
   }
 
-  h1 {
+  h1, h2 {
+    font-family: var(--font-family);
     font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  h1 {
     font-size: 2.2em;
 
     @media (min-width: 800px) {
@@ -70,16 +76,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    font-weight: 300;
     font-size: 1.7em;
+    font-weight: 500;
 
     @media (min-width: 800px) {
       font-size: 2em;
     }
-  }
-
-  h2, h3 {
-    letter-spacing: 0.075em
   }
 
   h3 {
