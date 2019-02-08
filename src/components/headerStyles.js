@@ -114,12 +114,17 @@ export const Stripe = styled.div`
       padding: 0 0.3em;
       transition: opacity 250ms, filter 250ms;
 
-      span.gradient {
+      .gradient {
         background-image: linear-gradient(
           to bottom,
           var(--color-highlight),
           var(--color-secondary)
         );
+      }
+
+      .monkey {
+        visibility: hidden;
+        cursor: none;
       }
 
       &.active {

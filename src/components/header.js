@@ -49,6 +49,17 @@ class Header extends Component {
             >
               <span className="gradient">about</span>
             </Link>
+            <Link
+              to="/monkey"
+              exit={{
+                length: 0.6,
+              }}
+              entry={{
+                delay: 0.5,
+              }}
+            >
+              <span className="monkey">monkey</span>
+            </Link>
           </nav>
         </Stripe>
       </StyledHeader>
