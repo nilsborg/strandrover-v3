@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import { TransitionState } from 'gatsby-plugin-transition-link'
 
@@ -40,9 +40,21 @@ const Poser = posed.div(poserPrefs)
 
 const PosedMapContainer = posed(MapContainer)(poserPrefs)
 
-const AboutPage = ({
-  data: {
-    about: {
+class AboutPage extends Component {
+  state = {
+    largeScreen: false,
+  }
+
+  componentDidMount() {
+    if (window && window.innerWidth >= 1100) {
+      this.setState({
+        largeScreen: true,
+      })
+    }
+  }
+
+  render() {
+    const {
       headline,
       intro,
       image,
@@ -52,121 +64,139 @@ const AboutPage = ({
       nils,
       clientlist,
       about,
-    },
-  },
-}) => {
-  return (
-    <TransitionState>
-      {({ transitionStatus: status }) => {
-        const markers = [
-          {
-            longitude: 8.76244,
-            latitude: 50.098903,
-          },
-          {
-            longitude: 13.424494,
-            latitude: 52.467192,
-          },
-        ]
+      aboutImage1,
+      aboutImage2,
+    } = this.props.data.about
 
-        const mapCenter = {
-          longitude: 11.291,
-          latitude: 51.666,
-        }
+    const markers = [
+      {
+        longitude: 8.76244,
+        latitude: 50.098903,
+      },
+      {
+        longitude: 13.424494,
+        latitude: 52.467192,
+      },
+    ]
 
-        return (
-          <PoserContainer
-            pose={
-              ['entering', 'entered'].includes(status) ? 'visible' : 'invisible'
-            }
-          >
-            <Welcome>
-              <Poser className="headline">
-                <h1 dangerouslySetInnerHTML={{ __html: headline }} />
-              </Poser>
+    const mapCenter = {
+      longitude: 11.291,
+      latitude: 51.666,
+    }
 
-              <Poser className="extraImage1">
-                <ShadowImage image={image1} />
-              </Poser>
+    const { largeScreen } = this.state
 
-              <Poser className="extraImage2">
-                <ShadowImage image={image2} />
-              </Poser>
-
-              <Poser
-                className="introText"
-                dangerouslySetInnerHTML={{
-                  __html: intro.childMarkdownRemark.html,
-                }}
-              />
-            </Welcome>
-
-            <Poser>
-              <Contact>
-                <span>
-                  {[
-                    'Say hi',
-                    'Drop us a line',
-                    'Hola',
-                    'Waaatttuuuppp',
-                    'Greetings Earthling',
-                    '👋',
-                  ].map((greeting, index) => (
-                    <span key={index}>{greeting}</span>
-                  ))}
-                </span>
-                <a href="mailto: hello@strandrover.com">
-                  <span className="gradient">hello@strandrover.com</span>
-                </a>
-              </Contact>
-            </Poser>
-
-            <Poser>
-              <Intro>
-                <Poser className="bannerWrap">
-                  <ShadowImage className="banner" image={image} />
+    return (
+      <TransitionState>
+        {({ transitionStatus: status }) => {
+          return (
+            <PoserContainer
+              pose={
+                ['entering', 'entered'].includes(status)
+                  ? 'visible'
+                  : 'invisible'
+              }
+            >
+              <Welcome>
+                <Poser className="headline">
+                  <h1 dangerouslySetInnerHTML={{ __html: headline }} />
                 </Poser>
 
-                <Profile
-                  className="maze"
+                <Poser className="extraImage1">
+                  <ShadowImage image={image1} />
+                </Poser>
+
+                <Poser className="extraImage2">
+                  <ShadowImage image={image2} />
+                </Poser>
+
+                <Poser
+                  className="introText"
                   dangerouslySetInnerHTML={{
-                    __html: maze.childMarkdownRemark.html,
+                    __html: intro.childMarkdownRemark.html,
                   }}
                 />
+              </Welcome>
 
-                <Profile
-                  className="nils"
+              <Poser>
+                <Contact>
+                  <span>
+                    {[
+                      'Say hi',
+                      'Drop us a line',
+                      'Hola',
+                      'Waaatttuuuppp',
+                      'Greetings Earthling',
+                      '👋',
+                    ].map((greeting, index) => (
+                      <span key={index}>{greeting}</span>
+                    ))}
+                  </span>
+                  <a href="mailto: hello@strandrover.com">
+                    <span className="gradient">hello@strandrover.com</span>
+                  </a>
+                </Contact>
+              </Poser>
+
+              <Poser>
+                <Intro>
+                  <Poser className="bannerWrap">
+                    <ShadowImage className="banner" image={image} />
+                  </Poser>
+
+                  <Profile
+                    className="maze"
+                    dangerouslySetInnerHTML={{
+                      __html: maze.childMarkdownRemark.html,
+                    }}
+                  />
+
+                  <Profile
+                    className="nils"
+                    dangerouslySetInnerHTML={{
+                      __html: nils.childMarkdownRemark.html,
+                    }}
+                  />
+                </Intro>
+              </Poser>
+
+              {largeScreen && (
+                <PosedMapContainer>
+                  <Map markers={markers} center={mapCenter} />
+                </PosedMapContainer>
+              )}
+
+              <Poser>
+                <Clientlist
                   dangerouslySetInnerHTML={{
-                    __html: nils.childMarkdownRemark.html,
+                    __html: clientlist.childMarkdownRemark.html,
                   }}
                 />
-              </Intro>
-            </Poser>
+              </Poser>
 
-            <PosedMapContainer>
-              <Map markers={markers} center={mapCenter} />
-            </PosedMapContainer>
+              <About>
+                <Poser className="aboutText">
+                  <article
+                    dangerouslySetInnerHTML={{
+                      __html: about.childMarkdownRemark.html,
+                    }}
+                  />
+                </Poser>
 
-            <Poser>
-              <Clientlist
-                dangerouslySetInnerHTML={{
-                  __html: clientlist.childMarkdownRemark.html,
-                }}
-              />
-            </Poser>
+                <Poser className="aboutImage1">
+                  <ShadowImage image={aboutImage1} />
+                </Poser>
 
-            <Poser>
-              <About
-                dangerouslySetInnerHTML={{
-                  __html: about.childMarkdownRemark.html,
-                }}
-              />
-            </Poser>
-          </PoserContainer>
-        )
-      }}
-    </TransitionState>
-  )
+                <Poser className="aboutImage2">
+                  <ShadowImage image={aboutImage2} />
+                </Poser>
+              </About>
+            </PoserContainer>
+          )
+        }}
+      </TransitionState>
+    )
+  }
 }
 
 export const pageQuery = graphql`
@@ -217,6 +247,20 @@ export const pageQuery = graphql`
       about {
         childMarkdownRemark {
           html
+        }
+      }
+      aboutImage1 {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      aboutImage2 {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }

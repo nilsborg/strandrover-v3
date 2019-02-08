@@ -28,7 +28,7 @@ export const Welcome = styled.div`
     grid-gap: 5vw;
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 1200px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
@@ -50,7 +50,7 @@ export const Welcome = styled.div`
   }
 
   .extraImage1 {
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       grid-column: 3 / 4;
       z-index: 2;
       /* margin-bottom: -60%; */
@@ -59,7 +59,7 @@ export const Welcome = styled.div`
   }
 
   .extraImage2 {
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       grid-column: 4 / 6;
       align-self: end;
       z-index: 10;
@@ -71,15 +71,9 @@ export const Welcome = styled.div`
   .introText {
     grid-column: 1 / -1;
 
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       grid-column: 1 / 3;
       grid-row-start: 2;
-    }
-
-    p {
-      @media (min-width: 1110px) {
-        font-size: 1.2em;
-      }
     }
   }
 `
@@ -216,15 +210,41 @@ export const Clientlist = styled.div`
 `
 
 export const About = styled.article`
-  border: 1px solid coral;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3vh;
+
+  @media (min-width: 1000px) {
+    grid-gap: 5vw;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .aboutText {
+    grid-column: 1 / -1;
+  }
+
+  .aboutImage1 {
+    @media (min-width: 1200px) {
+      grid-row-start: 1;
+      grid-column: 1 / 4;
+    }
+  }
+
+  .aboutImage2 {
+    @media (min-width: 1200px) {
+      grid-row-start: 1;
+      grid-column: 4 / 6;
+      margin-bottom: -100%;
+      margin-top: 20vh;
+    }
+  }
 `
 
 export const MapContainer = styled.div`
   height: 70vh;
-
-  @media (max-width: 999px) {
-    display: none;
-  }
 
   @media (min-width: 1100px) {
     margin-left: calc((7vw + 200px) * -1);

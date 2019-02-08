@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactMapGL, { BaseControl } from 'react-map-gl'
-import WebMercatorViewport from 'viewport-mercator-project'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 import { StyledMarker } from './mapStyles'
