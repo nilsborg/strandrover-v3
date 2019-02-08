@@ -85,6 +85,9 @@ export const StyledProject = styled.div`
     }
 
     aside {
+      display: flex;
+      flex-wrap: wrap;
+
       @media (max-width: 1099px) {
         margin-bottom: 1vh;
       }
@@ -227,4 +230,5 @@ export const Tag = styled.span`
   text-transform: uppercase;
   font-size: 12px;
   margin-right: 0.5vw;
+  margin-bottom: 0.5vh;
 `
