@@ -9,7 +9,7 @@ export const StyledMarker = styled.div`
   align-items: center;
   /* border-left: 1px solid coral;
   border-top: 1px solid green; */
-  fill: var(--color-primary);
+  fill: var(--color-secondary);
 
   svg {
     transform: rotate(180deg);

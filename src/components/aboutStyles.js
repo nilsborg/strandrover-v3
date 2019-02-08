@@ -51,18 +51,20 @@ export const Welcome = styled.div`
 
   .extraImage1 {
     @media (min-width: 1100px) {
-      grid-column: 1 / 5;
+      grid-column: 3 / 4;
       z-index: 2;
+      /* margin-bottom: -60%; */
+      margin-right: -100%;
     }
   }
 
   .extraImage2 {
     @media (min-width: 1100px) {
-      grid-column: 5 / 6;
+      grid-column: 4 / 6;
       align-self: end;
-      margin-left: -20vw;
-      margin-bottom: -40vh;
-      z-index: 1;
+      z-index: 10;
+      margin-bottom: -80%;
+      margin-left: 10%;
     }
   }
 
@@ -71,6 +73,7 @@ export const Welcome = styled.div`
 
     @media (min-width: 1100px) {
       grid-column: 1 / 3;
+      grid-row-start: 2;
     }
 
     p {
