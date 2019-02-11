@@ -38,6 +38,10 @@ export const Welcome = styled.div`
     h1 {
       margin: 0;
       font-weight: 300;
+
+      @media (min-width: 1200px) {
+        font-size: 3.5vw;
+      }
     }
   }
 

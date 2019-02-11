@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { flexUnit } from './mixins'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -68,18 +69,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    @media (min-width: 500px) {
-      font-size: 40px;
-      line-height: 1.2;
-    }
+    ${flexUnit(5, 20, 60)}
 
-    @media (min-width: 1000px) {
-      font-size: 60px;
+    @media (min-width: 500px) {
+      line-height: 1.2;
     }
   }
 
   h2 {
-    font-size: 1.7em;
+    ${flexUnit(3.5, 18, 36)}
     font-weight: 500;
 
     @media (min-width: 800px) {

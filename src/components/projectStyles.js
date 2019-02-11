@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { flexUnit } from './mixins'
 
 export const StyledProject = styled.div`
   position: relative;
@@ -72,14 +73,13 @@ export const StyledProject = styled.div`
       margin-top: 0;
       margin-bottom: 0.75vh;
       font-weight: 300;
+      ${flexUnit(5, 32, 60)}
 
       @media (min-width: 500px) {
-        font-size: 40px;
         line-height: 1;
       }
 
       @media (min-width: 1000px) {
-        font-size: 60px;
         margin-bottom: 3vh;
       }
     }
