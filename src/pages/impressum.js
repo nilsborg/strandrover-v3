@@ -13,8 +13,6 @@ const ImprintPage = () => (
       <p>
         Nils Borgböhmer
         <br />
-        strandrover
-        <br />
         Marienstraße 30
         <br />
         63069 Offenbach
@@ -23,16 +21,36 @@ const ImprintPage = () => (
         Telefon: ‭+49 172 8559529‬
         <br />
         E-Mail: <a href="mailto:nils@strandrover.com">nils@strandrover.com</a>
-        <br />
       </p>
       <p>
-        <strong>Umsatzsteuer-ID: </strong>
-        <br />
         Umsatzsteuer-Identifikationsnummer nach §27a Umsatzsteuergesetz:
-        <br />
         DE301242604
+        <br />
+        <br />
       </p>
+
       <p>
+        Mathias Mortag
+        <br />
+        Siegfriedstr. 48
+        <br />
+        12051 Berlin
+      </p>
+
+      <p>
+        Telefon: ‭+49 1511 1597400
+        <br />
+        E-Mail:{' '}
+        <a href="mailto:mathias@strandrover.com">mathias@strandrover.com</a>
+      </p>
+
+      <p>
+        Umsatzsteuer-Identifikationsnummer nach §27a Umsatzsteuergesetz:
+        DE311956757
+      </p>
+
+      <p>
+        <br />
         <strong>Bildrechte:</strong>
         <br />
         strandrover
