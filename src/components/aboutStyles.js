@@ -225,10 +225,19 @@ export const About = styled.article`
 
   @media (min-width: 1200px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: end;
   }
 
   .aboutText {
     grid-column: 1 / -1;
+
+    @media (min-width: 1200px) {
+      grid-column: 1 / 4;
+    }
+
+    @media (min-width: 1400px) {
+      grid-column: 1 / 3;
+    }
 
     h2 {
       margin-bottom: 1.5em;
@@ -246,6 +255,9 @@ export const About = styled.article`
     @media (min-width: 1200px) {
       grid-row-start: 1;
       grid-column: 4 / 6;
+    }
+
+    @media (min-width: 1400px) {
       margin-bottom: -100%;
       margin-top: 20vh;
 
