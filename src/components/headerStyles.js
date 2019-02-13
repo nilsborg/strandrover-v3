@@ -50,11 +50,11 @@ export const StyledHeader = styled.header`
     animation: ${fadeIn} 600ms 300ms ease-out backwards;
   }
 
-  span {
+  nav {
     animation: ${fadeIn} 600ms 600ms ease-out backwards;
   }
 
-  nav {
+  .claim {
     animation: ${fadeIn} 600ms 900ms ease-out backwards;
   }
 `
@@ -73,26 +73,12 @@ export const Stripe = styled.div`
     letter-spacing: 0.1em;
   }
 
-  .claim {
-    @media (max-width: 499px) {
-      display: none;
-    }
-
-    @media (min-width: 1100px) and (max-height: 640px) {
-      display: none;
-    }
-
-    @media (min-width: 1100px) {
-      transform: rotate(180deg);
-    }
-  }
-
   nav {
     @media (min-width: 500px) {
       display: flex;
       align-items: center;
 
-      &:before {
+      &:after {
         content: '';
         background-color: var(--color-offwhite);
         display: block;
@@ -139,6 +125,20 @@ export const Stripe = styled.div`
         transform: rotate(180deg);
         padding: 0.4em 0;
       }
+    }
+  }
+
+  .claim {
+    @media (max-width: 499px) {
+      display: none;
+    }
+
+    @media (min-width: 1100px) and (max-height: 640px) {
+      display: none;
+    }
+
+    @media (min-width: 1100px) {
+      transform: rotate(180deg);
     }
   }
 `

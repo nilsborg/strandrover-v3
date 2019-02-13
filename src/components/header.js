@@ -22,7 +22,6 @@ class Header extends Component {
         </Link>
 
         <Stripe>
-          <span className="claim">branding, design, code</span>
           <nav>
             <Link
               to="/"
@@ -49,7 +48,7 @@ class Header extends Component {
             >
               <span className="gradient">about</span>
             </Link>
-            <Link
+            {/* <Link
               to="/monkey"
               exit={{
                 length: 0.6,
@@ -59,8 +58,10 @@ class Header extends Component {
               }}
             >
               <span className="monkey">monkey</span>
-            </Link>
+            </Link> */}
           </nav>
+
+          <span className="claim">branding, design, code</span>
         </Stripe>
       </StyledHeader>
     )
