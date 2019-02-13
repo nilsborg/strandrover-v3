@@ -142,6 +142,17 @@ export const StyledProject = styled.div`
       font-weight: 300;
       font-style: italic;
       line-height: 1.6;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: -0.45em;
+        left: -0.5em;
+        content: '“';
+        font-size: 2.7em;
+        /* opacity: 0.5; */
+        color: var(--color-highlight);
+      }
 
       @media (min-width: 500px) {
         font-size: 20px;
@@ -153,6 +164,8 @@ export const StyledProject = styled.div`
     }
 
     span {
+      opacity: 0.7;
+
       @media (max-width: 500px) {
         font-size: 11px;
       }
