@@ -115,11 +115,11 @@ class Project extends Component {
             <h2>{title}</h2>
 
             <i>
-              <span class="index">
+              <span className="index">
                 {index < 10 && 0}
                 {index + 1}
               </span>
-              <span class="total">
+              <span className="total">
                 {total < 10 && 0}
                 {total}
               </span>
