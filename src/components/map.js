@@ -15,7 +15,7 @@ class Marker extends BaseControl {
   _render() {
     console.log(this.props)
 
-    const { longitude, latitude } = this.props
+    const { longitude, latitude, name } = this.props
 
     const [x, y] = this._context.viewport.project([longitude, latitude])
 
@@ -27,6 +27,7 @@ class Marker extends BaseControl {
     return (
       <StyledMarker ref={this._containerRef} style={markerPos}>
         <MarkerIcon />
+        <span>{name}</span>
       </StyledMarker>
     )
   }
@@ -83,6 +84,7 @@ class Map extends Component {
               key={index}
               longitude={marker.longitude}
               latitude={marker.latitude}
+              name={marker.name}
             />
             // <span>{marker.longitude}</span>
           ))}

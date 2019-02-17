@@ -7,6 +7,8 @@ import posed from 'react-pose'
 import ShadowImage from '../components/shadowImage'
 import Map from '../components/map'
 import Footer from '../components/footer'
+import LinkedInIcon from '../assets/images/linkedin.svg'
+import TwitterIcon from '../assets/images/twitter.svg'
 
 import {
   Container,
@@ -73,10 +75,12 @@ class AboutPage extends Component {
       {
         longitude: 8.76244,
         latitude: 50.098903,
+        name: 'Nils',
       },
       {
         longitude: 13.424494,
         latitude: 52.467192,
+        name: 'Mathias',
       },
     ]
 
@@ -146,19 +150,47 @@ class AboutPage extends Component {
                       <ShadowImage className="banner" image={image} />
                     </Poser>
 
-                    <Profile
-                      className="maze"
-                      dangerouslySetInnerHTML={{
-                        __html: maze.childMarkdownRemark.html,
-                      }}
-                    />
+                    <Profile className="maze">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: maze.childMarkdownRemark.html,
+                        }}
+                      />
 
-                    <Profile
-                      className="nils"
-                      dangerouslySetInnerHTML={{
-                        __html: nils.childMarkdownRemark.html,
-                      }}
-                    />
+                      <nav>
+                        <a
+                          href="https://www.linkedin.com/in/mathiasmortag/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <LinkedInIcon />
+                        </a>
+                      </nav>
+                    </Profile>
+
+                    <Profile className="nils">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: nils.childMarkdownRemark.html,
+                        }}
+                      />
+                      <nav>
+                        <a
+                          href="https://www.linkedin.com/in/nilsborg/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <LinkedInIcon />
+                        </a>
+                        <a
+                          href="https://twitter.com/nilsborgboehmer"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <TwitterIcon />
+                        </a>
+                      </nav>
+                    </Profile>
                   </Intro>
                 </Poser>
 

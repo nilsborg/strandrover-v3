@@ -17,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
+  ::selection {
+    background-color: var(--color-highlight);
+    color: white;
+  }
+
   html, body {
     margin: 0;
   }

@@ -104,7 +104,7 @@ export const Intro = styled.article`
   }
 `
 
-export const Profile = styled.div`
+export const Profile = styled.article`
   padding: 10vw;
 
   @media (max-width: 1099px) {
@@ -115,15 +115,30 @@ export const Profile = styled.div`
 
   @media (min-width: 1100px) {
     padding: 4vw;
-
-    &.nils {
-      padding-top: 10vh;
-    }
   }
 
   h3 {
     margin-top: 1vh;
     margin-bottom: 4vh;
+  }
+
+  nav {
+    margin-top: 2vh;
+    display: flex;
+
+    a {
+      margin-right: 0.3vw;
+    }
+
+    svg {
+      fill: var(--color-highlight);
+      display: block;
+      transition: fill 250ms;
+    }
+
+    a:hover svg {
+      fill: var(--color-secondary);
+    }
   }
 `
 
