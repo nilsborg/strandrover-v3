@@ -65,6 +65,8 @@ export const StyledProject = styled.div`
   }
 
   .header {
+    position: relative;
+
     @media (min-width: 1000px) {
       grid-column: 1 / -1;
     }
@@ -81,6 +83,37 @@ export const StyledProject = styled.div`
 
       @media (min-width: 1000px) {
         margin-bottom: 3vh;
+      }
+    }
+
+    i {
+      @media (max-width: 600px) {
+        display: none;
+      }
+
+      font-style: normal;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0.3em;
+      right: 0;
+
+      .index {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+
+        &:after {
+          margin: 0 0.5vw;
+          content: '';
+          height: 1em;
+          width: 1px;
+          background-color: var(--color-primary);
+        }
+      }
+
+      .total {
+        font-weight: 300;
       }
     }
 

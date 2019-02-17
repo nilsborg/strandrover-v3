@@ -67,6 +67,7 @@ class IndexPage extends Component {
                       node={node}
                       key={index}
                       index={index}
+                      total={data.projects.edges.length}
                       status={status}
                     />
                   </ProjectWrap>

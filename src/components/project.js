@@ -91,6 +91,8 @@ class Project extends Component {
       image2,
     } = this.props.node
 
+    const { index, total } = this.props
+
     const headerY = this.calcParallax(10)
     const descY = this.calcParallax(10, 'slowDown')
     const image1Y = this.calcParallax(12)
@@ -111,6 +113,17 @@ class Project extends Component {
             }}
           >
             <h2>{title}</h2>
+
+            <i>
+              <span class="index">
+                {index < 10 && 0}
+                {index + 1}
+              </span>
+              <span class="total">
+                {total < 10 && 0}
+                {total}
+              </span>
+            </i>
 
             <aside>
               {tags.map((tag, index) => (
