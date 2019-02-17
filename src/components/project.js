@@ -97,7 +97,7 @@ class Project extends Component {
     const descY = this.calcParallax(10, 'slowDown')
     const image1Y = this.calcParallax(12)
     const image2Y = this.calcParallax(5)
-    const testimonialY = this.calcParallax(8)
+    const testimonialY = this.calcParallax(10)
 
     return (
       <StyledProject

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { isInViewport } from '../helpers'
 import styled from 'styled-components'
+import device from 'current-device'
 
 const StyledShadow = styled.div`
   position: absolute;
@@ -53,11 +54,12 @@ class Shadow extends Component {
   updateAnimation = (x, y) => {
     const translate = {
       x: 0,
-      y: 0,
+      y: 7,
     }
-    let distance = 0
+    let distance = 500
 
-    if (!this.shadowRef.current) return { translate, distance }
+    if (!device.desktop() || !this.shadowRef.current)
+      return { translate, distance }
 
     const shadowBoundingBox = this.shadowRef.current.getBoundingClientRect()
 
