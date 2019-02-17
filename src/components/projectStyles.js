@@ -166,6 +166,10 @@ export const StyledProject = styled.div`
     z-index: 11;
     mix-blend-mode: hard-light;
 
+    @media (max-width: 600px) {
+      margin-left: 3vh;
+    }
+
     @media (min-width: 1000px) {
       grid-column: 3 / -1;
     }
@@ -241,9 +245,9 @@ export const ViewProject = styled.a`
   font-family: var(--font-family-mono);
   font-weight: 300;
   font-style: normal;
-  /* text-decoration: none; */
   display: flex;
   align-items: center;
+  word-break: break-word;
 
   @media (min-width: 800px) {
     font-size: 18px;
