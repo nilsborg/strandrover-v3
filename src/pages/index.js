@@ -12,14 +12,19 @@ const ProjectList = styled.ul`
   list-style: none;
   margin-left: 0;
   margin-top: 0;
-  padding: 7vh 5vw;
+  padding: 20vw 5vw 7vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
 
+  @media (max-width: 400px) {
+    padding-top: 100px;
+  }
+
   @media (min-width: 450px) and (max-width: 999px) {
-    padding: 10vh 10vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
   }
 
   @media (min-width: 1100px) {

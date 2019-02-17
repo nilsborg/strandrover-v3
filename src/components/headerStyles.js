@@ -12,16 +12,19 @@ const fadeIn = keyframes`
 export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
+  position: fixed;
+  z-index: 20;
 
   @media (max-width: 1099px) {
     padding: 5vw;
     padding-bottom: 0;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
   }
 
   @media (min-width: 1100px) {
     flex-direction: column;
-    position: fixed;
-    z-index: 10;
     top: 7vh;
     left: 7vw;
   }
