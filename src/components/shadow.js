@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { isInViewport } from '../helpers'
 import styled from 'styled-components'
-import device from 'current-device'
+import { isMobile } from '../helpers'
 
 const StyledShadow = styled.div`
   position: absolute;
@@ -29,6 +29,8 @@ class Shadow extends Component {
   componentDidMount() {
     window.addEventListener('scroll', this.updateScrollState)
     window.addEventListener('mousemove', this.updateCursorState)
+
+    console.log(isMobile())
   }
 
   componentWillUnmount() {
@@ -58,8 +60,7 @@ class Shadow extends Component {
     }
     let distance = 500
 
-    if (!device.desktop() || !this.shadowRef.current)
-      return { translate, distance }
+    if (!this.shadowRef.current || isMobile()) return { translate, distance }
 
     const shadowBoundingBox = this.shadowRef.current.getBoundingClientRect()
 
