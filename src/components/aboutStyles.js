@@ -1,8 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 7vh 5vw 0;
+  padding: 20vw 5vw 0;
   overflow: hidden;
+
+  @media (max-width: 400px) {
+    padding-top: 100px;
+  }
+
+  @media (min-width: 450px) and (max-width: 999px) {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
 
   @media (min-width: 1100px) {
     padding-top: calc(7vh + 100px + 80px - 0.8em);
@@ -85,7 +94,7 @@ export const Welcome = styled.div`
 
 export const Intro = styled.article`
   @media (max-width: 1099px) {
-    background-color: var(--color-offwhite);
+    background-color: var(--color-offwhiter);
   }
 
   @media (min-width: 1100px) {

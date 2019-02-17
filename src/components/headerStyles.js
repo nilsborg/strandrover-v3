@@ -14,14 +14,16 @@ export const StyledHeader = styled.header`
   align-items: center;
   position: fixed;
   z-index: 20;
+  top: 3vh;
+  left: 5vw;
 
-  @media (max-width: 1099px) {
+  /* @media (max-width: 1099px) {
     padding: 5vw;
     padding-bottom: 0;
     top: 0px;
     left: 0px;
     width: 100vw;
-  }
+  } */
 
   @media (min-width: 1100px) {
     flex-direction: column;
