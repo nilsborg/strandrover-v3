@@ -69,6 +69,17 @@ const Header = () => (
       <nav className="legal">
         <Link to="/impressum">Impressum</Link>
         <Link to="/datenschutz">Datenschutz</Link>
+        <Link
+          to="/monkey"
+          exit={{
+            length: 0.6,
+          }}
+          entry={{
+            delay: 0.5,
+          }}
+        >
+          <span className="monkey">Monkey!</span>
+        </Link>
       </nav>
 
       <aside className="copyright">

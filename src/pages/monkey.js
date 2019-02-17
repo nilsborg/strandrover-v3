@@ -46,7 +46,7 @@ class MonkeyPage extends Component {
 
     setTimeout(() => {
       navigate('/')
-    }, 2000)
+    }, 4000)
   }
 
   render() {

@@ -108,11 +108,6 @@ export const Stripe = styled.div`
         );
       }
 
-      .monkey {
-        visibility: hidden;
-        cursor: none;
-      }
-
       &.active {
         color: var(--color-primary);
         /* text-decoration: underline; */
